@@ -75,12 +75,13 @@ const people: PersonCard[] = team
                   alt={person.name}
                   class="team-img"
                   draggable="false"
+                  loading="lazy"
                 />
               ) : (
                 <div class="placeholder-img"></div>
               )}
 
-              <!-- IMAGE PROTECTION OVERLAY -->
+              <!-- PROTECTION OVERLAY -->
               <div class="img-protect"></div>
 
               <div class="info">{infoContent}</div>
@@ -132,6 +133,11 @@ const people: PersonCard[] = team
       e.preventDefault();
     }
   });
+
+  /* Extra drag protection */
+  document.querySelectorAll(".team-img").forEach(img => {
+    img.addEventListener("dragstart", e => e.preventDefault());
+  });
 </script>
 
 <style>
@@ -177,7 +183,6 @@ const people: PersonCard[] = team
   z-index: 1;
   border-radius: 6px;
   user-select: none;
-  pointer-events: none;
 }
 
 /* ---------- IMAGE PROTECTION LAYER ---------- */
@@ -185,7 +190,7 @@ const people: PersonCard[] = team
 .img-protect {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 2;
   background: transparent;
 }
 
@@ -206,7 +211,7 @@ const people: PersonCard[] = team
     rgba(0,0,0,0.85) 100%
   );
 
-  z-index: 2;
+  z-index: 3;
   text-align: center;
 }
 
@@ -253,7 +258,7 @@ const people: PersonCard[] = team
   transform: translateY(0);
 }
 
-/* ---------- GRID ---------- */
+/* ---------- GRID (UNCHANGED) ---------- */
 
 .members-grid {
   display: grid;
