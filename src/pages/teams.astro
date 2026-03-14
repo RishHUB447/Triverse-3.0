@@ -117,12 +117,14 @@ const sections = [
     <main class="teams-page">
         <section class="hero">
             <div class="stars-container">
-                {heroStars.map((star) => (
-                    <div
-                        class="star"
-                        style={`top: ${star.top}; left: ${star.left}; animation-delay: ${star.delay};`}
-                    ></div>
-                ))}
+                {
+                    heroStars.map((star) => (
+                        <div
+                            class="star"
+                            style={`top: ${star.top}; left: ${star.left}; animation-delay: ${star.delay};`}
+                        />
+                    ))
+                }
             </div>
             <div class="hero-content">
                 <h1 class="hero-title hero-bounce">OUR TEAMS</h1>
@@ -134,54 +136,91 @@ const sections = [
             </div>
         </section>
 
-        {sections.map((section, index) => (
-            <>
-                <section
-                    class="team-block"
-                    style={`--section-bg: ${section.background}; --accent: ${section.accent}; --accent-glow: ${section.accentGlow};`}
-                >
-                    <div class="stars-container">
-                        {sectionStars.map((star) => (
-                            <div
-                                class="star"
-                                style={`top: ${star.top}; left: ${star.left}; animation-delay: ${star.delay};`}
-                            ></div>
-                        ))}
-                    </div>
-                    <div class="team-orb"></div>
-                    <div class="team-header">
-                        <h2 class="team-title">{section.title}</h2>
-                        <div class="team-divider"></div>
-                    </div>
-                    <div class="team-content">
-                        <TeamSection teamName={section.teamName} />
-                    </div>
-                </section>
-
-                {section.waveFill && (
-                    <svg
-                        class="wave-divider"
-                        viewBox="0 0 1200 240"
-                        preserveAspectRatio="none"
-                        xmlns="http://www.w3.org/2000/svg"
+        {
+            sections.map((section, index) => (
+                <>
+                    <section
+                        class="team-block"
+                        style={`--section-bg: ${section.background}; --accent: ${section.accent}; --accent-glow: ${section.accentGlow};`}
                     >
-                        <defs>
-                            <linearGradient id={`waveGrad${index + 1}`} x1="0%" y1="100%" x2="0%" y2="0%">
-                                <stop offset="0%" stop-color="#7B2CBF" stop-opacity="0.9" />
-                                <stop offset="30%" stop-color="#6A1B9A" stop-opacity="0.5" />
-                                <stop offset="70%" stop-color="#4A148C" stop-opacity="0.2" />
-                                <stop offset="100%" stop-color="#311B92" stop-opacity="0" />
-                            </linearGradient>
-                            <mask id={`${`waveGrad${index + 1}`}-mask`}>
-                                <path d="M0,180 Q300,220 600,180 T1200,180 L1200,0 L0,0 Z" fill="white" />
-                            </mask>
-                        </defs>
-                        <rect x="0" y="0" width="1200" height="240" fill={`url(#waveGrad${index + 1})`} mask={`url(#${`waveGrad${index + 1}`}-mask)`} />
-                        <path d="M0,180 Q300,220 600,180 T1200,180 L1200,240 L0,240 Z" fill={section.waveFill} />
-                    </svg>
-                )}
-            </>
-        ))}
+                        <div class="stars-container">
+                            {sectionStars.map((star) => (
+                                <div
+                                    class="star"
+                                    style={`top: ${star.top}; left: ${star.left}; animation-delay: ${star.delay};`}
+                                />
+                            ))}
+                        </div>
+                        <div class="team-orb" />
+                        <div class="team-header">
+                            <h2 class="team-title">{section.title}</h2>
+                            <div class="team-divider" />
+                        </div>
+                        <div class="team-content">
+                            <TeamSection teamName={section.teamName} />
+                        </div>
+                    </section>
+
+                    {section.waveFill && (
+                        <svg
+                            class="wave-divider"
+                            viewBox="0 0 1200 240"
+                            preserveAspectRatio="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <defs>
+                                <linearGradient
+                                    id={`waveGrad${index + 1}`}
+                                    x1="0%"
+                                    y1="100%"
+                                    x2="0%"
+                                    y2="0%"
+                                >
+                                    <stop
+                                        offset="0%"
+                                        stop-color="#7B2CBF"
+                                        stop-opacity="0.9"
+                                    />
+                                    <stop
+                                        offset="30%"
+                                        stop-color="#6A1B9A"
+                                        stop-opacity="0.5"
+                                    />
+                                    <stop
+                                        offset="70%"
+                                        stop-color="#4A148C"
+                                        stop-opacity="0.2"
+                                    />
+                                    <stop
+                                        offset="100%"
+                                        stop-color="#311B92"
+                                        stop-opacity="0"
+                                    />
+                                </linearGradient>
+                                <mask id={`${`waveGrad${index + 1}`}-mask`}>
+                                    <path
+                                        d="M0,180 Q300,220 600,180 T1200,180 L1200,0 L0,0 Z"
+                                        fill="white"
+                                    />
+                                </mask>
+                            </defs>
+                            <rect
+                                x="0"
+                                y="0"
+                                width="1200"
+                                height="240"
+                                fill={`url(#waveGrad${index + 1})`}
+                                mask={`url(#${`waveGrad${index + 1}`}-mask)`}
+                            />
+                            <path
+                                d="M0,180 Q300,220 600,180 T1200,180 L1200,240 L0,240 Z"
+                                fill={section.waveFill}
+                            />
+                        </svg>
+                    )}
+                </>
+            ))
+        }
     </main>
 
     <style>
@@ -327,7 +366,8 @@ const sections = [
             height: 2px;
             background: white;
             border-radius: 50%;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.9),
+            box-shadow:
+                0 0 6px rgba(255, 255, 255, 0.9),
                 0 0 12px rgba(255, 255, 255, 0.5);
             animation: twinkle 3s infinite ease-in-out;
         }

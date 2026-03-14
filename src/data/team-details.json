@@ -28,7 +28,6 @@
           "role": "Web Master",
           "image": "\\team\\office-bearer\\Rishabh_Verma.png"
         }
-        
       ]
     },
     {
@@ -39,12 +38,11 @@
         "image": "/team/tech/samridhi-agrawal.png"
       },
       "colead": {
-        "name": "Gyanendra Prakash",
+        "name": "Gyanendra Pratap Singh",
         "role": "Co-Lead",
         "image": "/team/tech/gyanendra.png"
       },
       "members": [
-        
         {
           "name": "Saksham Yadav",
           "role": "Core Member",
@@ -162,6 +160,11 @@
           "name": "Prabhavi Gupta",
           "role": "Core Member",
           "image": "\\team\\PRandOutreach\\Prabhavi_Gupta.png"
+        },
+        {
+          "name": "Samar Kumar",
+          "role": "Core Member",
+          "image": "\\team\\PRandOutreach\\Samar_Kumar.png"
         }
       ]
     },{
