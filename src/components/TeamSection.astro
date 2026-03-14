@@ -1,10 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import teamData from '../data/team-details.json';
-<<<<<<< HEAD
-import galaxyImage from '../images/galaxy.png';
-=======
->>>>>>> upstream/main
 
 interface Props {
   teamName: string;
@@ -12,39 +8,16 @@ interface Props {
 
 const { teamName } = Astro.props;
 
-<<<<<<< HEAD
-const team = teamData.teams.find(
-  t => t.name.toLowerCase() === teamName.toLowerCase()
-);
-=======
 const normalizeTeamName = (value: string | undefined | null) =>
   value?.trim().toLowerCase() ?? '';
 
 const normalizedTeamName = normalizeTeamName(teamName);
 const team = teamData.teams.find(t => normalizeTeamName(t.name) === normalizedTeamName);
->>>>>>> upstream/main
 
 if (!team) {
   console.error(`Team "${teamName}" not found`);
 }
 
-<<<<<<< HEAD
-// 🔥 exception handling (ONLY addition)
-const hasCoLead = Boolean(team?.colead);
-
-// Load all team images eagerly
-const teamImages = import.meta.glob<{ default: ImageMetadata }>('/src/images/team/**/*.{png,jpg,jpeg,webp}', { eager: true });
-
-function resolveImage(path: string | undefined | null) {
-  if (!path) return null;
-  // Normalize path: replace backslashes with forward slashes
-  const normalizedPath = path.replace(/\\/g, '/');
-  // Ensure it starts with /team
-  const cleanPath = normalizedPath.startsWith('/') ? normalizedPath : '/' + normalizedPath;
-  // Construct full path
-  const fullPath = `/src/images${cleanPath}`;
-  
-=======
 const hasCoLead = Boolean(team?.colead);
 const isOfficeBearerTeam = team?.name.toLowerCase() === 'office bearer';
 
@@ -57,74 +30,10 @@ function resolveImage(path: string | undefined | null) {
   const cleanPath = normalizedPath.startsWith('/') ? normalizedPath : '/' + normalizedPath;
   const fullPath = `/src/images${cleanPath}`;
 
->>>>>>> upstream/main
   const imageModule = teamImages[fullPath];
   return imageModule ? imageModule.default : null;
 }
 
-<<<<<<< HEAD
-const leadImage = resolveImage(team?.lead?.image);
-const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
----
-{team && (
-  <section class="team-section">
-
-    <!-- LEAD -->
-    <div
-      class="lead-row left"
-      style={hasCoLead ? '' : 'margin-bottom: 2rem;'}
-    >
-      <div class="avatar-wrap lead-avatar" style={`background-image: url(${galaxyImage.src})`}>
-        {leadImage ? (
-            <Image src={leadImage} alt={team.lead.name} class="team-img" />
-        ) : (
-            <div class="placeholder-img"></div>
-        )}
-      </div>
-      <div class="info">
-        <h3>{team.lead.name}</h3>
-        <p>{team.lead.role}</p>
-      </div>
-    </div>
-
-    <!-- CO-LEAD -->
-    {hasCoLead && (
-      <div class="lead-row right">
-        <div class="info">
-          <h3>{team.colead?.name}</h3>
-          <p>{team.colead?.role}</p>
-        </div>
-        <div class="avatar-wrap lead-avatar" style={`background-image: url(${galaxyImage.src})`}>
-         {coleadImage ? (
-            <Image src={coleadImage} alt={team.colead?.name ?? ''} class="team-img" />
-        ) : (
-            <div class="placeholder-img"></div>
-        )}
-        </div>
-      </div>
-    )}
-
-    <!-- MEMBERS -->
-    {team.members.length > 0 && (
-      <div class="members-grid">
-        {team.members.map(member => {
-           const memberImage = resolveImage(member.image);
-           return (
-          <div class="member-card">
-            <div class="avatar-wrap member-avatar" style={`background-image: url(${galaxyImage.src})`}>
-              {memberImage ? (
-                <Image src={memberImage} alt={member.name} class="team-img" />
-              ) : (
-                <div class="placeholder-img"></div>
-              )}
-            </div>
-            <h4>{member.name}</h4>
-            <p>{member.role}</p>
-          </div>
-        )})}
-      </div>
-    )}
-=======
 type PersonCard = {
   name: string;
   role: string;
@@ -183,37 +92,10 @@ const people: PersonCard[] = team
         );
       })}
     </div>
->>>>>>> upstream/main
 
   </section>
 )}
 
-<<<<<<< HEAD
-<style>
-/* ---------- SECTION ---------- */
-.team-section {
-  max-width: 1100px;
-  margin: -3rem auto 0;
-  padding: 0 1rem;
-}
-
-/* ---------- AVATAR WITH GALAXY BACKGROUND ---------- */
-.avatar-wrap {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  overflow: hidden;
-
-  overflow: hidden;
-
-  /* background-image set via inline style */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  border: 3px solid white;
-=======
 <script>
   const revealCards = () => {
     const cards = document.querySelectorAll('.member-card.reveal');
@@ -283,68 +165,10 @@ const people: PersonCard[] = team
     rgba(60, 20, 100, 0.85) 60%,
     rgba(100, 40, 160, 0.9) 100%
   );
->>>>>>> upstream/main
 
   display: flex;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-}
-
-/* ---------- STICKER IMAGE ---------- */
-.team-img {
-  width: 98%;
-  height: 105%;
-  object-fit: contain;
-  z-index: 1;
-  background: transparent;
-
-  filter:
-    drop-shadow(2px 0 0 white)
-    drop-shadow(-2px 0 0 white)
-    drop-shadow(0 2px 0 white)
-    drop-shadow(0 -2px 0 white);
-
-  transform: scale(1.03);
-  transition: transform 0.3s ease;
-}
-
-.team-img:hover {
-  transform: scale(1.06);
-}
-
-/* ---------- LEAD / CO-LEAD ---------- */
-.lead-row {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.lead-row.left {
-  justify-content: flex-start;
-  margin-bottom: -8rem;
-}
-
-.lead-row.right {
-  justify-content: flex-end;
-  margin-bottom: 2rem;
-}
-
-.lead-row h3 {
-  font-size: 1.85rem;
-  margin-bottom: 0.4rem;
-}
-
-.lead-row p {
-  font-size: 1.1rem;
-  color: #bbb;
-}
-
-/* ---------- MEMBERS GRID ---------- */
-.members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-=======
 
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(100, 50, 200, 0.1);
@@ -439,64 +263,24 @@ const people: PersonCard[] = team
 .members-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
->>>>>>> upstream/main
   gap: 1.2rem;
   margin-top: 0.5rem;
   justify-items: center;
 }
 
 /* ---------- MEMBER CARD ---------- */
-<<<<<<< HEAD
-=======
 
->>>>>>> upstream/main
 .member-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-<<<<<<< HEAD
-  transition: transform 0.3s ease;
-=======
->>>>>>> upstream/main
 }
 
 .member-card:hover {
   transform: translateY(-10px);
 }
 
-<<<<<<< HEAD
-.member-avatar {
-  margin-bottom: 0.45rem;
-}
-
-.member-card h4 {
-  font-size: 0.95rem;
-  margin: 0.1rem 0 0;
-}
-
-.member-card p {
-  font-size: 0.85rem;
-  margin-top: 0.2rem;
-  color: #aaa;
-}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 941px) {
-  .lead-row {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .lead-row.left {
-    margin-top: 2.5rem;
-    margin-bottom: 3.2rem;
-  }
-
-  .lead-row.right {
-    flex-direction: column-reverse;
-    margin-bottom: 2.5rem;
-=======
 /* ---------- SCROLL REVEAL ---------- */
 
 .member-card.reveal {
@@ -516,7 +300,6 @@ const people: PersonCard[] = team
 
   .members-grid {
     grid-template-columns: 1fr;
->>>>>>> upstream/main
   }
 
   .avatar-wrap {
@@ -524,30 +307,6 @@ const people: PersonCard[] = team
     height: 150px;
   }
 
-<<<<<<< HEAD
-  .lead-avatar {
-    margin-top: 2.2rem;
-    margin-bottom: 0.15rem;
-  }
-
-  .lead-row .info h3 {
-    margin-top: 0.15rem;
-    margin-bottom: 0.1rem;
-    font-size: 1.5rem;
-  }
-
-  .lead-row .info p {
-    margin-top: 0;
-    font-size: 0.95rem;
-  }
-
-  .avatar-wrap img {
-    width: 95%;
-    height: 100%;
-  }
-}
-</style>
-=======
   .avatar-wrap .info {
     padding: 10px 8px 8px;
   }
@@ -564,4 +323,3 @@ const people: PersonCard[] = team
 }
 
 </style>
->>>>>>> upstream/main

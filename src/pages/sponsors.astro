@@ -111,32 +111,10 @@ const sponsors = [
   .sponsors-page {
     position: relative;
     min-height: 100vh;
-<<<<<<< HEAD
-    /* Rich, live moving gradient */
-    background: linear-gradient(-45deg, #0a0a0f, #1a0033, #3c1e55, #220022, #0f021a);
-    background-size: 400% 400%;
-    animation: liveGradient 12s ease infinite;
-    overflow-x: hidden;
-  }
-
-  @keyframes liveGradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-=======
     background: radial-gradient(ellipse at bottom, #1a0033 0%, #000000 100%);
     overflow-x: hidden;
   }
 
->>>>>>> upstream/main
   /* === Stars Background === */
   .sponsors-page::before {
     content: "";
@@ -221,16 +199,6 @@ const sponsors = [
   /* === Sponsor Card === */
   .sponsor-card {
     position: relative;
-<<<<<<< HEAD
-    background: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 30px 20px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-=======
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 16px;
@@ -239,41 +207,22 @@ const sponsors = [
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
->>>>>>> upstream/main
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-<<<<<<< HEAD
-    gap: 20px;
-  }
-
-  .sponsor-card:hover {
-    transform: scale(1.05);
-    border-color: rgba(138, 43, 226, 0.5);
-    box-shadow: 0 20px 50px rgba(138, 43, 226, 0.15);
-=======
     gap: 12px;
   }
 
   .sponsor-card:hover {
     transform: scale(1.08);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
->>>>>>> upstream/main
     z-index: 10;
   }
 
   /* === Logo Container === */
   .logo-container {
     width: 100%;
-<<<<<<< HEAD
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    background: transparent;
-=======
     height: 100px;
     display: flex;
     align-items: center;
@@ -281,56 +230,33 @@ const sponsors = [
     padding: 12px;
     background: #f8f9fa;
     border-radius: 12px;
->>>>>>> upstream/main
     transition: all 0.4s ease;
   }
 
   .logo-container img {
-<<<<<<< HEAD
-    max-width: 90%;
-    max-height: 90px;
-    object-fit: contain;
-    transition: all 0.4s ease;
-    filter: brightness(1.2); /* Make logos pop on black */
-=======
     max-width: 85%;
     max-height: 75px;
     object-fit: contain;
     transition: all 0.4s ease;
->>>>>>> upstream/main
   }
 
   .sponsor-card:hover .logo-container {
     opacity: 0;
-<<<<<<< HEAD
-    transform: scale(0.9);
-=======
     transform: scale(0.8);
->>>>>>> upstream/main
   }
 
   /* === Sponsor Name === */
   .sponsor-name {
-<<<<<<< HEAD
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #ffffff;
-=======
     font-size: 0.95rem;
     font-weight: 600;
     color: #1a1a2e;
->>>>>>> upstream/main
     margin: 0;
     transition: all 0.4s ease;
   }
 
   .sponsor-card:hover .sponsor-name {
     opacity: 0;
-<<<<<<< HEAD
-    transform: translateY(10px);
-=======
     transform: translateY(-10px);
->>>>>>> upstream/main
   }
 
   /* === Hover Overlay === */
