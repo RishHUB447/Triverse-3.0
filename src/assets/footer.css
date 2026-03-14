@@ -11,9 +11,6 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
 }
-<<<<<<< HEAD
-
-=======
 .footer * {
   pointer-events: auto;
 }
@@ -23,7 +20,6 @@ body {
 #footer::before {
   pointer-events: none !important;
 }
->>>>>>> upstream/main
 .footer {
   width: 100%;
   max-width: 100vw;
@@ -39,10 +35,6 @@ body {
   left: 0;
   right: 0;
 }
-<<<<<<< HEAD
-
-
-=======
 /* background container */
 .footer-bg {
   position: absolute;
@@ -85,7 +77,6 @@ body {
   pointer-events: none;
   z-index: 0;
 }
->>>>>>> upstream/main
 
 /* Background Pattern */
 .footer-bg-pattern {
@@ -117,10 +108,8 @@ body {
   display: block;
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> upstream/main
+
 .footer-logo-watermark img {
   width: 100%;
   height: auto;
@@ -130,10 +119,7 @@ body {
   display: block;
   transform: translateY(40%);
   filter: brightness(1.5);
-<<<<<<< HEAD
-=======
   pointer-events: none;
->>>>>>> upstream/main
 }
 
 /* Decorative + signs */
@@ -354,11 +340,7 @@ body {
 }
 
 .made-by-label {
-<<<<<<< HEAD
-  font-size: 0.75rem;
-=======
   font-size: 0.6rem;
->>>>>>> upstream/main
   color: var(--footer-text-secondary);
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -369,12 +351,6 @@ body {
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-end;
-<<<<<<< HEAD
-  gap: 0.6rem;
-  align-items: center;
-}
-
-=======
   gap: 0.2rem;
   align-items: center;
 }
@@ -382,17 +358,12 @@ body {
 .team-member-name {
   font-size: 0.4rem;
 }
->>>>>>> upstream/main
 .team-member {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-<<<<<<< HEAD
-  transition: transform 0.3s ease;
-=======
   transition: transform 0.15s ease;
->>>>>>> upstream/main
 }
 
 .team-member:hover {
@@ -403,12 +374,7 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-<<<<<<< HEAD
-  background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(186, 85, 211, 0.3));
-  border: 2px solid rgba(255, 255, 255, 0.2);
-=======
   border: 1px solid rgba(255, 255, 255, 0.2);
->>>>>>> upstream/main
   display: flex;
   align-items: center;
   justify-content: center;
