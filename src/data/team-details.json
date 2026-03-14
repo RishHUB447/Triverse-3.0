@@ -10,16 +10,6 @@
       "colead": {
         "name": "Manya Chaubey",
         "role": "Vice Chairperson",
-<<<<<<< HEAD
-        "image": "/team/office-bearer/Manya_Chaudhray.png"
-      },
-      "members": [
-         {
-          "name": "Rishabh Verma",
-          "role": "Web Master",
-          "image": "/team/office-bearer/Rishabh_Verma.png"
-        }
-=======
         "image": "\\team\\office-bearer\\manya.png"
       },
       "members": [
@@ -38,8 +28,6 @@
           "role": "Web Master",
           "image": "\\team\\office-bearer\\Rishabh_Verma.png"
         }
-        
->>>>>>> upstream/main
       ]
     },
     {
@@ -50,16 +38,11 @@
         "image": "/team/tech/samridhi-agrawal.png"
       },
       "colead": {
-<<<<<<< HEAD
         "name": "Gyanendra Pratap Singh",
-=======
-        "name": "Gyanendra Prakash",
->>>>>>> upstream/main
         "role": "Co-Lead",
         "image": "/team/tech/gyanendra.png"
       },
       "members": [
-        
         {
           "name": "Saksham Yadav",
           "role": "Core Member",
@@ -85,16 +68,6 @@
     {
       "name": "Content team",
       "lead": {
-<<<<<<< HEAD
-        "name": "_",
-        "role": "Team Lead",
-        "image": ""
-      },
-      "colead": {
-        "name": "_",
-        "role": "Co-Lead",
-        "image": ""
-=======
         "name": "Venugopal Chepuri",
         "role": "Team Lead",
         "image": "\\team\\Content\\venugopal_Chepuri.png"
@@ -103,7 +76,6 @@
         "name": "Krishna Gaur",
         "role": "Co-Lead",
         "image": "\\team\\Content\\krishna_Gaur.png"
->>>>>>> upstream/main
       },
       "members": [
         {
@@ -130,21 +102,12 @@
     },{
       "name": "Design Team",
       "lead": {
-<<<<<<< HEAD
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
-      },
-      "colead": {
-        "name": "Apoorv_Verma",
-=======
         "name": "Amogh Sharma",
         "role": "Team Lead",
         "image": "\\team\\Placeholder.png"
       },
       "colead": {
         "name": "Apoorv Verma",
->>>>>>> upstream/main
         "role": "Co-Lead",
         "image": "\\team\\Design\\Apoorv_Verma.png"
       },
@@ -153,8 +116,6 @@
           "name": "Nandani Khandelwa",
           "role": "Core Member",
           "image": "\\team\\Design\\nandani_khandelwal.png"
-<<<<<<< HEAD
-=======
         },
         {
           "name": "Astitva Agarwal",
@@ -165,21 +126,14 @@
           "name": "Illyas",
           "role": "Core Member",
           "image": "\\team\\Placeholder.png"
->>>>>>> upstream/main
         }
       ]
     },{
       "name": "Pr and Outreach Team ",
       "lead": {
-<<<<<<< HEAD
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
-=======
         "name": "Shreyasi Doshi",
         "role": "Team Lead",
         "image": "\\team\\PRandOutreach\\Shreyasi Doshi.png"
->>>>>>> upstream/main
       },
       "colead": {
         "name": "Arpita_Arora",
@@ -206,24 +160,16 @@
           "name": "Prabhavi Gupta",
           "role": "Core Member",
           "image": "\\team\\PRandOutreach\\Prabhavi_Gupta.png"
-<<<<<<< HEAD
         },
         {
           "name": "Samar Kumar",
           "role": "Core Member",
           "image": "\\team\\PRandOutreach\\Samar_Kumar.png"
-=======
->>>>>>> upstream/main
         }
       ]
     },{
       "name": "Management Team",
       "lead": {
-<<<<<<< HEAD
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
-=======
         "name": "Atharv Krishna",
         "role": "Management Head",
         "image": "\\team\\Management\\Atharv_Krishna.png"
@@ -232,7 +178,6 @@
         "name": "Saharsh jaishwal",
         "role": "Logistics Head",
         "image": "\\team\\Management\\Saharsh_jaishwal.png"
->>>>>>> upstream/main
       },
       "members": [
         {
@@ -284,28 +229,19 @@
           "name": "Sivant Raj",
           "role": "Core Member",
           "image": "\\team\\Management\\Sivant_Raj.png"
-<<<<<<< HEAD
-=======
         },
         {
           "name": "Vaishnavi Awasthi",
           "role": "Core Member",
           "image": "\\team\\Management\\vaishnavi.PNG"
->>>>>>> upstream/main
         }
       ]
     },{
       "name": "Multimedia team",
       "lead": {
-<<<<<<< HEAD
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
-=======
         "name": "Athrav",
         "role": "Team Lead",
         "image": "\\team\\Media\\athrav.png"
->>>>>>> upstream/main
       },
       "colead": {
         "name": "Sanskriti Chaudhary",
@@ -314,16 +250,6 @@
       },
       "members": [
         {
-<<<<<<< HEAD
-          "name": "-",
-          "role": "Core Member",
-          "image": ""
-        },
-        {
-          "name": "-",
-          "role": "Core Member",
-          "image": ""
-=======
           "name": "Ashrith Jangam",
           "role": "Core Member",
           "image": "\\team\\Media\\Ashrith_Jangam.png"
@@ -332,48 +258,11 @@
           "name": "Sagar Yadav",
           "role": "Core Member",
           "image": "\\team\\Media\\Sagar_yadav.png"
->>>>>>> upstream/main
         }
       ]
     },{
       "name": "Social Media Team",
       "lead": {
-<<<<<<< HEAD
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
-      },
-      "colead": {
-        "name": "-",
-        "role": "Co-Lead",
-        "image": ""
-      },
-      "members": [
-        {
-          "name": "-",
-          "role": "Core Member",
-          "image": ""
-        }
-      ]
-    },{
-      "name": "logistics team",
-      "lead": {
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
-      },
-      "colead": {
-        "name": "-",
-        "role": "Co-Lead",
-        "image": ""
-      },
-      "members": [
-        {
-          "name": "-",
-          "role": "Core Member",
-          "image": ""
-        }
-=======
         "name": "Gaurika",
         "role": "Team Lead",
         "image": "\\team\\Media\\gaurika.PNG"
@@ -384,7 +273,6 @@
         "image": "\\team\\Media\\vansh.png"
       },
       "members": [
->>>>>>> upstream/main
       ]
     },{
       "name": "research team",
@@ -403,8 +291,6 @@
           "name": "Dhaanvee Mathur",
           "role": "Core Member",
           "image": "\\team\\Research\\Dhaanvee_mathur.png"
-<<<<<<< HEAD
-=======
         },
         {
           "name": "Tanmay Sahai",
@@ -415,7 +301,6 @@
           "name": "Maahi",
           "role": "Core Member",
           "image": "\\team\\Placeholder.png"
->>>>>>> upstream/main
         }
       ]
     }
