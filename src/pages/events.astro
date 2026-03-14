@@ -1,53 +1,56 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import { getCldVideoUrl } from "astro-cloudinary/helpers";
 import logoCff from "../images/event/LOGO_cff.png";
 import theDropt from "../images/event/TheDropt.png";
 import frame87 from "../images/event/Frame 87 (1).png";
 
-// Event data
 const events = [
 	{
 		id: 1,
-		icon: "",
 		image: logoCff,
-		cardTitle: "EVENT 1: BREAKIT",
-		cardSubtitle: "Deconstruct. Stress Test. Redesign.",
+		cardTitle: "BREAKIT",
+		tagline: "Deconstruct. Stress Test. Redesign.",
 		objectiveTitle: "🎯 Objective",
 		objective:
 			"Participants analyze and rethink real-world tech products, exposing system flaws and proposing grounded fixes — no code required.",
 		color: "#a855f7",
-		day: "DAY 1"
+		day: "Day 1",
 	},
 	{
 		id: 2,
-		icon: "",
 		image: theDropt,
-		cardTitle: "🚀 EVENT 2: THE DROP",
-		cardSubtitle: "Launch the Future. Even If It's Fake.",
+		cardTitle: "THE DROP",
+		tagline: "Launch the Future. Even If It's Fake.",
 		objectiveTitle: "🎯 Objective",
 		objective:
 			"Teams invent fictional future-tech products and launch them like real startups — blending storytelling, design, and satire.",
 		color: "#d946ef",
-		day: "DAY 2"
+		day: "Day 2",
 	},
 	{
 		id: 3,
-		icon: "",
 		image: frame87,
-		cardTitle: "Event 3 : Bet for Tech 3.0",
-		objectiveTitle: "Objective",
+		cardTitle: "BET FOR TECH 3.0",
+		tagline: "Code. Bet. Conquer.",
+		objectiveTitle: "🎯 Objective",
 		objective:
-			"tests participants' coding skills, strategic thinking, and risk-taking ability by combining problem-solving with betting and psychological decision-making in a high-stakes competitive format.",
+			"Tests participants' coding skills, strategic thinking, and risk-taking ability by combining problem-solving with betting and psychological decision-making in a high-stakes competitive format.",
 		color: "#ec4899",
-		day: "DAY 3"
+		day: "Day 3",
 	},
+];
+
+/* Positions: top% centers card on SVG dot, side determines left/right of dot */
+const positions = [
+	{ top: "14%", side: "left" } /* dot at y=350/2000=17.5% */,
+	{ top: "42%", side: "right" } /* dot at y=900/2000=45% */,
+	{ top: "70%", side: "left" } /* dot at y=1450/2000=72.5% */,
 ];
 ---
 
 <Layout title="Events - Triverse">
-	<!-- Background Video -->
+	<!-- Fixed Background Video -->
 	<div class="video-background">
 		<video autoplay muted loop playsinline preload="auto" class="bg-video">
 			<source
@@ -58,681 +61,802 @@ const events = [
 		<div class="video-overlay"></div>
 	</div>
 
-	<main class="events-container">
+	<main class="events-page">
 		<!-- Hero Section -->
-		<section class="hero-section">
-			<div class="constellation-bg"></div>
-			<div class="hero-content">
-				<h1 class="hero-title">
-					<span class="title-line">THE</span>
-					<span class="title-line">EVENTS</span>
-				</h1>
-				<p class="hero-tagline">Three Missions. One Universe.</p>
+		<section class="hero">
+			<h1 class="page-title">The Events</h1>
+			<p class="subtitle">
+				Three days of innovation, competition & creativity
+			</p>
+			<div class="scroll-hint">
+				<span>Scroll to explore</span>
+				<div class="scroll-arrow">↓</div>
 			</div>
 		</section>
 
-		<!-- Events Timeline Section -->
-		<section class="timeline-section">
-			<div class="timeline-track">
-				<!-- Animated Path SVG -->
-				<svg class="timeline-path" viewBox="0 0 100 2000" preserveAspectRatio="none">
-					<defs>
-						<linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-							<stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.6" />
-							<stop offset="50%" style="stop-color:#d946ef;stop-opacity:0.8" />
-							<stop offset="100%" style="stop-color:#ec4899;stop-opacity:0.6" />
-						</linearGradient>
-					</defs>
-					<path 
-						d="M 50,0 L 50,2000" 
-						stroke="url(#pathGradient)" 
-						stroke-width="0.5" 
-						fill="none"
-						stroke-dasharray="8 12"
-						class="base-path"
-					/>
-					<path 
-						id="progressPath"
-						d="M 50,0 L 50,2000" 
-						stroke="url(#pathGradient)" 
-						stroke-width="1.5" 
-						fill="none"
-						class="progress-path"
-					/>
-				</svg>
+		<!-- Flowing Path Events -->
+		<section class="path-section">
+			<!-- SVG Curved Path with nodes ON the curve -->
+			<svg
+				class="curve-svg"
+				viewBox="0 0 1000 2000"
+				preserveAspectRatio="none"
+				fill="none"
+			>
+				<defs>
+					<linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
+						<stop offset="0%" stop-color="#a855f7"></stop>
+						<stop offset="50%" stop-color="#d946ef"></stop>
+						<stop offset="100%" stop-color="#ec4899"></stop>
+					</linearGradient>
+					<filter id="curveGlow">
+						<feGaussianBlur
+							in="SourceGraphic"
+							stdDeviation="3"
+							result="blur"></feGaussianBlur>
+						<feMerge>
+							<feMergeNode in="blur"></feMergeNode>
+							<feMergeNode in="SourceGraphic"></feMergeNode>
+						</feMerge>
+					</filter>
+				</defs>
+				<!-- Faint base curve -->
+				<path
+					d="M 500,0 C 500,140 180,180 180,350 C 180,530 820,560 820,900 C 820,1200 180,1230 180,1450 C 180,1650 500,1680 500,1800 L 500,2000"
+					stroke="rgba(168,85,247,0.08)"
+					stroke-width="2.5"
+					fill="none"></path>
+				<!-- Animated glowing curve -->
+				<path
+					id="curvePath"
+					d="M 500,0 C 500,140 180,180 180,350 C 180,530 820,560 820,900 C 820,1200 180,1230 180,1450 C 180,1650 500,1680 500,1800 L 500,2000"
+					stroke="url(#curveGrad)"
+					stroke-width="2.5"
+					fill="none"
+					filter="url(#curveGlow)"></path>
 
-				<!-- Events -->
-				<div class="events-flow">
-					{events.map((event, index) => (
-						<div class="event-station" data-index={index + 1}>
-							<!-- Day Marker -->
-							<div class="day-marker">
-								<div class="marker-ring">
-									<div class="marker-dot"></div>
-								</div>
-								<span class="day-label">{event.day}</span>
+				<!-- Day 1 arrow on curve pointing RIGHT toward card -->
+				<polygon
+					points="170,330 210,350 170,370"
+					fill="#a855f7"
+					opacity="0.9"
+					class="svg-arrow"></polygon>
+				<polygon
+					points="165,325 215,350 165,375"
+					fill="none"
+					stroke="#a855f7"
+					stroke-width="1.5"
+					opacity="0.3"
+					class="svg-arrow-ring"></polygon>
+
+				<!-- Day 2 arrow on curve pointing LEFT toward card -->
+				<polygon
+					points="830,880 790,900 830,920"
+					fill="#d946ef"
+					opacity="0.9"
+					class="svg-arrow"></polygon>
+				<polygon
+					points="835,875 785,900 835,925"
+					fill="none"
+					stroke="#d946ef"
+					stroke-width="1.5"
+					opacity="0.3"
+					class="svg-arrow-ring"></polygon>
+
+				<!-- Day 3 arrow on curve pointing RIGHT toward card -->
+				<polygon
+					points="170,1430 210,1450 170,1470"
+					fill="#ec4899"
+					opacity="0.9"
+					class="svg-arrow"></polygon>
+				<polygon
+					points="165,1425 215,1450 165,1475"
+					fill="none"
+					stroke="#ec4899"
+					stroke-width="1.5"
+					opacity="0.3"
+					class="svg-arrow-ring"></polygon>
+			</svg>
+
+			<!-- Event cards absolutely positioned to align with SVG dots -->
+			{
+				events.map((event, index) => (
+					<div
+						class={`event-card ${positions[index].side === "left" ? "card-left" : "card-right"}`}
+						style={`top: ${positions[index].top}; --accent: ${event.color};`}
+						data-event-id={event.id}
+						data-day={event.day}
+						data-title={event.cardTitle}
+						data-tagline={event.tagline}
+						data-objective-title={event.objectiveTitle}
+						data-objective={event.objective}
+					>
+						<div class="card-bubble">
+							<div class="card-image">
+								<Image
+									src={event.image}
+									alt={event.cardTitle}
+									class="card-img"
+									width={260}
+									height={170}
+								/>
 							</div>
-
-							<!-- Event Content -->
-							<div class="event-content">
-								<!-- Logo Display (no frame, pure PNG with glow) -->
-								<div class="event-logo-container">
-									<div class="logo-glow" style={`--event-color: ${event.color}`}></div>
-									<Image src={event.image} alt={event.cardTitle} class="event-logo" />
-								</div>
-
-								<!-- Event Details -->
-								<div class="event-details">
-									<h2 class="event-name">{event.cardTitle}</h2>
-									{event.cardSubtitle && (
-										<p class="event-tagline">{event.cardSubtitle}</p>
-									)}
-									
-									<div class="objective-section">
-										<div class="objective-header">
-											<span class="objective-icon">{event.objectiveTitle}</span>
-										</div>
-										<p class="objective-description">{event.objective}</p>
-									</div>
-								</div>
+							<div class="card-info">
+								<span
+									class="card-day"
+									style={`color: ${event.color};`}
+								>
+									{event.day}
+								</span>
+								<h3 class="card-name">{event.cardTitle}</h3>
+								<p class="card-tagline">{event.tagline}</p>
+								<span class="card-hint">
+									Click to explore →
+								</span>
 							</div>
 						</div>
-					))}
-				</div>
-			</div>
+					</div>
+				))
+			}
 		</section>
 	</main>
 </Layout>
 
-<style is:global>
-	@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap');
+<!-- Modal OUTSIDE Layout so it's not inside any scrollable wrapper -->
+<div class="modal-overlay" id="eventModal">
+	<div class="modal-card" id="modalCard">
+		<button class="modal-close" id="modalClose" aria-label="Close modal">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<line x1="18" y1="6" x2="6" y2="18"></line>
+				<line x1="6" y1="6" x2="18" y2="18"></line>
+			</svg>
+		</button>
+		<div class="modal-image-wrapper" id="modalImageWrapper"></div>
+		<div class="modal-body">
+			<span class="modal-day" id="modalDay"></span>
+			<h2 class="modal-title" id="modalTitle"></h2>
+			<p class="modal-tagline" id="modalTagline"></p>
+			<div class="modal-divider"></div>
+			<h4 class="modal-objective-title" id="modalObjectiveTitle"></h4>
+			<p class="modal-objective" id="modalObjective"></p>
+		</div>
+	</div>
+</div>
 
+<style is:global>
 	:root {
 		--bg-dark: #0a0e1a;
-		--bg-darker: #060810;
 		--purple-bright: #b48bff;
-		--purple-deep: #a855f7;
-		--pink-bright: #ec4899;
-		--glass-border: rgba(255, 255, 255, 0.12);
-		--timeline-progress: 0%;
 	}
-
 	html {
 		background-color: var(--bg-dark);
-		scroll-behavior: smooth;
 	}
-
 	body {
 		background-color: transparent;
 		color: #ffffff;
 		margin: 0;
-		font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+		font-family:
+			"Inter",
+			system-ui,
+			-apple-system,
+			sans-serif;
 		overflow-x: hidden;
+	}
+	body.modal-open {
+		overflow: hidden !important;
 	}
 </style>
 
 <style>
-	.events-container {
-		position: relative;
-		width: 100%;
-		background: transparent;
-		z-index: 10;
-		min-height: 100vh;
-	}
-
-	/* ==================== BACKGROUND VIDEO ==================== */
+	/* ==================== FIXED VIDEO ==================== */
 	.video-background {
 		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
+		inset: 0;
 		overflow: hidden;
 		pointer-events: none;
-		z-index: 1;
+		z-index: 0;
 	}
-
 	.bg-video {
-		position: absolute;
-		top: 0;
-		left: 0;
 		width: 100vw;
 		height: 100vh;
 		object-fit: cover;
-		object-position: center;
-		filter: blur(12px);
+		filter: blur(8px) brightness(0.35);
+	}
+	.video-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			180deg,
+			rgba(10, 14, 26, 0.5) 0%,
+			rgba(10, 14, 26, 0.2) 50%,
+			rgba(10, 14, 26, 0.6) 100%
+		);
 	}
 
-	.video-overlay {
+	/* ==================== PAGE ==================== */
+	.events-page {
+		position: relative;
+		min-height: 100vh;
+		z-index: 2;
+	}
+
+	/* ==================== HERO ==================== */
+	.hero {
+		text-align: center;
+		padding: 120px 20px 40px;
+		position: relative;
+		z-index: 1;
+	}
+	.page-title {
+		font-size: clamp(2.5rem, 8vw, 5rem);
+		font-weight: 950;
+		margin: 0 0 1rem;
+		letter-spacing: -0.03em;
+		background: linear-gradient(135deg, #fff 0%, var(--purple-bright) 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	.subtitle {
+		font-size: clamp(1rem, 2.5vw, 1.3rem);
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0 0 40px;
+	}
+	.scroll-hint {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		color: rgba(255, 255, 255, 0.35);
+		font-size: 0.8rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+	.scroll-arrow {
+		animation: bounce 1.5s ease infinite;
+		font-size: 1.2rem;
+	}
+	@keyframes bounce {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(8px);
+		}
+	}
+
+	/* ==================== PATH SECTION ==================== */
+	.path-section {
+		position: relative;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 24px;
+		height: 1800px; /* fixed height so absolute children align with SVG */
+	}
+
+	/* SVG Curve behind cards */
+	.curve-svg {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(
-			135deg,
-			rgba(10, 14, 26, 0.5) 0%,
-			rgba(18, 17, 31, 0.6) 100%
-		);
 		pointer-events: none;
-	}
-
-	/* Reduce blur on mobile for better performance */
-	@media (max-width: 768px) {
-		.bg-video {
-			filter: blur(12px);
-		}
-	}
-
-	/* ==================== HERO SECTION ==================== */
-	.hero-section {
-		position: relative;
-		min-height: 100vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0 5vw;
-		z-index: 2;
-	}
-
-	.constellation-bg {
-		position: absolute;
-		inset: 0;
-		background-image: 
-			radial-gradient(2px 2px at 20% 30%, rgba(180, 139, 255, 0.4), transparent),
-			radial-gradient(2px 2px at 60% 70%, rgba(217, 70, 239, 0.3), transparent),
-			radial-gradient(1px 1px at 50% 50%, rgba(236, 72, 153, 0.4), transparent),
-			radial-gradient(1px 1px at 80% 10%, rgba(168, 85, 247, 0.3), transparent),
-			radial-gradient(2px 2px at 90% 60%, rgba(180, 139, 255, 0.3), transparent),
-			radial-gradient(1px 1px at 33% 80%, rgba(217, 70, 239, 0.4), transparent);
-		background-size: 200% 200%;
-		background-position: 0% 0%;
-		animation: constellation-drift 30s ease-in-out infinite;
-		opacity: 0.6;
-		pointer-events: none;
-	}
-
-	@keyframes constellation-drift {
-		0%, 100% { background-position: 0% 0%; }
-		50% { background-position: 100% 100%; }
-	}
-
-	.hero-content {
-		position: relative;
-		text-align: center;
-		z-index: 2;
-	}
-
-	.hero-title {
-		margin: 0;
-		line-height: 0.85;
-		display: flex;
-		flex-direction: column;
-		gap: 0.1em;
-	}
-
-	.title-line {
-		font-family: 'Orbitron', monospace;
-		font-size: clamp(4rem, 16vw, 11rem);
-		font-weight: 900;
-		letter-spacing: 0.15em;
-		background: linear-gradient(180deg, #ffffff 0%, rgba(180, 139, 255, 0.9) 100%);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		text-shadow: 0 0 80px rgba(180, 139, 255, 0.5);
-		animation: title-glow 4s ease-in-out infinite;
-		opacity: 0;
-		transform: translateY(30px);
-		animation: title-enter 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-	}
-
-	.title-line:nth-child(1) {
-		animation-delay: 0.2s;
-	}
-
-	.title-line:nth-child(2) {
-		animation-delay: 0.4s;
-	}
-
-	@keyframes title-enter {
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	@keyframes title-glow {
-		0%, 100% { text-shadow: 0 0 80px rgba(180, 139, 255, 0.5); }
-		50% { text-shadow: 0 0 120px rgba(180, 139, 255, 0.8); }
-	}
-
-	.hero-tagline {
-		font-family: 'Outfit', sans-serif;
-		font-size: clamp(1rem, 2.5vw, 1.6rem);
-		font-weight: 300;
-		letter-spacing: 0.3em;
-		text-transform: uppercase;
-		color: rgba(255, 255, 255, 0.6);
-		margin-top: 2rem;
-		opacity: 0;
-		animation: fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
-	}
-
-	@keyframes fade-in {
-		to { opacity: 1; }
-	}
-
-	/* ==================== TIMELINE SECTION ==================== */
-	.timeline-section {
-		position: relative;
-		min-height: 200vh;
-		padding: 15vh 5vw 20vh;
-		z-index: 2;
-	}
-
-	.timeline-track {
-		position: relative;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
-	/* Animated Path */
-	.timeline-path {
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 2px;
-		height: 100%;
-		pointer-events: none;
-		z-index: 1;
-	}
-
-	.base-path {
-		opacity: 0.3;
-	}
-
-	.progress-path {
-		stroke-dasharray: 2000;
-		stroke-dashoffset: 2000;
-		filter: drop-shadow(0 0 8px rgba(180, 139, 255, 0.6));
-	}
-
-	/* Vertical Progress Bar */
-	.timeline-track::before {
-		content: '';
-		position: absolute;
-		left: 50%;
-		top: 0;
-		transform: translateX(-50%);
-		width: 3px;
-		height: 100%;
-		background: rgba(180, 139, 255, 0.15);
 		z-index: 0;
 	}
-
-	.timeline-track::after {
-		content: '';
-		position: absolute;
-		left: 50%;
-		top: 0;
-		transform: translateX(-50%);
-		width: 3px;
-		height: var(--timeline-progress);
-		background: linear-gradient(180deg, #a855f7 0%, #d946ef 50%, #ec4899 100%);
-		box-shadow: 0 0 20px rgba(180, 139, 255, 0.6);
-		z-index: 1;
-		transition: height 0.05s linear;
+	#curvePath {
+		stroke-dasharray: 3000;
+		stroke-dashoffset: 3000;
 	}
-
-	/* Events Flow */
-	.events-flow {
-		position: relative;
-		z-index: 2;
-		display: flex;
-		flex-direction: column;
-		gap: 20vh;
-		padding: 5vh 0;
+	/* Pulsing SVG arrows */
+	.svg-arrow {
+		animation: svgArrowPulse 2.5s ease-in-out infinite;
 	}
-
-	.event-station {
-		position: relative;
-		display: flex;
-		align-items: center;
-		gap: 3rem;
-		opacity: 0;
-		transform: translateY(60px);
-		animation: station-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	.svg-arrow-ring {
+		animation: svgArrowRingPulse 2.5s ease-in-out infinite;
 	}
-
-	.event-station[data-index="1"] {
-		animation-delay: 0.3s;
-		justify-content: flex-end;
-	}
-
-	.event-station[data-index="1"] .event-content {
-		flex-direction: row-reverse;
-		text-align: right;
-	}
-
-	.event-station[data-index="2"] {
-		animation-delay: 0.6s;
-		justify-content: flex-start;
-	}
-
-	.event-station[data-index="2"] .event-content {
-		text-align: left;
-	}
-
-	.event-station[data-index="3"] {
-		animation-delay: 0.9s;
-		justify-content: flex-end;
-	}
-
-	.event-station[data-index="3"] .event-content {
-		flex-direction: row-reverse;
-		text-align: right;
-	}
-
-	@keyframes station-reveal {
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	/* Day Marker (on timeline) */
-	.day-marker {
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.8rem;
-		z-index: 3;
-	}
-
-	.marker-ring {
-		width: 60px;
-		height: 60px;
-		border: 2px solid rgba(180, 139, 255, 0.4);
-		border-radius: 50%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: rgba(10, 14, 26, 0.9);
-		backdrop-filter: blur(10px);
-		position: relative;
-		animation: ring-pulse 3s ease-in-out infinite;
-	}
-
-	@keyframes ring-pulse {
-		0%, 100% {
-			box-shadow: 0 0 0 0 rgba(180, 139, 255, 0.5);
+	@keyframes svgArrowPulse {
+		0%,
+		100% {
+			opacity: 0.7;
 		}
 		50% {
-			box-shadow: 0 0 0 10px rgba(180, 139, 255, 0);
+			opacity: 1;
+		}
+	}
+	@keyframes svgArrowRingPulse {
+		0%,
+		100% {
+			opacity: 0.15;
+		}
+		50% {
+			opacity: 0.5;
 		}
 	}
 
-	.marker-dot {
-		width: 12px;
-		height: 12px;
-		background: linear-gradient(135deg, #a855f7, #d946ef);
-		border-radius: 50%;
-		box-shadow: 0 0 20px rgba(180, 139, 255, 0.8);
+	/* ==================== EVENT CARDS ==================== */
+	.event-card {
+		position: absolute;
+		z-index: 1;
+		cursor: pointer;
+		opacity: 0;
+		transform: translateY(30px);
+		transition:
+			opacity 0.7s ease,
+			transform 0.7s ease;
+	}
+	.event-card.revealed {
+		opacity: 1;
+		transform: translateY(0);
 	}
 
-	.day-label {
-		font-family: 'Orbitron', monospace;
+	/* Card sits further RIGHT of the left-side dot (dot at 18%) */
+	.card-left {
+		left: 35%;
+		width: 58%;
+	}
+	/* Card sits further LEFT of the right-side dot (dot at 82%) */
+	.card-right {
+		right: 35%;
+		width: 58%;
+	}
+
+	/* ==================== CARD BUBBLE ==================== */
+	.card-bubble {
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		background: rgba(0, 0, 0, 0.65);
+		backdrop-filter: blur(20px);
+		-webkit-backdrop-filter: blur(20px);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 18px;
+		overflow: hidden;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+		width: 100%;
+	}
+	.card-right .card-bubble {
+		flex-direction: row-reverse;
+	}
+	.event-card:hover .card-bubble {
+		transform: translateY(-4px);
+		border-color: var(--accent);
+		box-shadow:
+			0 16px 48px rgba(0, 0, 0, 0.5),
+			0 0 24px rgba(168, 85, 247, 0.12);
+	}
+
+	/* Card image */
+	.card-image {
+		width: 220px;
+		min-width: 220px;
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+	.card-img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+	.event-card:hover .card-img {
+		transform: scale(1.06);
+	}
+
+	/* Card text */
+	.card-info {
+		padding: 24px 28px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 6px;
+	}
+	.card-day {
 		font-size: 0.75rem;
 		font-weight: 700;
-		letter-spacing: 0.2em;
-		color: var(--purple-bright);
 		text-transform: uppercase;
-		background: rgba(10, 14, 26, 0.8);
-		padding: 0.4rem 1rem;
-		border-radius: 20px;
-		border: 1px solid rgba(180, 139, 255, 0.3);
+		letter-spacing: 0.18em;
+	}
+	.card-name {
+		font-size: 1.5rem;
+		font-weight: 900;
+		color: #fff;
+		margin: 2px 0 0;
+		line-height: 1.15;
+	}
+	.card-tagline {
+		font-size: 0.9rem;
+		color: rgba(255, 255, 255, 0.45);
+		margin: 0;
+		line-height: 1.4;
+	}
+	.card-hint {
+		font-size: 0.7rem;
+		color: rgba(255, 255, 255, 0.2);
+		font-weight: 500;
+		margin-top: 6px;
+		transition: all 0.3s ease;
+	}
+	.event-card:hover .card-hint {
+		color: var(--accent);
+		transform: translateX(4px);
 	}
 
-	/* Event Content */
-	.event-content {
+	/* ==================== MODAL ==================== */
+	.modal-overlay {
+		position: fixed;
+		inset: 0;
+		z-index: 9999;
+		background: rgba(0, 0, 0, 0.85);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
 		display: flex;
 		align-items: center;
-		gap: 3rem;
-		max-width: 50%;
+		justify-content: center;
+		padding: 20px;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 	}
-
-	/* Logo Container - NO FRAMES, pure PNG with glow */
-	.event-logo-container {
+	.modal-overlay.active {
+		opacity: 1;
+		visibility: visible;
+	}
+	.modal-card {
 		position: relative;
-		flex-shrink: 0;
-		width: clamp(180px, 20vw, 280px);
-		height: clamp(180px, 20vw, 280px);
+		width: min(600px, 95vw);
+		max-height: 88vh;
+		background: rgba(12, 12, 22, 0.97);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 24px;
+		overflow: hidden;
+		overflow-y: auto;
+		transform: translateY(30px) scale(0.96);
+		transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+		box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+	}
+	.modal-overlay.active .modal-card {
+		transform: translateY(0) scale(1);
+	}
+	.modal-card::-webkit-scrollbar {
+		width: 0;
+	}
+	.modal-close {
+		position: absolute;
+		top: 14px;
+		right: 14px;
+		z-index: 10;
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		background: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(10px);
+		color: #fff;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.3s ease;
+	}
+	.modal-close:hover {
+		background: rgba(255, 255, 255, 0.15);
+		transform: rotate(90deg);
+	}
+	.modal-image-wrapper {
+		width: 100%;
+		height: 240px;
+		overflow: hidden;
+		position: relative;
+		background: #111;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
-
-	.logo-glow {
-		position: absolute;
-		inset: -30%;
-		background: radial-gradient(circle, var(--event-color) 0%, transparent 70%);
-		opacity: 0.4;
-		animation: logo-glow-pulse 4s ease-in-out infinite;
-		pointer-events: none;
-		filter: blur(40px);
-	}
-
-	@keyframes logo-glow-pulse {
-		0%, 100% {
-			opacity: 0.3;
-			transform: scale(1);
-		}
-		50% {
-			opacity: 0.6;
-			transform: scale(1.1);
-		}
-	}
-
-	.event-logo {
-		position: relative;
+	.modal-image-wrapper img {
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
-		filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.5));
-		transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-		z-index: 2;
+		object-position: center;
+		display: block;
+		padding: 20px;
 	}
-
-	.event-station:hover .event-logo {
-		transform: scale(1.05) translateY(-10px);
+	.modal-image-wrapper::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 80px;
+		background: linear-gradient(transparent, rgba(12, 12, 22, 0.97));
 	}
-
-	/* Event Details */
-	.event-details {
-		flex: 1;
-		min-width: 0;
+	.modal-body {
+		padding: 8px 32px 32px;
 	}
-
-	.event-name {
-		font-family: 'Orbitron', monospace;
-		font-size: clamp(1.8rem, 3vw, 2.8rem);
-		font-weight: 900;
-		margin: 0 0 0.8rem 0;
-		letter-spacing: 0.02em;
-		line-height: 1.1;
-		background: linear-gradient(135deg, #ffffff 0%, rgba(180, 139, 255, 0.9) 100%);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-
-	.event-tagline {
-		font-size: clamp(1rem, 1.8vw, 1.3rem);
-		font-weight: 500;
-		color: rgba(255, 255, 255, 0.7);
-		margin: 0 0 2rem 0;
-		line-height: 1.5;
-	}
-
-	.objective-section {
-		background: rgba(10, 14, 26, 0.6);
-		backdrop-filter: blur(20px);
-		border: 1px solid rgba(180, 139, 255, 0.15);
-		padding: 1.8rem 2rem;
-		transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-		text-align: left;
-	}
-
-	.event-station[data-index="1"] .objective-section,
-	.event-station[data-index="3"] .objective-section {
-		text-align: left;
-	}
-
-	.event-station[data-index="2"] .objective-section {
-		text-align: left;
-	}
-
-	.event-station:hover .objective-section {
-		border-color: rgba(180, 139, 255, 0.4);
-		background: rgba(10, 14, 26, 0.8);
-		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-	}
-
-	.objective-header {
-		margin-bottom: 1rem;
-	}
-
-	.objective-icon {
-		font-size: 0.9rem;
-		font-weight: 600;
+	.modal-day {
+		display: inline-block;
+		font-size: 0.7rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
 		color: var(--purple-bright);
-		letter-spacing: 0.05em;
+		padding: 5px 14px;
+		background: rgba(180, 139, 255, 0.1);
+		border: 1px solid rgba(180, 139, 255, 0.2);
+		border-radius: 50px;
+		margin-bottom: 12px;
 	}
-
-	.objective-description {
-		font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-		line-height: 1.7;
-		color: rgba(255, 255, 255, 0.8);
+	.modal-title {
+		font-size: clamp(1.5rem, 5vw, 2.1rem);
+		font-weight: 900;
+		color: #fff;
+		margin: 0 0 6px;
+		line-height: 1.1;
+	}
+	.modal-tagline {
+		font-size: 0.95rem;
+		color: var(--purple-bright);
+		font-weight: 600;
+		margin: 0;
+	}
+	.modal-divider {
+		width: 100%;
+		height: 1px;
+		margin: 16px 0;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba(255, 255, 255, 0.12),
+			transparent
+		);
+	}
+	.modal-objective-title {
+		font-size: 0.9rem;
+		color: var(--purple-bright);
+		margin: 0 0 6px;
+		font-weight: 700;
+	}
+	.modal-objective {
+		font-size: 0.9rem;
+		color: rgba(255, 255, 255, 0.65);
+		line-height: 1.75;
 		margin: 0;
 	}
 
 	/* ==================== RESPONSIVE ==================== */
-	@media (max-width: 900px) {
-		.timeline-section {
-			padding: 10vh 5vw 15vh;
+	@media (max-width: 768px) {
+		.hero {
+			padding: 100px 20px 30px;
 		}
-
-		.events-flow {
-			gap: 15vh;
+		.path-section {
+			height: auto;
+			padding: 0 16px 80px;
 		}
-
-		.event-station[data-index="1"],
-		.event-station[data-index="2"],
-		.event-station[data-index="3"] {
-			justify-content: center;
-			flex-direction: column !important;
-		}
-
-		.event-content {
-			max-width: 100%;
-			flex-direction: column !important;
-			align-items: center;
-			text-align: center;
-		}
-
-		.day-marker {
-			position: relative;
-			left: auto;
-			transform: none;
-			order: -1;
-		}
-
-		.timeline-path {
+		.curve-svg {
 			display: none;
 		}
 
-		.event-logo-container {
-			width: clamp(200px, 50vw, 260px);
-			height: clamp(200px, 50vw, 260px);
+		.event-card {
+			position: relative !important;
+			top: auto !important;
+			left: auto !important;
+			right: auto !important;
+			width: 100% !important;
+			padding-left: 40px;
+			margin-bottom: 24px;
 		}
 
-		.objective-section {
-			text-align: left;
+		.path-section::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 20px;
+			width: 2px;
+			height: 100%;
+			background: linear-gradient(180deg, #a855f7, #d946ef, #ec4899);
+			opacity: 0.3;
+			border-radius: 2px;
+		}
+
+		.card-bubble {
+			flex-direction: column !important;
+		}
+		.card-right .card-bubble {
+			flex-direction: column !important;
+		}
+		.card-image {
+			width: 100%;
+			min-width: 100%;
+			height: 150px;
+		}
+		.card-info {
+			padding: 16px 18px 18px;
+		}
+		.card-name {
+			font-size: 1.1rem;
+		}
+		.modal-image-wrapper {
+			height: 170px;
+		}
+		.modal-body {
+			padding: 8px 22px 24px;
 		}
 	}
 
-	@media (max-width: 640px) {
-		.events-flow {
-			gap: 12vh;
+	@media (max-width: 480px) {
+		.hero {
+			padding: 90px 16px 20px;
 		}
-
-		.event-content {
-			gap: 2rem;
+		.card-image {
+			height: 120px;
 		}
-
-		.event-logo-container {
-			width: clamp(160px, 45vw, 220px);
-			height: clamp(160px, 45vw, 220px);
-		}
-
-		.objective-section {
-			padding: 1.5rem;
-		}
-
-		.marker-ring {
-			width: 50px;
-			height: 50px;
-		}
-
-		.marker-dot {
-			width: 10px;
-			height: 10px;
+		.card-name {
+			font-size: 1rem;
 		}
 	}
 </style>
 
 <script>
-	// Scroll-triggered timeline progress bar
-	const timelineSection = document.querySelector('.timeline-section');
-	const timelineTrack = document.querySelector('.timeline-track');
+	// === Scroll-driven SVG path trace ===
+	const curvePath = document.getElementById(
+		"curvePath",
+	) as SVGPathElement | null;
+	const pathSection = document.querySelector(
+		".path-section",
+	) as HTMLElement | null;
+	let curveLen = 0;
+	if (curvePath) {
+		curveLen = curvePath.getTotalLength();
+		curvePath.style.strokeDasharray = `${curveLen}`;
+		curvePath.style.strokeDashoffset = `${curveLen}`;
+	}
 
-	window.addEventListener('scroll', () => {
-		if (!timelineSection || !timelineTrack) return;
+	window.addEventListener("scroll", () => {
+		if (!curvePath || !pathSection) return;
+		const rect = pathSection.getBoundingClientRect();
+		const sectionTop = rect.top + window.scrollY;
+		const sectionHeight = pathSection.offsetHeight;
+		const vh = window.innerHeight;
 
-		const rect = timelineSection.getBoundingClientRect();
-		const sectionTop = rect.top;
-		const sectionHeight = rect.height;
-		const windowHeight = window.innerHeight;
+		const scrollStart = sectionTop - vh * 0.5;
+		const scrollEnd = sectionTop + sectionHeight - vh * 0.3;
+		const progress = Math.max(
+			0,
+			Math.min(
+				1,
+				(window.scrollY - scrollStart) / (scrollEnd - scrollStart),
+			),
+		);
 
-		// Calculate progress through the timeline section
-		const scrollProgress = Math.max(0, Math.min(1, 
-			(windowHeight - sectionTop) / (sectionHeight + windowHeight)
-		));
-
-		// Update progress bar height
-		timelineTrack.style.setProperty('--progress', `${scrollProgress * 100}%`);
-		
-		// Apply the height to the ::after pseudo-element via CSS variable
-		document.documentElement.style.setProperty('--timeline-progress', `${scrollProgress * 100}%`);
+		curvePath.style.strokeDashoffset = (
+			curveLen *
+			(1 - progress)
+		).toString();
 	});
 
-	// Parallax effect for constellation background
-	let ticking = false;
-	window.addEventListener('scroll', () => {
-		if (!ticking) {
-			window.requestAnimationFrame(() => {
-				const scrolled = window.scrollY;
-				const constellation = document.querySelector('.constellation-bg');
-				if (constellation) {
-					constellation.style.transform = `translateY(${scrolled * 0.3}px)`;
-				}
-				ticking = false;
+	// === Intersection Observer for card reveals ===
+	const cards = document.querySelectorAll(".event-card");
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((e) => {
+				if (e.isIntersecting) e.target.classList.add("revealed");
 			});
-			ticking = true;
-		}
+		},
+		{ threshold: 0.15 },
+	);
+	cards.forEach((c) => observer.observe(c));
+
+	// === Modal ===
+	// Teleport modal to document.body so it's outside any scrollable wrapper
+	const modal = document.getElementById("eventModal");
+	if (modal) document.body.appendChild(modal);
+	const modalImageWrapper = document.getElementById("modalImageWrapper");
+	const modalDay = document.getElementById("modalDay");
+	const modalTitle = document.getElementById("modalTitle");
+	const modalTagline = document.getElementById("modalTagline");
+	const modalObjectiveTitle = document.getElementById("modalObjectiveTitle");
+	const modalObjective = document.getElementById("modalObjective");
+	const modalClose = document.getElementById("modalClose");
+
+	document.querySelectorAll(".event-card").forEach((card) => {
+		card.addEventListener("click", () => {
+			const el = card as HTMLElement;
+			const cardImg = card.querySelector(".card-img") as HTMLImageElement;
+			if (cardImg && modalImageWrapper) {
+				const img = document.createElement("img");
+				img.src = cardImg.src || cardImg.currentSrc;
+				img.alt = el.dataset.title || "";
+				modalImageWrapper.innerHTML = "";
+				modalImageWrapper.appendChild(img);
+			}
+			if (modalDay) modalDay.textContent = el.dataset.day || "";
+			if (modalTitle) modalTitle.textContent = el.dataset.title || "";
+			if (modalTagline)
+				modalTagline.textContent = el.dataset.tagline || "";
+			if (modalObjectiveTitle)
+				modalObjectiveTitle.textContent =
+					el.dataset.objectiveTitle || "";
+			if (modalObjective)
+				modalObjective.textContent = el.dataset.objective || "";
+
+			modal?.classList.add("active");
+			lockScroll();
+		});
+	});
+
+	// === Scroll lock using event blockers ===
+	let scrollLocked = false;
+	function preventScroll(e: Event) {
+		// Allow scrolling inside the modal card itself
+		const modalCard = document.getElementById("modalCard");
+		if (modalCard && modalCard.contains(e.target as Node)) return;
+		e.preventDefault();
+	}
+	function lockScroll() {
+		if (scrollLocked) return;
+		scrollLocked = true;
+		document.addEventListener("wheel", preventScroll, { passive: false });
+		document.addEventListener("touchmove", preventScroll, {
+			passive: false,
+		});
+		document.body.style.overflow = "hidden";
+		document.documentElement.style.overflow = "hidden";
+	}
+	function unlockScroll() {
+		scrollLocked = false;
+		document.removeEventListener("wheel", preventScroll);
+		document.removeEventListener("touchmove", preventScroll);
+		document.body.style.overflow = "";
+		document.documentElement.style.overflow = "";
+	}
+
+	function closeModal() {
+		modal?.classList.remove("active");
+		unlockScroll();
+	}
+
+	modalClose?.addEventListener("click", (e) => {
+		e.stopPropagation();
+		closeModal();
+	});
+	modal?.addEventListener("click", (e) => {
+		if (e.target === modal) closeModal();
+	});
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") closeModal();
+	});
+
+	// === Move video to fixed container ===
+	const videoContainer = document.querySelector(".video-background");
+	const fixedContainer = document.getElementById("fixed-video-container");
+	if (videoContainer && fixedContainer)
+		fixedContainer.appendChild(videoContainer);
+
+	// === Footer reveal ===
+	window.addEventListener("load", () => {
+		const footer = document.querySelector("footer");
+		if (!footer) return;
+		footer.classList.add("footer-animate");
+		footer.classList.remove("footer-visible");
+		window.addEventListener("scroll", () => {
+			const pct =
+				(window.scrollY + window.innerHeight) /
+				document.documentElement.scrollHeight;
+			if (pct > 0.8) footer.classList.add("footer-visible");
+			else footer.classList.remove("footer-visible");
+		});
 	});
 </script>
