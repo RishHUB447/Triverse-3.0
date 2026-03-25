@@ -1,9 +1,9 @@
 [
     {
         "id": 1,
-        "name": "XAVIER LUND",
+        "name": "Gyanendra Prakash",
         "role": "SYSTEMS ARCHITECT",
-        "image": "/team/tech/1.png",
+        "image": "/team/tech/gyanendra.png",
         "tickerText": "HUB/VORTEX-DEV // NEURAL_SIM_V2 // REFACTORING_ENGINE // GITHUB/VORTEX-DEV",
         "type": "lead"
     },
