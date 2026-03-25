@@ -9,10 +9,10 @@ import multimediaData from "../../data/multimedia.json";
             <!-- Left Branding -->
             <div class="branding">
                 <h2 class="title">
-                    <span class="white">TEAM</span>
-                    <span class="cyan">MULTIMEDIA</span>
+                    <span class="white" data-aos="fade-down" data-aos-duration="600" data-aos-delay="200">TEAM</span>
+                    <span class="cyan" data-aos="fade-down" data-aos-delay="400" data-aos-duration="800">MULTIMEDIA</span>
                 </h2>
-                <p class="description">
+                <p class="description" data-aos="fade-right" data-aos-delay="550" data-aos-duration="600">
                     Connecting the pulse of the kinetic suite to the global digital atmosphere.
                 </p>
             </div>
@@ -40,7 +40,7 @@ import multimediaData from "../../data/multimedia.json";
 
                 <div class="members-grid">
                     {multimediaData.map((member, index) => (
-                        <div class={`grid-item item-${index}`}>
+                        <div class={`grid-item item-${index}`} data-aos="zoom-in" data-aos-delay={(index * 150) + 400} data-aos-duration="600">
                             <MultimediaCard 
                                 name={member.name}
                                 role={member.role}

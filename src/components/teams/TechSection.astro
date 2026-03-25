@@ -16,16 +16,17 @@ import techData from "../../data/tech.json";
 
     <div class="container">
         <div class="section-header">
-            <span class="label">ENGINEERING</span>
-            <h2 class="section-title">TECHNOLOGICAL CORE</h2>
+            <span class="label" data-aos="fade-up" data-aos-duration="600">ENGINEERING</span>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">TECHNOLOGICAL CORE</h2>
         </div>
         
         <div class="tech-grid">
-            {techData.map((member) => (
+            {techData.map((member, index) => (
                 <TechMemberCard 
                     name={member.name}
                     role={member.role}
                     image={member.image}
+                    index={index}
                 />
             ))}
         </div>

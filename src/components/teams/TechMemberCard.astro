@@ -4,17 +4,19 @@ interface Props {
     role: string;
     image: string;
     tickerText?: string;
+    index: number;
 }
 
-const { name, role, image } = Astro.props;
+const { name, role, image, index } = Astro.props;
+const aosType = index % 2 === 0 ? "split-center-h" : "split-center-v";
 ---
 
 <div class="tech-card">
     <div class="card-content">
-        <div class="photo-side">
+        <div class="photo-side" data-aos={aosType} data-aos-duration="1200" data-aos-offset="0">
             <img src={image} alt={name} class="tech-photo" />
         </div>
-        
+
         <div class="text-side">
             <h3 class="member-name">{name}</h3>
             <span class="member-role">{role}</span>
@@ -49,7 +51,7 @@ const { name, role, image } = Astro.props;
         aspect-ratio: 1/1;
         overflow: hidden;
         filter: grayscale(1);
-        transition: filter 0.6s ease;
+        transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease !important;
     }
 
     .tech-card:hover .photo-side {
@@ -99,9 +101,15 @@ const { name, role, image } = Astro.props;
         border-radius: 50%;
     }
 
-    .dot.teal { background-color: #00f5d4; }
-    .dot.purple { background-color: #a855f7; }
-    .dot.gray { background-color: #222; }
+    .dot.teal {
+        background-color: #00f5d4;
+    }
+    .dot.purple {
+        background-color: #a855f7;
+    }
+    .dot.gray {
+        background-color: #222;
+    }
 
     @media (max-width: 1200px) {
         .card-content {

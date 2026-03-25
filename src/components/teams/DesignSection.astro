@@ -6,24 +6,26 @@ import designData from "../../data/design.json";
 <section class="design-section">
   <div class="header-container">
     <h2 class="section-title">
-      <span class="visual">DESIGN</span>
-      <span class="synthesis">TEAM</span>
+      <span class="visual" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">DESIGN</span>
+      <span class="synthesis" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">TEAM</span>
     </h2>
   </div>
 
   <div class="carousel-container">
     <div class="carousel-track">
       {designData.map((member, index) => (
-        <DesignCard 
-          name={member.name}
-          role={member.role}
-          iconType={member.iconType}
-          accentColor={member.accentColor}
-          offsetColor={member.offsetColor}
-          image={member.image}
-          hasImage={member.hasImage}
-          index={index}
-        />
+        <div data-aos="flip-up" data-aos-delay={(index * 100) + 400} data-aos-duration="700" style="flex: 0 0 auto;">
+          <DesignCard 
+            name={member.name}
+            role={member.role}
+            iconType={member.iconType}
+            accentColor={member.accentColor}
+            offsetColor={member.offsetColor}
+            image={member.image}
+            hasImage={member.hasImage}
+            index={index}
+          />
+        </div>
       ))}
     </div>
   </div>

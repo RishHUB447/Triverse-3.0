@@ -1,21 +1,29 @@
 ---
 import OperationalCard from "./OperationalCard.astro";
 import operationsData from "../../data/operations.json";
+
+const dynamicAnimations = [
+  "zoom-in",
+  "fade-up-right",
+  "flip-left",
+  "zoom-in-up",
+  "fade-down-left"
+];
 ---
 
 <section class="operational-section">
   <div class="container">
     <div class="header-block">
-      <div class="cyan-accent"></div>
+      <div class="cyan-accent" data-aos="fade-down" data-aos-duration="600" data-aos-delay="200"></div>
       <div class="text-wrap">
-        <h2 class="title">MANAGEMENT TEAM</h2>
-        <p class="subtitle">THE BRUTALIST GRID / DEPARTMENT OPERATIONS</p>
+        <h2 class="title" data-aos="fade-right" data-aos-delay="350" data-aos-duration="800">MANAGEMENT TEAM</h2>
+        <p class="subtitle" data-aos="fade-right" data-aos-delay="500" data-aos-duration="800">THE BRUTALIST GRID / DEPARTMENT OPERATIONS</p>
       </div>
     </div>
 
     <div class="brutalist-grid">
-      {operationsData.map((member) => (
-        <div class="grid-item">
+      {operationsData.map((member, index) => (
+        <div class="grid-item" data-aos={dynamicAnimations[index % dynamicAnimations.length]} data-aos-delay={(index * 100) + 400} data-aos-duration="800">
           <OperationalCard 
             id={member.id}
             name={member.name}

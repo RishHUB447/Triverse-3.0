@@ -8,10 +8,10 @@ import contentData from "../../data/content.json";
     <!-- Header -->
     <div class="header-area">
       <h2 class="title">
-        <span class="white-sans">EDITORIAL</span>
-        <span class="purple-serif">HUB</span>
+        <span class="white-sans" data-aos="fade-down" data-aos-duration="600" data-aos-delay="200">EDITORIAL</span>
+        <span class="purple-serif" data-aos="fade-down" data-aos-delay="400" data-aos-duration="800">HUB</span>
       </h2>
-      <div class="purple-line"></div>
+      <div class="purple-line" data-aos="fade-right" data-aos-delay="550" data-aos-duration="600"></div>
     </div>
 
     <!-- Table Container (Scrollable on Mobile) -->
@@ -26,14 +26,16 @@ import contentData from "../../data/content.json";
 
         <!-- Table Body Rows -->
         <div class="table-body">
-          {contentData.map((member) => (
-            <ContentRow 
-              name={member.name}
-              handle={member.handle}
-              role={member.role}
-              roleColor={member.roleColor}
-              image={member.image}
-            />
+          {contentData.map((member, index) => (
+            <div data-aos="fade-left" data-aos-delay={(index * 100) + 400} data-aos-duration="600">
+              <ContentRow 
+                name={member.name}
+                handle={member.handle}
+                role={member.role}
+                roleColor={member.roleColor}
+                image={member.image}
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -11,11 +11,12 @@ const { name, role, image, index } = Astro.props;
 // Calculate vertical offset based on index (staggered effect)
 // Scales with viewport to maintain proportionality
 const offset = index % 2 === 0 ? "0" : "clamp(20px, 4vw, 50px)";
+const aosType = index % 2 === 0 ? "reveal-top" : "reveal-bottom";
 ---
 
 <div class="lead-wrapper" style={`margin-top: ${offset};`}>
     <div class="lead-card">
-        <div class="image-wrapper">
+        <div class="image-wrapper" data-aos={aosType} data-aos-duration="1200" data-aos-offset="0">
             <img src={image} alt={name} class="lead-image" />
             <div class="overlay"></div>
 
@@ -43,11 +44,11 @@ const offset = index % 2 === 0 ? "0" : "clamp(20px, 4vw, 50px)";
 
     .image-wrapper {
         position: relative;
-        aspect-ratio: 10/14; 
+        aspect-ratio: 10/14;
         width: 100%;
         overflow: hidden;
         filter: grayscale(1);
-        transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1), -webkit-clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
 
     .lead-card:hover .image-wrapper {
@@ -100,7 +101,11 @@ const offset = index % 2 === 0 ? "0" : "clamp(20px, 4vw, 50px)";
 
     .lead-name {
         color: white;
-        font-size: clamp(0.9rem, 1.8vw, 2rem); /* Fluid font size for 6-column layout */
+        font-size: clamp(
+            0.9rem,
+            1.8vw,
+            2rem
+        ); /* Fluid font size for 6-column layout */
         font-weight: 900;
         line-height: 1;
         margin: 0;

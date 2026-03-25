@@ -12,7 +12,7 @@
             <div class="title-group">
                 <h1 class="title-architects">ARCHITECTS</h1>
                 <h1 class="title-triverse">
-                    OF <span class="gradient-text">TRIVERSE</span>
+                    <span class="split-target">OF</span> <span class="gradient-text">TRIVERSE</span>
                 </h1>
             </div>
 
@@ -30,7 +30,7 @@
     .hero-section {
         padding: 4rem 2rem 0;
         position: relative;
-        min-height: 80vh; /* Reduced as ticker is now separate */
+        min-height: 80vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -129,3 +129,68 @@
         }
     }
 </style>
+
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+        const checkGsap = setInterval(() => {
+            if (window.gsap) {
+                clearInterval(checkGsap);
+                
+                // Only split non-gradient text into characters
+                // IMPORTANT: .gradient-text is excluded because background-clip:text
+                // breaks when child spans are injected (children inherit transparent fill
+                // but NOT the gradient background, making text invisible)
+                document.querySelectorAll('.title-architects, .split-target').forEach(el => {
+                    if (el.classList.contains('gradient-text')) return; // Skip gradient elements
+                    const text = el.innerText;
+                    el.innerHTML = text.split('').map(char => 
+                        char === ' ' ? '&nbsp;' : `<span class="char" style="display:inline-block; opacity:0; transform:scale(0.5); filter:blur(10px);">${char}</span>`
+                    ).join('');
+                });
+                
+                const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+                
+                // Initial state for non-split elements
+                gsap.set([".label", ".hero-description p"], {
+                    y: 40,
+                    opacity: 0
+                });
+
+                // Initial state for the gradient word (animate as whole block)
+                gsap.set(".gradient-text", {
+                    opacity: 0,
+                    scale: 0.6,
+                    filter: "blur(12px)"
+                });
+
+                // Animate sequence
+                tl.to(".label", {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    delay: 0.2
+                })
+                .to(".char", {
+                    scale: 1,
+                    filter: "blur(0px)",
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.04,
+                    ease: "back.out(1.5)"
+                }, "-=0.4")
+                .to(".gradient-text", {
+                    opacity: 1,
+                    scale: 1,
+                    filter: "blur(0px)",
+                    duration: 1,
+                    ease: "power4.out"
+                }, "-=0.5")
+                .to(".hero-description p", {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8
+                }, "-=0.4");
+            }
+        }, 100);
+    });
+</script>

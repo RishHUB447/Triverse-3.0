@@ -38,6 +38,10 @@ const { title = "Triverse-3.0", description = "" } = Astro.props;
       src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"
       defer></script>
 
+    <!-- AOS CSS & JS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
     <style>
       body {
         margin: 0;
@@ -98,6 +102,46 @@ const { title = "Triverse-3.0", description = "" } = Astro.props;
         opacity: 0.035; /* ultra-subtle */
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       }
+      /* ===== AOS CUSTOM CLIP-PATH ANIMATIONS ===== */
+      [data-aos="split-center-h"] {
+        clip-path: inset(0% 50%);
+        -webkit-clip-path: inset(0% 50%);
+        transition-property: clip-path, -webkit-clip-path, transform, filter !important;
+      }
+      [data-aos="split-center-h"].aos-animate {
+        clip-path: inset(0% 0%);
+        -webkit-clip-path: inset(0% 0%);
+      }
+
+      [data-aos="split-center-v"] {
+        clip-path: inset(50% 0%);
+        -webkit-clip-path: inset(50% 0%);
+        transition-property: clip-path, -webkit-clip-path, transform, filter !important;
+      }
+      [data-aos="split-center-v"].aos-animate {
+        clip-path: inset(0% 0%);
+        -webkit-clip-path: inset(0% 0%);
+      }
+
+      [data-aos="reveal-top"] {
+        clip-path: inset(0% 0% 100% 0%);
+        -webkit-clip-path: inset(0% 0% 100% 0%);
+        transition-property: clip-path, -webkit-clip-path, transform, filter !important;
+      }
+      [data-aos="reveal-top"].aos-animate {
+        clip-path: inset(0% 0% 0% 0%);
+        -webkit-clip-path: inset(0% 0% 0% 0%);
+      }
+
+      [data-aos="reveal-bottom"] {
+        clip-path: inset(100% 0% 0% 0%);
+        -webkit-clip-path: inset(100% 0% 0% 0%);
+        transition-property: clip-path, -webkit-clip-path, transform, filter !important;
+      }
+      [data-aos="reveal-bottom"].aos-animate {
+        clip-path: inset(0% 0% 0% 0%);
+        -webkit-clip-path: inset(0% 0% 0% 0%);
+      }
     </style>
   </head>
 
@@ -125,7 +169,7 @@ const { title = "Triverse-3.0", description = "" } = Astro.props;
         let scrollTriggers = [];
 
         const check = setInterval(() => {
-          if (window.gsap && window.ScrollTrigger) {
+          if (window.gsap && window.ScrollTrigger && window.AOS) {
             clearInterval(check);
             init();
           }
@@ -156,6 +200,20 @@ const { title = "Triverse-3.0", description = "" } = Astro.props;
           const isMobile = window.innerWidth <= 768;
           gsap.registerPlugin(ScrollTrigger);
 
+          if (window.AOS) {
+            AOS.init({
+              once: false, // Ensures reverse animations trigger on scroll up
+              mirror: true, // Whether elements should animate out while scrolling past them
+              duration: 800,
+              offset: 100,
+              anchorPlacement: 'center-bottom', // Ensures element is half-visible before triggering
+            });
+            // Update AOS after ScrollTrigger initializes and Lenis ticks to prevent layout bugs
+            setTimeout(() => {
+              AOS.refresh();
+            }, 500);
+          }
+
           if (!isMobile && window.ScrollSmoother) {
             scrollSmoother = ScrollSmoother.create({
               wrapper: "#smooth-wrapper",
@@ -171,6 +229,38 @@ const { title = "Triverse-3.0", description = "" } = Astro.props;
           if (!isMobile) {
             initParallax();
           }
+
+          // Initializing independent GSAP scroll effects
+          initCardSplits();
+
+          // Refresh triggers safely to prevent misaligned clipping
+          setTimeout(() => {
+            ScrollTrigger.refresh();
+          }, 600);
+        }
+
+        function initCardSplits() {
+          const splitImages = document.querySelectorAll(
+            ".leads-section .image-wrapper, .tech-section .photo-side",
+          );
+          splitImages.forEach((img) => {
+            // Using fromTo for fallback safety and cross-browser webkit support
+            gsap.fromTo(
+              img,
+              { clipPath: "inset(0% 50%)", webkitClipPath: "inset(0% 50%)" },
+              {
+                clipPath: "inset(0% 0%)",
+                webkitClipPath: "inset(0% 0%)",
+                duration: 1.2,
+                ease: "power3.inOut",
+                scrollTrigger: {
+                  trigger: img,
+                  start: "top 85%",
+                  toggleActions: "play reverse play reverse",
+                },
+              },
+            );
+          });
         }
 
         function initLenis() {

@@ -1,6 +1,14 @@
 ---
 import SponsorshipCard from "./SponsorshipCard.astro";
 import sponsorshipData from "../../data/sponsorship.json";
+
+const dynamicAnimations = [
+  "zoom-in-up",
+  "flip-left",
+  "fade-up-right",
+  "flip-right",
+  "fade-up-left"
+];
 ---
 
 <section class="sponsorship-section">
@@ -8,10 +16,10 @@ import sponsorshipData from "../../data/sponsorship.json";
         <!-- Header Section -->
         <div class="header-area">
             <h2 class="title" data-scroll data-scroll-speed="0.1">
-                <span class="white-sans">SPONSORSHIP</span>
-                <span class="purple-serif block">TEAM</span>
+                <span class="white-sans" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">SPONSORSHIP</span>
+                <span class="purple-serif block" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">TEAM</span>
             </h2>
-            <div class="subheader-wrap">
+            <div class="subheader-wrap" data-aos="fade-right" data-aos-delay="550" data-aos-duration="600">
                 <p class="subheader">IEEE TRIVERSE 3.0 // 2024 DIRECTORY</p>
                 <div class="cyan-line"></div>
             </div>
@@ -21,7 +29,7 @@ import sponsorshipData from "../../data/sponsorship.json";
         <div class="overflow-container">
             <div class="gallery-grid">
                 {sponsorshipData.map((member, index) => (
-                    <div class={`grid-item item-${index}`}>
+                    <div class={`grid-item item-${index}`} data-aos={dynamicAnimations[index % dynamicAnimations.length]} data-aos-delay={(index * 100) + 400} data-aos-duration="800">
                         <SponsorshipCard 
                             id={member.id}
                             code={member.code}
