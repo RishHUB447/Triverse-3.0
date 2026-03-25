@@ -4,31 +4,31 @@
       "name": "Leads",
       "lead": {
         "name": "Devansh Kumar",
-        "role": "Chairperson",
+        "role": "",
         "image": "\\team\\office-bearer\\Devansh_Kumar.png"
       },
       "colead": {
         "name": "Manya Chaubey",
-        "role": "Vice Chairperson",
+        "role": "",
         "image": "\\team\\office-bearer\\manya.png"
       },
       "members": [
         {
           "name": "Satvik",
-          "role": "Treasurer",
+          "role": "",
           "image": "\\team\\office-bearer\\Satvik.png"
         },
          {
           "name": "Rishabh Verma",
-          "role": "Web Master",
+          "role": "",
           "image": "\\team\\office-bearer\\Rishabh_Verma.png"
         },{
         "name": "Vansh Singhal",
-        "role": "Lead",
+        "role": "",
         "image": "\\team\\Media\\vansh.png"
         },{
         "name": "Saharsh jaishwal",
-        "role": "Logistics Head",
+        "role": "",
         "image": "\\team\\Management\\Saharsh_jaishwal.png"
         }
       ]
@@ -174,11 +174,8 @@
       "name": "Management Team",
       "lead": {
         "name": "Atharv Krishna",
-        "role": "Management Head",
+        "role": "Team Lead",
         "image": "\\team\\Management\\Atharv_Krishna.png"
-      },
-      "colead": {
-        
       },
       "members": [
         {
@@ -245,7 +242,9 @@
         "image": "\\team\\Media\\athrav.png"
       },
       "colead": {
-        
+        "name": "Gaurika",
+        "role": "Co-Lead",
+        "image": "\\team\\Media\\gaurika.PNG"
       },
       "members": [
         {
@@ -257,10 +256,6 @@
           "name": "Sagar Yadav",
           "role": "",
           "image": "\\team\\Media\\Sagar_yadav.png"
-        },{
-        "name": "Gaurika",
-        "role": "Team Lead",
-        "image": "\\team\\Media\\gaurika.PNG"
         }
       ]
     }
