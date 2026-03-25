@@ -67,17 +67,6 @@ const events = [
 ---
 
 <Layout title="Events - Triverse">
-  <!-- Fixed Background Video -->
-  <div class="video-background">
-    <video autoplay muted loop playsinline preload="auto" class="bg-video">
-      <source
-        src="https://res.cloudinary.com/dtxhjkgdu/video/upload/v1769102015/Event_Background_vpzjlx.mp4"
-        type="video/mp4"
-      />
-    </video>
-    <div class="video-overlay"></div>
-  </div>
-
   <main class="events-main">
     <!-- Vertical Timeline Line -->
     <div class="timeline-vertical"></div>
@@ -172,7 +161,7 @@ const events = [
 
 <style is:global>
   :root {
-    --bg-dark: #0a0e1a;
+    --bg-dark: #000000;
     --purple-bright: #b48bff;
   }
   html {
@@ -188,25 +177,7 @@ const events = [
 </style>
 
 <style>
-  /* ==================== FIXED VIDEO ==================== */
-  .video-background {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .bg-video {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    filter: blur(8px) brightness(0.3);
-  }
-  .video-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(10,14,26,0.6) 0%, rgba(10,14,26,0.2) 50%, rgba(10,14,26,0.7) 100%);
-  }
+  /* Removed legacy video background styles */
 
   /* ==================== MAIN ==================== */
   .events-main {
@@ -216,6 +187,21 @@ const events = [
     padding-top: 120px;
     padding-bottom: 160px;
     overflow: hidden;
+    background-color: #000;
+  }
+
+  .events-main::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(120px);
   }
 
   /* ==================== VERTICAL TIMELINE ==================== */

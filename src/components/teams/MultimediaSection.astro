@@ -1,0 +1,188 @@
+---
+import MultimediaCard from "./MultimediaCard.astro";
+import multimediaData from "../../data/multimedia.json";
+---
+
+<section class="multimedia-section">
+    <div class="container">
+        <div class="section-layout">
+            <!-- Left Branding -->
+            <div class="branding">
+                <h2 class="title">
+                    <span class="white">TEAM</span>
+                    <span class="cyan">MULTIMEDIA</span>
+                </h2>
+                <p class="description">
+                    Connecting the pulse of the kinetic suite to the global digital atmosphere.
+                </p>
+            </div>
+
+            <!-- Member Grid with Path -->
+            <div class="members-area">
+                <!-- Desktop Curved Connecting Path (SVG) -->
+                <svg class="connecting-path desktop-path" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path 
+                        d="M0,100 Q200,50 400,100 T800,100" 
+                        stroke="rgba(0, 245, 212, 0.3)" 
+                        stroke-width="3" 
+                        stroke-dasharray="12 8"
+                    />
+                </svg>
+
+                <!-- Mobile Zig-Zag Connecting Path (SVG) -->
+                <svg class="connecting-path mobile-path" viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path 
+                        d="M60,100 L140,250 L60,400 L140,550" 
+                        stroke="rgba(0, 245, 212, 0.4)" 
+                        stroke-width="2" 
+                    />
+                </svg>
+
+                <div class="members-grid">
+                    {multimediaData.map((member, index) => (
+                        <div class={`grid-item item-${index}`}>
+                            <MultimediaCard 
+                                name={member.name}
+                                role={member.role}
+                                image={member.image}
+                                glowColor={member.glowColor}
+                                index={index}
+                            />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .multimedia-section {
+        padding: 10rem 2rem;
+        background-color: #000;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-layout {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .branding {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        line-height: 0.9;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+    }
+
+    .title .white { color: white; }
+    .title .cyan { color: #00f5d4; }
+
+    .description {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.6);
+        max-width: 300px;
+        line-height: 1.6;
+        font-weight: 500;
+    }
+
+    .members-area {
+        position: relative;
+        padding: 2rem 0;
+    }
+
+    .connecting-path {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .desktop-path {
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: auto;
+        transform: translateY(-50%);
+    }
+
+    .mobile-path {
+        display: none;
+    }
+
+    .members-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        position: relative;
+        z-index: 5;
+    }
+
+    @media (max-width: 1200px) {
+        .section-layout {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .branding {
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        .description {
+            max-width: 500px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .desktop-path {
+            display: none;
+        }
+        .mobile-path {
+            display: block;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: calc(100% - 100px);
+            opacity: 0.5;
+        }
+
+        .members-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Zig-Zag Staggering for Mobile */
+        .item-0, .item-2 { grid-column: 1; margin-top: 0; }
+        .item-1, .item-3 { grid-column: 2; margin-top: 5rem; }
+        
+        .grid-item {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .members-grid {
+            gap: 2rem 1rem;
+        }
+        .item-1, .item-3 { margin-top: 3rem; }
+    }
+</style>

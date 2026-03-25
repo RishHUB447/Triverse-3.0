@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "XAVIER LUND",
+        "role": "SYSTEMS ARCHITECT",
+        "image": "/team/tech/1.png",
+        "tickerText": "HUB/VORTEX-DEV // NEURAL_SIM_V2 // REFACTORING_ENGINE // GITHUB/VORTEX-DEV",
+        "type": "lead"
+    },
+    {
+        "id": 2,
+        "name": "MIA THORNE",
+        "role": "LEAD FRONTEND",
+        "image": "/team/tech/2.png",
+        "tickerText": "LOW // SHADER_STUDIO // WEBGL_EXPERT // NPM/GL-GLOW // SHADER_STUDIO",
+        "type": "co-lead"
+    },
+    {
+        "id": 3,
+        "name": "KAI ROSS",
+        "role": "PIPELINE TD",
+        "image": "/team/tech/3.png",
+        "tickerText": "SCRIPTING // BLENDER_API // PIPELINE_DEV // PYTHON_SCRIPTING // BLENDER_API",
+        "type": "junior"
+    },
+    {
+        "id": 4,
+        "name": "SARAH WEST",
+        "role": "JUNIOR DEVELOPER",
+        "image": "/team/tech/1.png",
+        "tickerText": "HUB/VORTEX-DEV // NEURAL_SIM_V2 // REFACTORING_ENGINE",
+        "type": "junior"
+    },
+    {
+        "id": 5,
+        "name": "LIAM JAMES",
+        "role": "JUNIOR DEVELOPER",
+        "image": "/team/tech/2.png",
+        "tickerText": "LOW // SHADER_STUDIO // WEBGL_EXPERT // NPM/GL-GLOW",
+        "type": "junior"
+    },
+    {
+        "id": 6,
+        "name": "ELENA VANCE",
+        "role": "JUNIOR DEVELOPER",
+        "image": "/team/tech/3.png",
+        "tickerText": "SCRIPTING // BLENDER_API // PIPELINE_DEV // PYTHON_SCRIPTING",
+        "type": "junior"
+    }
+]

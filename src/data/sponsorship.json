@@ -1,0 +1,65 @@
+[
+    {
+        "id": "01",
+        "code": "L. STRAT",
+        "name": "Adrianne Sterling",
+        "role": "PRINCIPAL LEAD / FINANCIAL ARCHITECT",
+        "iconType": "dollar",
+        "color": "#d8b4e2",
+        "image": "/team/multimeida/1.png"
+    },
+    {
+        "id": "02",
+        "code": "P. DEV",
+        "name": "Julian Voss",
+        "role": "GLOBAL PARTNERSHIPS",
+        "iconType": "handshake",
+        "color": "#00f5d4",
+        "image": "/team/multimeida/2.png"
+    },
+    {
+        "id": "03",
+        "code": "B. CUR",
+        "name": "Elena Moretti",
+        "role": "BRAND IDENTITY CURATOR",
+        "iconType": "hex",
+        "color": "#c4a1ff",
+        "image": "/team/multimeida/1.png"
+    },
+    {
+        "id": "04",
+        "code": "M. INTEL",
+        "name": "David Chen",
+        "role": "MARKET INTELLIGENCE",
+        "iconType": "graph",
+        "color": "#a1a1aa",
+        "image": "/team/multimeida/2.png"
+    },
+    {
+        "id": "05",
+        "code": "C. FUSE",
+        "name": "Silas Thorne",
+        "role": "CREATIVE INTEGRATION LEAD",
+        "iconType": "squares",
+        "color": "#d8b4e2",
+        "image": "/team/multimeida/1.png"
+    },
+    {
+        "id": "06",
+        "code": "REL.",
+        "name": "Maya Patel",
+        "role": "RELATIONSHIP DIRECTOR",
+        "iconType": "network",
+        "color": "#00f5d4",
+        "image": "/team/multimeida/2.png"
+    },
+    {
+        "id": "07",
+        "code": "OP. SYS",
+        "name": "Kieran Frost",
+        "role": "SYSTEMS OPERATIONS",
+        "iconType": "terminal",
+        "color": "#c4a1ff",
+        "image": "/team/multimeida/1.png"
+    }
+]

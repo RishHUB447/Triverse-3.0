@@ -1,0 +1,117 @@
+---
+interface Props {
+    name: string;
+    role: string;
+    image: string;
+    glowColor: string;
+    index: number;
+}
+
+const { name, role, image, glowColor, index } = Astro.props;
+---
+
+<div class="multimedia-card" style={`--glow-color: ${glowColor}; --stagger: ${index % 2 === 0 ? '0' : '80px'};`}>
+    <div class="image-wrapper">
+        <img src={image} alt={name} class="member-photo" />
+        <div class="glow-border"></div>
+    </div>
+    
+    <div class="info">
+        <h3 class="name">{name}</h3>
+        <span class="role">{role}</span>
+    </div>
+</div>
+
+<style>
+    .multimedia-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transform: translateY(var(--stagger));
+        position: relative;
+        z-index: 10;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .multimedia-card:hover {
+        transform: translateY(calc(var(--stagger) - 10px));
+    }
+
+    .image-wrapper {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        border-radius: 20px;
+        padding: 4px;
+        margin-bottom: 1.5rem;
+        background: #000;
+        overflow: visible;
+    }
+
+    .member-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .glow-border {
+        position: absolute;
+        inset: -1px;
+        border-radius: 20px;
+        border: 2px solid var(--glow-color);
+        box-shadow: 0 0 25px var(--glow-color);
+        opacity: 0.8;
+        z-index: 1;
+        transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .multimedia-card:hover .glow-border {
+        opacity: 1;
+        box-shadow: 0 0 40px var(--glow-color);
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .name {
+        font-size: 1.1rem;
+        font-weight: 900;
+        color: white;
+        margin: 0;
+        letter-spacing: 0.05rem;
+        text-transform: uppercase;
+    }
+
+    .role {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    @media (max-width: 1024px) {
+        .image-wrapper {
+            width: 120px;
+            height: 120px;
+        }
+        .name {
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .multimedia-card {
+            transform: none !important;
+            margin-bottom: 4rem;
+        }
+    }
+</style>

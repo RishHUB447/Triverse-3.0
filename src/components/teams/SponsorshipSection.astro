@@ -1,0 +1,210 @@
+---
+import SponsorshipCard from "./SponsorshipCard.astro";
+import sponsorshipData from "../../data/sponsorship.json";
+---
+
+<section class="sponsorship-section">
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-area">
+            <h2 class="title" data-scroll data-scroll-speed="0.1">
+                <span class="white-sans">SPONSORSHIP</span>
+                <span class="purple-serif block">TEAM</span>
+            </h2>
+            <div class="subheader-wrap">
+                <p class="subheader">IEEE TRIVERSE 3.0 // 2024 DIRECTORY</p>
+                <div class="cyan-line"></div>
+            </div>
+        </div>
+
+        <!-- Staggered Gallery Grid -->
+        <div class="overflow-container">
+            <div class="gallery-grid">
+                {sponsorshipData.map((member, index) => (
+                    <div class={`grid-item item-${index}`}>
+                        <SponsorshipCard 
+                            id={member.id}
+                            code={member.code}
+                            name={member.name}
+                            role={member.role}
+                            iconType={member.iconType}
+                            color={member.color}
+                            image={member.image}
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,700&family=JetBrains+Mono:wght@800&display=swap');
+
+    .sponsorship-section {
+        padding: 8rem 2rem 12rem;
+        /* Removed background-color to inherit from global Teams page */
+        position: relative;
+        /* No overflow: hidden so the horizontal carousel can work on mobile */
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* ===== HEADER ===== */
+    .header-area {
+        margin-bottom: 6rem;
+    }
+
+    .title {
+        margin: 0;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+    }
+
+    .white-sans {
+        font-family: var(--font-sf-pro), sans-serif;
+        font-weight: 900;
+        color: #fff;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+    }
+
+    .purple-serif {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-weight: 500;
+        color: #c4a1ff;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        text-transform: none; /* Keep original casing or force lower/upper based on mockup? The mockup shows UPPERCASE italic */
+        letter-spacing: 0.02em;
+        margin-left: 0.5rem;
+    }
+
+    .block {
+        display: block;
+        margin-top: -0.2rem;
+    }
+
+    .subheader-wrap {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .subheader {
+        font-family: 'JetBrains Mono', monospace;
+        color: #00f5d4;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        margin: 0;
+    }
+
+    .cyan-line {
+        width: 60px;
+        height: 2px;
+        background-color: #00f5d4;
+        opacity: 0.5;
+    }
+
+    /* ===== GALLERY GRID (DESKTOP/TABLET) ===== */
+    .overflow-container {
+        width: 100%;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 2rem 1.5rem;
+        position: relative;
+        z-index: 5;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .grid-item {
+        grid-column: span 2;
+    }
+
+    /* 4-3 Layout & Alternating Wave Stagger */
+    @media (min-width: 769px) {
+        /* Subtle alternating row offset for the dynamic gallery feel */
+        .item-0, .item-2, .item-4, .item-6 { transform: translateY(0); }
+        .item-1, .item-3, .item-5 { transform: translateY(40px); }
+
+        /* Push the 5th item (index 4) one column right to perfectly center the bottom 3 */
+        .item-4 {
+            grid-column: 2 / span 2;
+        }
+    }
+
+    /* ===== HORIZONTAL SCROLL (PHONE) ===== */
+    @media (max-width: 768px) {
+        .sponsorship-section {
+            padding: 6rem 0;
+        }
+
+        /* Ensure .container doesn't restrict the carousel width */
+        .container {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .header-area {
+            margin-bottom: 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .title {
+            line-height: 1;
+        }
+
+        .white-sans, .purple-serif {
+            font-size: clamp(2.5rem, 10vw, 4rem);
+        }
+
+        .purple-serif {
+            display: block;
+            margin-left: 0;
+            margin-top: 0.5rem;
+        }
+
+        /* Scrolling container */
+        .overflow-container {
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .overflow-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Flex row of cards */
+        .gallery-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            padding: 0 1.5rem 3rem 1.5rem;
+            width: max-content;
+            margin: 0;
+        }
+
+        .grid-item {
+            flex-shrink: 0;
+            width: 75vw; /* ~3/4 screen width each card */
+            max-width: 320px;
+            scroll-snap-align: start;
+            transform: none !important;
+            margin: 0 !important;
+        }
+    }
+</style>

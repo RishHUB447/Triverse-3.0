@@ -1,0 +1,131 @@
+---
+import DesignCard from "./DesignCard.astro";
+import designData from "../../data/design.json";
+---
+
+<section class="design-section">
+  <div class="header-container">
+    <h2 class="section-title">
+      <span class="visual">DESIGN</span>
+      <span class="synthesis">TEAM</span>
+    </h2>
+  </div>
+
+  <div class="carousel-container">
+    <div class="carousel-track">
+      {designData.map((member, index) => (
+        <DesignCard 
+          name={member.name}
+          role={member.role}
+          iconType={member.iconType}
+          accentColor={member.accentColor}
+          offsetColor={member.offsetColor}
+          image={member.image}
+          hasImage={member.hasImage}
+          index={index}
+        />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800&display=swap');
+
+  .design-section {
+    padding: 10rem 0; /* No horizontal padding here so the carousel bleeds to edges */
+    /* Removed background-color to inherit from global Teams page */
+    overflow: hidden; /* Hide anything outside section */
+  }
+
+  .header-container {
+    max-width: 1400px;
+    margin: 0 auto 5rem;
+    padding: 0 4rem;
+  }
+
+  .section-title {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    line-height: 1;
+  }
+
+  .visual {
+    font-family: var(--font-sf-pro), sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  .synthesis {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: clamp(3.2rem, 6.2vw, 5.2rem);
+    color: #a15eff; /* Purple accent matching the mockup */
+    letter-spacing: -0.01em;
+  }
+
+  .carousel-container {
+    width: 100%;
+    /* No overflow-x: auto here, we'll add it in mobile query */
+  }
+  
+  .carousel-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-track {
+    display: flex;
+    flex-wrap: nowrap; /* Force single row */
+    justify-content: center;
+    gap: 1.5rem; /* Slightly tighter gap to help them fit */
+    padding: 2rem 2rem 4rem; 
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* Desktop single-line behavior - ensured via carousel-track default flex */
+  @media (min-width: 1024px) {
+    .carousel-container {
+      overflow: visible; /* Ensure no scrollbars on desktop */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 0 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .carousel-container {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      scroll-snap-type: x mandatory;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .carousel-track {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 1.5rem 1.5rem 3.5rem; /* Space for overlapping text */
+      width: max-content;
+      margin: 0;
+    }
+
+    /* Target the cards slightly differently to add scroll snap alignment */
+    .carousel-track > :global(*) {
+      scroll-snap-align: center;
+    }
+  }
+</style>

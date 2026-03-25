@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "ELIAS VAUGHN",
+        "role": "CEO / FOUNDER",
+        "image": "/team/Leads/1.png"
+    },
+    {
+        "id": 2,
+        "name": "SARAH KOX",
+        "role": "CHIEF DESIGN OFFICER",
+        "image": "/team/Leads/2.png"
+    },
+    {
+        "id": 3,
+        "name": "MARCUS REED",
+        "role": "CTO",
+        "image": "/team/Leads/3.png"
+    },
+    {
+        "id": 4,
+        "name": "LENA STERLING",
+        "role": "HEAD OF GROWTH",
+        "image": "/team/Leads/4.png"
+    },
+    {
+        "id": 5,
+        "name": "JULIAN DRAKE",
+        "role": "COO",
+        "image": "/team/Leads/5.png"
+    },
+    {
+        "id": 6,
+        "name": "ALEX CHEN",
+        "role": "CREATIVE DIRECTOR",
+        "image": "/team/Leads/6.png"
+    }
+]

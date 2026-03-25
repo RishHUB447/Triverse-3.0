@@ -1,0 +1,126 @@
+---
+import OperationalCard from "./OperationalCard.astro";
+import operationsData from "../../data/operations.json";
+---
+
+<section class="operational-section">
+  <div class="container">
+    <div class="header-block">
+      <div class="cyan-accent"></div>
+      <div class="text-wrap">
+        <h2 class="title">MANAGEMENT TEAM</h2>
+        <p class="subtitle">THE BRUTALIST GRID / DEPARTMENT OPERATIONS</p>
+      </div>
+    </div>
+
+    <div class="brutalist-grid">
+      {operationsData.map((member) => (
+        <div class="grid-item">
+          <OperationalCard 
+            id={member.id}
+            name={member.name}
+            role={member.role}
+            color={member.color}
+            image={member.image}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap');
+
+  .operational-section {
+    padding: 10rem 2rem;
+    background-color: #000;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header-block {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+    align-items: flex-start;
+  }
+
+  .cyan-accent {
+    width: 2px;
+    height: 80px;
+    background-color: #00f5d4;
+    opacity: 0.8;
+  }
+
+  .text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .title {
+    font-family: var(--font-sf-pro), sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: #fff;
+    margin: 0;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+  }
+
+  .brutalist-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    position: relative;
+    z-index: 5;
+  }
+
+  .grid-item {
+    /* No longer need background override for grid lines */
+  }
+
+  @media (max-width: 1200px) {
+    .brutalist-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 992px) {
+    .brutalist-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .operational-section {
+      padding: 6rem 1.5rem;
+    }
+
+    .header-block {
+      margin-bottom: 4rem;
+      gap: 1rem;
+    }
+
+    .cyan-accent {
+      height: 60px;
+    }
+
+    .brutalist-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,144 @@
+---
+interface Props {
+    name: string;
+    role: string;
+    image: string;
+    index: number;
+}
+
+const { name, role, image, index } = Astro.props;
+
+// Calculate vertical offset based on index (staggered effect)
+// Scales with viewport to maintain proportionality
+const offset = index % 2 === 0 ? "0" : "clamp(20px, 4vw, 50px)";
+---
+
+<div class="lead-wrapper" style={`margin-top: ${offset};`}>
+    <div class="lead-card">
+        <div class="image-wrapper">
+            <img src={image} alt={name} class="lead-image" />
+            <div class="overlay"></div>
+
+            <div class="lead-info">
+                <span class="lead-role">{role}</span>
+                <h3 class="lead-name">{name}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .lead-wrapper {
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        width: 100%;
+    }
+
+    .lead-card {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        background: #000;
+        cursor: pointer;
+    }
+
+    .image-wrapper {
+        position: relative;
+        aspect-ratio: 10/14; 
+        width: 100%;
+        overflow: hidden;
+        filter: grayscale(1);
+        transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lead-card:hover .image-wrapper {
+        filter: grayscale(0);
+    }
+
+    .lead-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lead-card:hover .lead-image {
+        transform: scale(1.08);
+    }
+
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0) 50%,
+            rgba(0, 0, 0, 0.8) 100%
+        );
+        z-index: 1;
+        transition: opacity 0.5s ease;
+    }
+
+    .lead-info {
+        position: absolute;
+        bottom: clamp(1rem, 2vw, 2rem);
+        left: clamp(1rem, 2vw, 2rem);
+        z-index: 2;
+        text-align: left;
+        width: calc(100% - clamp(2rem, 4vw, 4rem));
+    }
+
+    .lead-role {
+        display: block;
+        color: #00d1ff;
+        font-size: clamp(0.5rem, 0.8vw, 0.7rem);
+        font-weight: 800;
+        letter-spacing: 0.05rem;
+        text-transform: uppercase;
+        margin-bottom: 0.2rem;
+        opacity: 0.9;
+    }
+
+    .lead-name {
+        color: white;
+        font-size: clamp(0.9rem, 1.8vw, 2rem); /* Fluid font size for 6-column layout */
+        font-weight: 900;
+        line-height: 1;
+        margin: 0;
+        letter-spacing: -0.01em;
+        text-transform: uppercase;
+        word-break: break-word;
+    }
+
+    /* Tablet and Mobile adjustments */
+    @media (max-width: 1280px) {
+        .lead-name {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .lead-wrapper {
+            margin-top: 0 !important;
+            margin-bottom: 2rem;
+        }
+
+        .lead-name {
+            font-size: 1.8rem;
+        }
+
+        .lead-info {
+            bottom: 1.5rem;
+            left: 1.5rem;
+        }
+
+        .image-wrapper {
+            filter: grayscale(0);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .lead-name {
+            font-size: 1.5rem;
+        }
+    }
+</style>

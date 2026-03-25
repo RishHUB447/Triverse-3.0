@@ -1,0 +1,26 @@
+[
+    {
+        "name": "IRIS VALE",
+        "role": "GROWTH STRATEGIST",
+        "image": "/team/multimeida/1.png",
+        "glowColor": "#a855f7"
+    },
+    {
+        "name": "TOBY FINCH",
+        "role": "CONTENT LEAD",
+        "image": "/team/multimeida/2.png",
+        "glowColor": "#00f5d4"
+    },
+    {
+        "name": "SARA KANE",
+        "role": "VISUAL DESIGNER",
+        "image": "/team/multimeida/1.png",
+        "glowColor": "#f472b6"
+    },
+    {
+        "name": "LEO MARX",
+        "role": "SOCIAL MANAGER",
+        "image": "/team/multimeida/2.png",
+        "glowColor": "#fbbf24"
+    }
+]

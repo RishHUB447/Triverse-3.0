@@ -1,0 +1,130 @@
+---
+import TechMemberCard from "./TechMemberCard.astro";
+import techData from "../../data/tech.json";
+---
+
+<section class="tech-section">
+    <!-- Solid Organic Polygon Shape -->
+    <div class="orb-container">
+        <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <path 
+                d="M876,432Q892,574,809,705Q726,836,554,821Q382,806,236,734Q90,662,69,451Q48,240,243,148Q438,56,616,110Q794,164,827,327Z" 
+                fill="#2b203a" 
+            />
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <span class="label">ENGINEERING</span>
+            <h2 class="section-title">TECHNOLOGICAL CORE</h2>
+        </div>
+        
+        <div class="tech-grid">
+            {techData.map((member) => (
+                <TechMemberCard 
+                    name={member.name}
+                    role={member.role}
+                    image={member.image}
+                />
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .tech-section {
+        padding: 8rem 2rem 10rem;
+        background-color: #000;
+        position: relative;
+        z-index: 5;
+        /* Removed overflow: hidden so nothing gets accidentally clipped on bottom */
+    }
+
+    .orb-container {
+        position: absolute;
+        top: 45%; /* Slightly higher for desktop balance */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: clamp(600px, 60vw, 1000px); /* Bigger desktop polygon */
+        height: auto;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.9;
+    }
+
+    .orb-container svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .orb-container {
+            top: 25%; /* Move behind tech lead and co-lead on phone */
+            width: 150vw; /* Keep it relatively large for mobile impact */
+        }
+    }
+
+    .container {
+        max-width: 1500px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 10;
+    }
+
+    .section-header {
+        margin-bottom: 8rem;
+        text-align: left;
+    }
+
+    .label {
+        color: #00f5d4;
+        font-size: 0.85rem;
+        letter-spacing: 0.35rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        display: block;
+        opacity: 0.9;
+    }
+
+    .section-title {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 900;
+        color: white;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: -0.05em;
+        line-height: 0.9;
+    }
+
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6rem 4rem; /* More space between cards as per mockup */
+        align-items: start;
+    }
+
+    @media (max-width: 1440px) {
+        .tech-grid {
+            gap: 5rem 3rem;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .tech-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .tech-grid {
+            grid-template-columns: 1fr;
+            gap: 5rem;
+        }
+        
+        .section-header {
+            margin-bottom: 4rem;
+        }
+    }
+</style>

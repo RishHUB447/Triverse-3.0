@@ -1,0 +1,82 @@
+[
+  {
+    "id": "001",
+    "name": "ALAN GRANT",
+    "role": "FINANCE DIRECTOR",
+    "iconType": "bank",
+    "color": "#00f5d4",
+    "image": "/team/multimeida/1.png"
+  },
+  {
+    "id": "002",
+    "name": "SOPHIE CHEN",
+    "role": "HUMAN CAPITAL",
+    "iconType": "shield",
+    "color": "#c4a1ff",
+    "image": "/team/multimeida/2.png"
+  },
+  {
+    "id": "003",
+    "name": "DAVID WOLF",
+    "role": "SCHEDULING LEAD",
+    "iconType": "clock",
+    "color": "#00f5d4",
+    "image": "/team/multimeida/1.png"
+  },
+  {
+    "id": "004",
+    "name": "RUBY JADE",
+    "role": "RESOURCE ALLOC.",
+    "iconType": "box",
+    "color": "#c4a1ff",
+    "image": "/team/multimeida/2.png"
+  },
+  {
+    "id": "005",
+    "name": "VICTOR HU",
+    "role": "LEGAL COUNSEL",
+    "iconType": "copyright",
+    "color": "#00f5d4",
+    "image": "/team/multimeida/1.png"
+  },
+  {
+    "id": "006",
+    "name": "ZANE RIVERS",
+    "role": "LOGISTICS COORDINATOR",
+    "iconType": "truck",
+    "color": "#c4a1ff",
+    "image": "/team/multimeida/2.png"
+  },
+  {
+    "id": "007",
+    "name": "NINA VOX",
+    "role": "COMMUNICATIONS LEAD",
+    "iconType": "radio",
+    "color": "#00f5d4",
+    "image": "/team/multimeida/1.png"
+  },
+  {
+    "id": "008",
+    "name": "LEO DRAKE",
+    "role": "FIELD OPERATIONS",
+    "iconType": "map",
+    "color": "#c4a1ff",
+    "image": "/team/multimeida/2.png"
+  },
+  {
+    "id": "009",
+    "name": "SARAH BLISS",
+    "role": "PROCUREMENT OFFICER",
+    "iconType": "shopping-cart",
+    "color": "#00f5d4",
+    "image": "/team/multimeida/1.png"
+  },
+  {
+    "id": "010",
+    "name": "OSCAR WILD",
+    "role": "STRATEGY ANALYST",
+    "iconType": "target",
+    "color": "#c4a1ff",
+    "image": "/team/multimeida/2.png"
+  }
+]

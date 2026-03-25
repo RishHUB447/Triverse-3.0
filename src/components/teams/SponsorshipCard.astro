@@ -1,0 +1,202 @@
+---
+interface Props {
+    id: string;
+    code: string;
+    name: string;
+    role: string;
+    iconType: string;
+    color: string;
+    image?: string;
+}
+
+const { id, code, name, role, iconType, color, image } = Astro.props;
+
+// Basic Icon mapping (inline SVGs for flexibility)
+const icons: Record<string, string> = {
+    dollar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 18V6"></path></svg>`,
+    handshake: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.116l-3 2a1 1 0 0 0 0 1.664l3 2a1 1 0 0 0 3.986-3.116l-3 2z"/><path d="M17.188 6.348l-8 7M3.078 17.5a1 1 0 0 0 3.986 3.116l3-2a1 1 0 0 0 0-1.664l-3-2a1 1 0 0 0-3.986 3.116l3-2zM7.064 16.953l-2.012 1.342"/></svg>`, // Approximation of a handshake/grip
+    hex: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><circle cx="12" cy="12" r="3"></circle></svg>`,
+    graph: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>`,
+    squares: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>`,
+    network: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`,
+    terminal: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>`
+};
+
+const svgContent = icons[iconType] || icons.dollar;
+---
+
+<div class={`sponsorship-card ${image ? 'has-image' : ''}`}>
+    
+    {image && (
+        <div class="image-layer">
+            <img src={image} alt={name} class="card-bg-image" />
+            <div class="card-overlay-gradient"></div>
+        </div>
+    )}
+
+    <div class="card-ui-layer">
+        <div class="card-header">
+            <span class="meta-data">{id} / {code}</span>
+        </div>
+
+        {!image && (
+            <div class="card-center">
+                <div class="icon-wrapper" style={`color: ${color}; filter: drop-shadow(0 0 8px ${color}66);`} set:html={svgContent}>
+                </div>
+            </div>
+        )}
+
+        <div class="card-footer">
+            <h3 class="name">{name}</h3>
+            <p class="role">{role}</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=JetBrains+Mono:wght@700&display=swap');
+
+    .sponsorship-card {
+        background: linear-gradient(135deg, rgba(20,20,20,0.8) 0%, rgba(10,10,10,0.95) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        position: relative;
+        transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        overflow: hidden;
+    }
+
+    .sponsorship-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .sponsorship-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .meta-data {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.05em;
+    }
+
+    .card-center {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon-wrapper {
+        width: 48px;
+        height: 48px;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .icon-wrapper :global(svg) {
+        width: 100%;
+        height: 100%;
+        opacity: 0.9;
+    }
+
+    .sponsorship-card:hover .icon-wrapper {
+        transform: scale(1.1);
+    }
+
+    .sponsorship-card.has-image::before {
+        display: none; /* Hide default radial glow when image is present */
+    }
+
+    /* ===== UI LAYER (On top of image/background) ===== */
+    .card-ui-layer {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+        padding: 1.5rem;
+    }
+
+    /* ===== IMAGE LAYER ===== */
+    .image-layer {
+        position: absolute;
+        inset: 4px; /* Slight inset for a thin dark border frame effect */
+        border-radius: 4px;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .card-bg-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sponsorship-card:hover .card-bg-image {
+        transform: scale(1.05);
+    }
+
+    .card-overlay-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom, 
+            rgba(0,0,0,0.6) 0%, 
+            rgba(0,0,0,0) 25%, 
+            rgba(0,0,0,0) 60%, 
+            rgba(0,0,0,0.9) 100%
+        );
+        pointer-events: none;
+    }
+
+    .card-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .name {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: #fff;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .role {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.55rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+        .sponsorship-card {
+            aspect-ratio: auto;
+            min-height: 250px;
+        }
+        .name {
+            font-size: 1.3rem;
+        }
+    }
+</style>

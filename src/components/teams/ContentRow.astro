@@ -1,0 +1,130 @@
+---
+interface Props {
+  name: string;
+  handle: string;
+  role: string;
+  roleColor: string;
+  image: string;
+}
+
+const { name, handle, role, roleColor, image } = Astro.props;
+---
+
+<div class="content-row">
+  <!-- Column 1: Profile (Square image) -->
+  <div class="column col-profile">
+    <div class="image-wrapper">
+      <img src={image} alt={name} class="profile-img" />
+    </div>
+  </div>
+
+  <!-- Column 2: Identity -->
+  <div class="column col-identity">
+    <h3 class="name">{name}</h3>
+    <p class="handle">{handle}</p>
+  </div>
+
+  <!-- Column 3: Position -->
+  <div class="column col-position">
+    <div class="role-badge" style={`color: ${roleColor}; border-color: rgba(255,255,255,0.1);`}>
+      {role}
+    </div>
+  </div>
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,700&family=JetBrains+Mono:wght@500;800&display=swap');
+
+  /* The row acts as a grid nested inside the section's wrapper or as a subgrid */
+  .content-row {
+    display: grid;
+    /* Explicitly define the 3 columns, with column 1 widened to fit the 140px image */
+    grid-template-columns: 180px 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background-color 0.3s ease;
+  }
+
+  .content-row:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  /* --- Column 1: Profile --- */
+  .col-profile {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .image-wrapper {
+    width: 140px;
+    height: 140px;
+    background-color: #111;
+    overflow: hidden;
+  }
+
+  .profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.2);
+    transition: filter 0.4s ease, transform 0.4s ease;
+  }
+
+  .content-row:hover .profile-img {
+    filter: grayscale(0%) contrast(1.1);
+    transform: scale(1.05);
+  }
+
+  /* --- Column 2: Identity --- */
+  .col-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .name {
+    font-family: var(--font-sf-pro), sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  .handle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0;
+  }
+
+  /* --- Column 3: Position --- */
+  .col-position {
+    display: flex;
+    justify-content: flex-start; /* Or center based on preference, mockup looks left aligned inside column */
+  }
+
+  .role-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    padding: 0.4rem 0.8rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .content-row {
+      /* On mobile horizontal scroll, give the row a fixed minimum width so it doesn't squish */
+      width: 700px; 
+      padding: 2rem 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,166 @@
+---
+import ContentRow from "./ContentRow.astro";
+import contentData from "../../data/content.json";
+---
+
+<section class="content-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="header-area">
+      <h2 class="title">
+        <span class="white-sans">EDITORIAL</span>
+        <span class="purple-serif">HUB</span>
+      </h2>
+      <div class="purple-line"></div>
+    </div>
+
+    <!-- Table Container (Scrollable on Mobile) -->
+    <div class="table-scroll-container">
+      <div class="minimalist-table">
+        <!-- Table Header Row -->
+        <div class="table-header">
+          <div class="col-head">PROFILE</div>
+          <div class="col-head">IDENTITY</div>
+          <div class="col-head">POSITION</div>
+        </div>
+
+        <!-- Table Body Rows -->
+        <div class="table-body">
+          {contentData.map((member) => (
+            <ContentRow 
+              name={member.name}
+              handle={member.handle}
+              role={member.role}
+              roleColor={member.roleColor}
+              image={member.image}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .content-section {
+    padding: 8rem 2rem 12rem;
+    /* Unifying background back to black as requested */
+    background-color: #000; 
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .container {
+    max-width: 1000px; /* Keep the table narrow and focused */
+    margin: 0 auto;
+  }
+
+  /* ===== HEADER ===== */
+  .header-area {
+    margin-bottom: 4rem;
+  }
+
+  .title {
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .white-sans {
+    font-family: var(--font-sf-pro), sans-serif;
+    font-weight: 900;
+    color: #fff;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .purple-serif {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: #c4a1ff;
+    font-size: clamp(2.8rem, 6.2vw, 4.2rem);
+    letter-spacing: 0.02em;
+  }
+
+  .purple-line {
+    width: 80px;
+    height: 3px;
+    background-color: #c4a1ff;
+    margin-top: 1.5rem;
+  }
+
+  /* ===== TABLE LAYOUT ===== */
+  .table-scroll-container {
+    width: 100%;
+    /* Horizontal scroll setup for mobile */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.2) transparent;
+  }
+
+  /* Custom nicer scrollbar for webkit */
+  .table-scroll-container::-webkit-scrollbar {
+    height: 6px;
+  }
+  .table-scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .table-scroll-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px;
+  }
+
+  .minimalist-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* On mobile, force a minimum width so columns don't compress */
+    min-width: 700px;
+  }
+
+  /* Table Header */
+  .table-header {
+    display: grid;
+    /* Matches the grid logic in ContentRow */
+    grid-template-columns: 180px 1fr 1fr;
+    gap: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .col-head {
+    font-family: var(--font-sf-pro), sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #999;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .table-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 768px) {
+    .content-section {
+      padding: 6rem 0; /* Bleed scroll container to edges */
+    }
+
+    .container {
+      padding: 0;
+    }
+
+    .header-area {
+      padding: 0 1.5rem;
+    }
+
+    .minimalist-table {
+      /* Padding inside the scroll area to prevent clipping */
+      padding: 0 1.5rem;
+    }
+  }
+</style>
