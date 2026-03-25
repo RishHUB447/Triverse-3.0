@@ -1,0 +1,53 @@
+{
+  "sponsors": [
+    {
+      "name": "Coding Block",
+      "logo": "https://cb3img.s3.ap-south-1.amazonaws.com/img/cblogo.webp",
+      "description": "GitHub is where the world builds software.",
+      "website": "https://github.com",
+      "tier": "small"
+    },
+    {
+      "name": "Bennett University",
+      "logo": "https://www.facultyplus.com/wp-content/uploads/2024/02/Bennett-University-Logo-FP.webp",
+      "description": "Stripe builds economic infrastructure for the internet.",
+      "website": "https://stripe.com",
+      "tier": "large"
+    },
+    {
+      "name": "Notion",
+      "logo": "https://unavatar.io/figma.com",
+      "description": "Notion is the connected workspace for your wiki, docs & projects.",
+      "website": "https://notion.so",
+      "tier": "large"
+    },
+    {
+      "name": "Google",
+      "logo": "https://unavatar.io/figma.com",
+      "description": "Vercel is the platform for frontend developers.",
+      "website": "https://vercel.com",
+      "tier": "small"
+    },
+    {
+      "name": "Figma",
+      "logo": "https://unavatar.io/figma.com",
+      "description": "Figma is the leading collaborative design platform.",
+      "website": "https://figma.com",
+      "tier": "small"
+    },
+    {
+      "name": "Linear",
+      "logo": "https://unavatar.io/linear.app",
+      "description": "Linear is the issue tracking tool for high-performance teams.",
+      "website": "https://linear.app",
+      "tier": "small"
+    },
+    {
+      "name": "Supabase",
+      "logo": "https://unavatar.io/supabase.com",
+      "description": "Supabase is the open-source Firebase alternative.",
+      "website": "https://supabase.com",
+      "tier": "small"
+    }
+  ]
+}

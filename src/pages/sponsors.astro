@@ -1,426 +1,404 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import benuniLogo from "../images/benuni.png";
+import { sponsors as allSponsors } from "../data/sponsors.json";
 
-// All sponsors in a single flat array - 3x2 grid
-const sponsors = [
-  {
-    name: "Bennett University",
-    logo: benuniLogo,
-    description: "Bennett University is a leading institution fostering innovation and technology education.",
-    website: "https://www.bennett.edu.in",
-  },
-  {
-    name: "Tech Giant",
-    logo: "https://placehold.co/300x150/1a1a2e/FFF?text=Tech+Giant",
-    description: "Tech Giant provides cutting-edge solutions for modern businesses.",
-    website: "https://example.com",
-  },
-  {
-    name: "Future Systems",
-    logo: "https://placehold.co/300x150/1a1a2e/FFF?text=Future+Systems",
-    description: "Future Systems specializes in next-generation software development and AI solutions.",
-    website: "https://example.com",
-  },
-  {
-    name: "Alpha Code",
-    logo: "https://placehold.co/300x150/1a1a2e/FFF?text=Alpha+Code",
-    description: "Alpha Code is a premier coding bootcamp and tech community.",
-    website: "https://example.com",
-  },
-  {
-    name: "Data Drive",
-    logo: "https://placehold.co/300x150/1a1a2e/FFF?text=Data+Drive",
-    description: "Data Drive connects businesses with powerful data analytics platforms.",
-    website: "https://example.com",
-  },
-  {
-    name: "Orbital",
-    logo: "https://placehold.co/300x150/1a1a2e/FFF?text=Orbital",
-    description: "Orbital is a student-led tech community organizing hackathons.",
-    website: "https://example.com",
-  },
-];
+/**
+ * HOW TO UPDATE SPONSORS:
+ * Edit src/data/sponsors.json — add/remove/change entries freely.
+ * Set "tier": "large" for 2-column wide cards (used on the diagonal rows).
+ * Set "tier": "small" for regular 1-column cards.
+ * Adding any number of sponsors works automatically.
+ */
+
+// Accent colour lookup — extend as you add new sponsors
+const accentColors: Record<string, string> = {
+  "GitHub":     "rgba(36, 41, 47, 0.5)",
+  "Stripe":     "rgba(99, 91, 255, 0.35)",
+  "Notion":     "rgba(255, 255, 255, 0.1)",
+  "Vercel":     "rgba(255, 255, 255, 0.08)",
+  "Figma":      "rgba(162, 89, 255, 0.3)",
+  "Linear":     "rgba(88, 101, 242, 0.3)",
+  "Supabase":   "rgba(62, 207, 142, 0.2)",
+};
+
+// Split into tiers
+const larges = allSponsors.filter(s => s.tier === "large");
+const smalls  = allSponsors.filter(s => s.tier === "small");
+
+/**
+ * DIAGONAL LAYOUT STRATEGY (3-col grid):
+ * Row 1: [small] [LARGE – 2 cols]   ← large on right
+ * Row 2: [LARGE – 2 cols] [small]   ← large on left  → diagonal!
+ * Row 3+: remaining smalls flow naturally 3 per row
+ *
+ * We tag each card with a `cls` for CSS grid placement.
+ */
+type Card = { sponsor: typeof allSponsors[0]; cls: string };
+const cards: Card[] = [];
+
+// Row 1
+if (smalls[0]) cards.push({ sponsor: smalls[0], cls: "diag-small-r1" });
+if (larges[0]) cards.push({ sponsor: larges[0], cls: "diag-large-r1" });
+
+// Row 2
+if (larges[1]) cards.push({ sponsor: larges[1], cls: "diag-large-r2" });
+if (smalls[1]) cards.push({ sponsor: smalls[1], cls: "diag-small-r2" });
+
+// Remaining smalls — flow naturally
+const usedSmalls = smalls.slice(0, 2);
+const remainingSmalls = smalls.filter(s => !usedSmalls.includes(s));
+remainingSmalls.forEach(s => cards.push({ sponsor: s, cls: "flow-small" }));
 ---
 
 <Layout title="Sponsors | Triverse">
-  <div class="sponsors-page">
-    <!-- Kinetic Background Glow -->
-    <div class="kinetic-glow"></div>
+  <style is:global>
+    @font-face {
+      font-family: 'Space Grotesk Local';
+      src: url('../fonts/space-grotesk/SpaceGrotesk-Bold.otf') format('opentype');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
 
-    <!-- Header Section -->
-    <section class="sponsors-hero">
-      <h1 class="sponsors-title">Our Sponsors</h1>
-    </section>
+    /* 
+      NOTE: Signate Grotesk is a custom font (not on Google Fonts). 
+      To make it load, place the font file (e.g. SignateGrotesk-Bold.woff2) 
+      in your public/fonts/ folder and uncomment this @font-face block:
 
-    <!-- Sponsors Grid (3x2) -->
-    <section class="sponsors-section">
-      <div class="sponsors-grid">
-        {sponsors.map((sponsor, index) => (
-          <div class="sponsor-card glass-card">
-            <!-- Logo Area -->
-            <div class="logo-container">
-              {typeof sponsor.logo === "string" ? (
-                <img src={sponsor.logo} alt={sponsor.name} loading="lazy" />
-              ) : (
-                <Image src={sponsor.logo} alt={sponsor.name} />
-              )}
+      @font-face {
+        font-family: 'Signate Grotesk';
+        src: url('/fonts/SignateGrotesk-Bold.woff2') format('woff2');
+        font-weight: 800;
+        font-style: normal;
+        font-display: swap;
+      }
+    */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Inter:wght@400;600;800;900&display=swap');
+    body {
+      background: radial-gradient(ellipse at 50% 30%, #4a2080 0%, #1a0a2e 60%, #0a0a0a 100%) fixed !important;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* Stagger chars injected via JS must be global so they work */
+    .stagger-char {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(35px);
+      animation: titlePop 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      /* Adjusted to a sleek, heavy silver-gray */
+      background: linear-gradient(to bottom, #dedede 0%, #a3a3a3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @keyframes titlePop {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+
+  <section class="sponsors-page">
+    <div class="page-header">
+      <h1>Our Sponsors</h1>
+      <p>Organisations powering Triverse 3.0</p>
+    </div>
+
+    <div class="partners-grid">
+      {cards.map(({ sponsor, cls }) => {
+        const accent = accentColors[sponsor.name] ?? "rgba(188,19,254,0.2)";
+        return (
+          <a
+            href={sponsor.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`grid-card ${cls}`}
+            style={`--accent-color: ${accent}`}
+          >
+            <div class="card-gradient"></div>
+            <div class="card-bg-text">
+              <span>{sponsor.name.toUpperCase()}</span>
+              <span aria-hidden="true">{sponsor.name.toUpperCase()}</span>
             </div>
-
-            <!-- Sponsor Name -->
-            <h3 class="sponsor-name">{sponsor.name}</h3>
-
-            <!-- Hover Overlay with Details -->
-            <div class="hover-overlay">
-              <div class="overlay-content">
-                <h4 class="overlay-title">{sponsor.name}</h4>
-                <p class="overlay-description">{sponsor.description}</p>
-                <a href={sponsor.website} target="_blank" rel="noopener noreferrer" class="visit-btn">
-                  <span>Visit Website</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                </a>
-              </div>
+            <div class="card-content">
+              <img
+                src={sponsor.logo}
+                alt={sponsor.name}
+                class="partner-logo"
+                loading="lazy"
+              />
+              <p class="card-desc">{sponsor.description}</p>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
 </Layout>
 
 <style>
-  /* === Page Layout === */
   .sponsors-page {
-    position: relative;
+    width: 100vw;
     min-height: 100vh;
-    background: radial-gradient(circle at 50% 40%, #2c0051 0%, #0f0d16 70%);
-    overflow-x: hidden;
-    padding-top: 100px;
-    padding-bottom: 80px;
+    padding: 80px 0 120px;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #fff;
   }
 
-  /* === Kinetic Background Glow === */
-  .kinetic-glow {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 500px;
-    background: radial-gradient(ellipse 80% 100% at 50% 0%,
-      rgba(138, 43, 226, 0.35) 0%,
-      rgba(186, 85, 211, 0.2) 30%,
-      rgba(221, 160, 221, 0.1) 50%,
-      transparent 100%);
-    filter: blur(30px);
-    z-index: 0;
-    pointer-events: none;
+  /* ===== HEADER ===== */
+  .page-header {
+    text-align: left;
+    padding: 60px 60px 0;
+    margin-bottom: 70px;
   }
 
-  /* === Hero Section === */
-  .sponsors-hero {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 40px 24px 64px;
+  .page-header h1 {
+    font-family: 'Space Grotesk Local', 'Signate Grotesk', 'Montserrat', sans-serif; /* Prioritize the local file */
+    font-size: clamp(3.5rem, 9vw, 8.5rem); /* Kept responsive scaling */
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 0.88;
+    margin: 0 0 18px;
+    word-break: keep-all; /* Keeps words together */
   }
 
-  .sponsors-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 6vw, 3.25rem);
-    font-weight: 700;
-    color: #ffffff;
+  .page-header p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.78rem;
     margin: 0;
-    letter-spacing: -0.02em;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
   }
 
-  /* === Sponsors Section === */
-  .sponsors-section {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* === Sponsors Grid (3x2) === */
-  .sponsors-grid {
+  /* =============================================
+     FULL-WIDTH 3-COLUMN DIAGONAL GRID
+     ============================================= */
+  .partners-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    width: 100vw;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
   }
 
-  /* === Glass Card === */
-  .glass-card {
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+  /*
+    Diagonal rows (explicit placement):
+    Row 1: [small – col 1] [LARGE – col 2-3]
+    Row 2: [LARGE – col 1-2] [small – col 3]
+  */
+  .diag-small-r1 { grid-column: 1;     height: 380px; }
+  .diag-large-r1 { grid-column: 2 / 4; height: 380px; }
+  .diag-large-r2 { grid-column: 1 / 3; height: 380px; }
+  .diag-small-r2 { grid-column: 3;     height: 380px; }
 
-  .glass-card:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-  }
+  /* Remaining cards flow naturally (3 per row) */
+  .flow-small { height: 300px; }
 
-  /* === Sponsor Card === */
-  .sponsor-card {
+  /* ===== CARD ===== */
+  .grid-card {
     position: relative;
-    aspect-ratio: 4/3;
-    border-radius: 16px;
-    padding: 24px 20px;
+    background: transparent;
+    border-right:  1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     cursor: pointer;
+    transition: background 0.4s ease, border-color 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 12px;
+    text-decoration: none;
+    /* Scroll-reveal initial state */
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.96);
+    transition: opacity 1.3s ease-out, filter 1.3s ease-out, transform 1.3s ease-out,
+                background 0.4s ease, border-color 0.4s ease;
   }
 
-  .sponsor-card:hover {
-    z-index: 10;
+  /* Applied by JS when card enters viewport */
+  .grid-card.visible {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1);
   }
 
-  /* === Logo Container === */
-  .logo-container {
+  /* Layer 1 – Bottom Gradient Glow */
+  .card-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-    transition: all 0.4s ease;
-  }
-
-  .logo-container img {
-    max-width: 85%;
-    max-height: 75px;
-    object-fit: contain;
-    transition: all 0.4s ease;
-    filter: brightness(0.9);
-  }
-
-  .sponsor-card:hover .logo-container {
+    height: 60%; /* Only occupies the bottom area instead of full block */
+    /* 60% Sea Green area, incredibly smooth mix, ~0.5% faint red spark at 60%, 40% Blue */
+    background: linear-gradient(to right, rgba(32, 178, 170, 0.8) 0%, rgba(32, 178, 170, 0.8) 30%, rgba(255, 80, 0, 0.5) 60%, rgba(0, 140, 255, 0.8) 90%, rgba(0, 140, 255, 0.8) 100%);
+    /* Fade out upwards so it creates a soft bottom glow */
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
     opacity: 0;
-    transform: scale(0.8);
+    transition: opacity 0.55s ease;
+    z-index: 1;
   }
 
-  /* === Sponsor Name === */
-  .sponsor-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0;
-    opacity: 0.6;
-    transition: all 0.4s ease;
-  }
-
-  .sponsor-card:hover .sponsor-name {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  /* === Hover Overlay === */
-  .hover-overlay {
+  /* Layer 2 – Marquee name (middle) */
+  .card-bg-text {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 80px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
     pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease, -webkit-text-stroke 0.5s ease;
+    letter-spacing: 0.06em;
   }
 
-  .sponsor-card:hover .hover-overlay {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: auto;
-  }
-
-  .overlay-content {
+  .card-content {
+    position: relative;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    padding: 0 40px;
     text-align: center;
-    gap: 10px;
-    transform: translateY(10px);
-    opacity: 0;
-    transition: all 0.3s ease 0.1s;
   }
 
-  .sponsor-card:hover .overlay-content {
-    transform: translateY(0);
+  .card-desc {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    max-width: 320px;
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    /* Always visible */
+    opacity: 1;
+    transition: color 0.4s ease;
+  }
+
+  .grid-card:hover .card-desc {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Bright halo behind logo, appears on hover to separate it from the marquee text */
+  .card-content::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.18) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    border-radius: 50%;
+  }
+
+  .grid-card:hover .card-content::before {
     opacity: 1;
   }
 
-  .overlay-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #fff;
-    margin: 0;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  .partner-logo {
+    width: 50%;
+    max-height: 110px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.85);
+    opacity: 0.78;
+    transition: all 0.55s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .overlay-description {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.8rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0;
+  /* Large cards get slightly bigger logos */
+  .diag-large-r1 .partner-logo,
+  .diag-large-r2 .partner-logo { width: 35%; max-height: 130px; }
+
+  /* ===== HOVER ===== */
+  .grid-card:hover { background: rgba(255,255,255,0.025); border-color: rgba(255,255,255,0.3); }
+  .grid-card:hover .card-gradient  { opacity: 0.55; }
+  .grid-card:hover .card-bg-text   { opacity: 0.88; -webkit-text-stroke: 2px rgba(255,255,255,0.75); }
+  .grid-card:hover .card-bg-text span { animation: marquee 9s linear infinite; }
+  .grid-card:hover .partner-logo   { filter: grayscale(0%) brightness(1.55); opacity: 1; transform: scale(1.07); }
+
+  @keyframes marquee {
+    from { transform: translateX(100%); }
+    to   { transform: translateX(-100%); }
   }
 
-  .visit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 18px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 600;
-    font-size: 0.8rem;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
-    margin-top: 5px;
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 820px) {
+    .partners-grid { grid-template-columns: repeat(2, 1fr); }
+    .diag-small-r1,.diag-small-r2,.diag-large-r1,.diag-large-r2,.flow-small {
+      grid-column: auto;
+      height: 260px;
+    }
+    .diag-large-r1,.diag-large-r2 { grid-column: span 2; }
+    .card-bg-text { font-size: 4rem; }
   }
 
-  .visit-btn:hover {
-    background: rgba(255, 255, 255, 0.35);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  @media (max-width: 520px) {
+    .partners-grid { grid-template-columns: 1fr; }
+    .diag-large-r1,.diag-large-r2 { grid-column: 1; }
+    .grid-card { height: 220px !important; }
   }
-
-  .visit-btn svg {
-    transition: transform 0.3s ease;
-  }
-
-  .visit-btn:hover svg {
-    transform: translate(2px, -2px);
-  }
-
-  /* === Responsive === */
-  @media (max-width: 900px) {
-    .sponsors-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .sponsors-page {
-      padding-top: 80px;
-    }
-
-    .sponsors-hero {
-      padding: 30px 20px 50px;
-    }
-
-    .kinetic-glow {
-      height: 350px;
-    }
-
-    .sponsors-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .sponsor-card {
-      padding: 20px 16px;
-    }
-
-    .logo-container {
-      height: 90px;
-    }
-
-    .logo-container img {
-      max-height: 65px;
-    }
-
-    .overlay-title {
-      font-size: 1rem;
-    }
-
-    .overlay-description {
-      font-size: 0.75rem;
-    }
-
-    .visit-btn {
-      padding: 8px 14px;
-      font-size: 0.75rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .sponsors-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .sponsor-card {
-      padding: 16px 12px;
-    }
-
-    .logo-container {
-      height: 75px;
-    }
-
-    .logo-container img {
-      max-height: 55px;
-    }
-
-    .sponsor-name {
-      font-size: 0.85rem;
-    }
-
-    .hover-overlay {
-      padding: 14px;
-    }
-
-    .overlay-description {
-      font-size: 0.7rem;
-      line-height: 1.4;
-    }
-  }
-
-  /* === Animation Entrance === */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .sponsor-card {
-    animation: fadeInUp 0.6s ease forwards;
-    opacity: 0;
-  }
-
-  .sponsor-card:nth-child(1) { animation-delay: 0.05s; }
-  .sponsor-card:nth-child(2) { animation-delay: 0.1s; }
-  .sponsor-card:nth-child(3) { animation-delay: 0.15s; }
-  .sponsor-card:nth-child(4) { animation-delay: 0.2s; }
-  .sponsor-card:nth-child(5) { animation-delay: 0.25s; }
-  .sponsor-card:nth-child(6) { animation-delay: 0.3s; }
 </style>
+
+<!-- Scroll-reveal: blur-to-pop animation using IntersectionObserver & Title Stagger -->
+<script is:inline>
+  (function () {
+    // 1. Stagger Title Setup (with true spaces for natural word-wrapping)
+    const title = document.querySelector('.page-header h1');
+    if (title) {
+      const text = title.textContent.trim();
+      title.textContent = '';
+      const words = text.split(' ');
+      
+      let letterIndex = 0;
+      words.forEach((word, wIdx) => {
+        const wordDiv = document.createElement('span');
+        wordDiv.style.display = 'inline-block'; // Protects word wrap
+        
+        word.split('').forEach((char) => {
+          const span = document.createElement('span');
+          span.textContent = char;
+          span.className = 'stagger-char';
+          span.style.animationDelay = `${letterIndex * 0.05}s`;
+          wordDiv.appendChild(span);
+          letterIndex++;
+        });
+        
+        title.appendChild(wordDiv);
+        if (wIdx < words.length - 1) {
+          title.appendChild(document.createTextNode(' ')); // True breaking space
+        }
+      });
+    }
+
+    // 2. Card Scroll View
+    const cards = document.querySelectorAll('.grid-card');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // animate once
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    cards.forEach((card, i) => {
+      // Stagger delay per card for a wave effect
+      card.style.transitionDelay = `${i * 0.14}s`;
+      observer.observe(card);
+    });
+  })();
+</script>
