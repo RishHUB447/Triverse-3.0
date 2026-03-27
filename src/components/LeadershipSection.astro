@@ -1,0 +1,266 @@
+---
+const title = "Architects of the";
+const titleGradient = "Future.";
+const subtitle = "LEADERSHIP";
+const description =
+    "Guided by the brightest minds in academia and research, Triverse 3.0 is a testament to the pursuit of excellence at Bennett University. Our mentors bridge the gap between theory and the exponential growth of the digital era.";
+
+const mentors = [
+    {
+        name: "Dean, SCSET",
+        role: "STRATEGIC ADVISOR",
+        image: "/dean.png",
+        color: "#a78bfa",
+    },
+    {
+        name: "Prof. Tinku Singh",
+        role: "IEEE MENTOR",
+        image: "/tinku.png",
+        color: "#ec4899",
+    },
+];
+---
+
+<section class="leadership-section">
+    <div class="container">
+        <div class="leadership-grid">
+            <!-- Left Side: Text Content -->
+            <div class="content-side">
+                <span class="label leadership-fade">{subtitle}</span>
+                <h2 class="title leadership-fade">
+                    {title}
+                    <span class="gradient-text">{titleGradient}</span>
+                </h2>
+                <p class="description leadership-fade">
+                    {description}
+                </p>
+            </div>
+
+            <!-- Right Side: Hexagonal Mentors -->
+            <div class="mentors-side">
+                {
+                    mentors.map((mentor, index) => (
+                        <div
+                            class={`mentor-card mentor-offset-${index} leadership-fade`}
+                        >
+                            <div
+                                class="hex-frame leadership-fade"
+                            >
+                                <svg viewBox="0 0 300 346" class="hex-svg">
+                                    <defs>
+                                        <clipPath id={`hexClip-${index}`}>
+                                            <polygon points="150,0 300,86.6 300,259.8 150,346.4 0,259.8 0,86.6" />
+                                        </clipPath>
+                                    </defs>
+                                    <image
+                                        href={mentor.image}
+                                        x="0"
+                                        y="0"
+                                        width="300"
+                                        height="346"
+                                        preserveAspectRatio="xMidYMid slice"
+                                        clip-path={`url(#hexClip-${index})`}
+                                    />
+                                    <polygon
+                                        points="150,0 300,86.6 300,259.8 150,346.4 0,259.8 0,86.6"
+                                        fill="none"
+                                        stroke={mentor.color}
+                                        stroke-width="2"
+                                        opacity="0.2"
+                                    />
+                                </svg>
+                            </div>
+                            <h3 class="mentor-name">{mentor.name}</h3>
+                            <p class="mentor-role">
+                                {mentor.role}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .leadership-section {
+        padding: 10rem 2rem;
+        background-color: #000;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .leadership-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .label {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.85rem;
+        letter-spacing: 0.3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        display: block;
+    }
+
+    .title {
+        font-size: clamp(3rem, 6vw, 5.5rem);
+        font-weight: 800;
+        color: white;
+        line-height: 1.1;
+        margin-bottom: 2.5rem;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #fff 0%, #f472b6 50%, #db2777 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #94a3b8;
+        max-width: 600px;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Super minimalist features — just text, nothing else */
+    .features-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .features-list li {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 1rem;
+        font-weight: 400;
+        padding-left: 1.2rem;
+        position: relative;
+    }
+
+    .features-list li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: #ec4899;
+        font-weight: 600;
+    }
+
+    /* Mentors Side */
+    .mentors-side {
+        display: flex;
+        justify-content: center;
+        gap: 2.5rem;
+        align-items: flex-start;
+    }
+
+    .mentor-card {
+        text-align: center;
+        width: 240px;
+    }
+
+    .mentor-offset-0 {
+        transform: translateY(-40px);
+    }
+
+    .mentor-offset-1 {
+        transform: translateY(40px);
+    }
+
+    .hex-frame {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .hex-svg {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .mentor-name {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 0.25rem;
+    }
+
+    .mentor-role {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+    }
+
+    /* Hardcoded mentor role colors (no inline styles) */
+    .mentor-card:nth-child(1) .mentor-role {
+        color: #a78bfa;
+    }
+    .mentor-card:nth-child(2) .mentor-role {
+        color: #ec4899;
+    }
+
+    @media (max-width: 1200px) {
+        .leadership-grid {
+            grid-template-columns: 1fr;
+            gap: 5rem;
+        }
+
+        .content-side {
+            text-align: center;
+        }
+
+        .description {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-list {
+            align-items: center;
+        }
+
+        .features-list li {
+            text-align: left;
+        }
+
+        .mentors-side {
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 40px;
+        }
+
+        .mentor-offset-0,
+        .mentor-offset-1 {
+            transform: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .leadership-section {
+            padding: 6rem 1.5rem;
+        }
+
+        .title {
+            font-size: 2.8rem;
+        }
+
+        .mentor-card {
+            width: 200px;
+        }
+    }
+</style>

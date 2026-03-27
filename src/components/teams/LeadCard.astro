@@ -8,13 +8,10 @@ interface Props {
 
 const { name, role, image, index } = Astro.props;
 
-// Calculate vertical offset based on index (staggered effect)
-// Scales with viewport to maintain proportionality
-const offset = index % 2 === 0 ? "0" : "clamp(20px, 4vw, 50px)";
 const aosType = index % 2 === 0 ? "reveal-top" : "reveal-bottom";
 ---
 
-<div class="lead-wrapper" style={`margin-top: ${offset};`}>
+<div class="lead-wrapper">
     <div class="lead-card">
         <div class="image-wrapper" data-aos={aosType} data-aos-duration="1200" data-aos-offset="0">
             <img src={image} alt={name} class="lead-image" />
@@ -32,6 +29,12 @@ const aosType = index % 2 === 0 ? "reveal-top" : "reveal-bottom";
     .lead-wrapper {
         transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         width: 100%;
+        margin-top: 0;
+    }
+
+    /* Hardcoded stagger (no inline styles). Index starts at 0 → 2nd, 4th, 6th... get offset */
+    .lead-wrapper:nth-child(even) {
+        margin-top: clamp(20px, 4vw, 50px);
     }
 
     .lead-card {
