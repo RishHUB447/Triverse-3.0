@@ -52,28 +52,6 @@ remainingSmalls.forEach(s => cards.push({ sponsor: s, cls: "flow-small" }));
 
 <Layout title="Sponsors | Triverse">
   <style is:global>
-    @font-face {
-      font-family: 'Space Grotesk Local';
-      src: url('../fonts/space-grotesk/SpaceGrotesk-Bold.otf') format('opentype');
-      font-weight: 800;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    /* 
-      NOTE: Signate Grotesk is a custom font (not on Google Fonts). 
-      To make it load, place the font file (e.g. SignateGrotesk-Bold.woff2) 
-      in your public/fonts/ folder and uncomment this @font-face block:
-
-      @font-face {
-        font-family: 'Signate Grotesk';
-        src: url('/fonts/SignateGrotesk-Bold.woff2') format('woff2');
-        font-weight: 800;
-        font-style: normal;
-        font-display: swap;
-      }
-    */
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Inter:wght@400;600;800;900&display=swap');
     body {
       background-color: #000;
       overflow-x: hidden;
@@ -141,7 +119,7 @@ remainingSmalls.forEach(s => cards.push({ sponsor: s, cls: "flow-small" }));
     width: 100vw;
     min-height: 100vh;
     padding: 80px 0 120px;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-sf-pro), system-ui, sans-serif;
     color: #fff;
     background-color: #000;
     position: relative;
@@ -170,7 +148,7 @@ remainingSmalls.forEach(s => cards.push({ sponsor: s, cls: "flow-small" }));
   }
 
   .page-header h1 {
-    font-family: 'Space Grotesk Local', 'Signate Grotesk', 'Montserrat', sans-serif; /* Prioritize the local file */
+    font-family: var(--font-sf-pro), sans-serif; /* Standardized to SF Pro Display */
     font-size: clamp(3.5rem, 9vw, 8.5rem); /* Kept responsive scaling */
     font-weight: 800;
     text-transform: uppercase;

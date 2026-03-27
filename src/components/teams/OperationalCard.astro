@@ -30,73 +30,8 @@ const { id, name, role, color, image } = Astro.props;
 </div>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=JetBrains+Mono:wght@700&display=swap');
-
-  .operational-card {
-    position: relative;
-    background-color: #000;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    aspect-ratio: 3 / 4; /* Reduced height portrait ratio */
-    overflow: hidden;
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.4s ease;
-  }
-
-  .operational-card:hover {
-    transform: translateY(-8px);
-    border-color: #fff;
-  }
-
-  /* Image Layer */
-  .image-layer {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
-
-  .profile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(0.2) contrast(1.1);
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .operational-card:hover .profile-image {
-    transform: scale(1.08);
-  }
-
-  .overlay-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0) 30%,
-      rgba(0, 0, 0, 0.5) 60%,
-      rgba(0, 0, 0, 0.95) 100%
-    );
-    z-index: 2;
-  }
-
-  /* Content Overlay */
-  .card-content {
-    position: absolute;
-    inset: 0;
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.5rem 1.5rem 2rem;
-    box-sizing: border-box;
-  }
-
-  .card-header {
-    display: flex;
-    justify-content: flex-end;
-  }
-
   .index {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sf-pro), sans-serif;
     font-size: 0.75rem;
     color: #fff;
     opacity: 0.8;
@@ -125,7 +60,7 @@ const { id, name, role, color, image } = Astro.props;
   }
 
   .role {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-sf-pro), sans-serif;
     font-variant: small-caps;
     font-size: 0.65rem;
     color: rgba(255, 255, 255, 0.7);

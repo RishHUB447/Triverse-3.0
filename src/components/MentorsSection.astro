@@ -1,0 +1,208 @@
+---
+const title = "Senior Members & Mentors";
+const subtitle = "ADVISORY COUNCIL";
+const description = "Our senior members and mentors bring decades of collective wisdom and industry expertise to the Triverse ecosystem, guiding the next generation of technological leaders.";
+
+// Placeholder data for senior members
+const mentors = [
+    {
+        name: "Coming Soon",
+        role: "Distinguished Member",
+        company: "Industry Strategic Partner",
+        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=200&h=200"
+    },
+    {
+        name: "Coming Soon",
+        role: "Technical Advisor",
+        company: "Global Research Institute",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=200&h=200"
+    },
+    {
+        name: "Coming Soon",
+        role: "Academic Mentor",
+        company: "Bennett University",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200&h=200"
+    }
+];
+---
+
+<section class="mentors-section">
+    <div class="glow-orb"></div>
+    <div class="container">
+        <div class="section-header">
+            <span class="label" data-aos="fade-up">{subtitle}</span>
+            <h2 class="title" data-aos="fade-up" data-aos-delay="100">{title}</h2>
+            <p class="description" data-aos="fade-up" data-aos-delay="200">
+                {description}
+            </p>
+        </div>
+
+        <div class="mentors-grid">
+            {mentors.map((mentor, index) => (
+                <div class="mentor-card" data-aos="fade-up" data-aos-delay={300 + (index * 100)}>
+                    <div class="card-glass"></div>
+                    <div class="card-content">
+                        <div class="mentor-avatar">
+                            <img src={mentor.image} alt={mentor.name} />
+                        </div>
+                        <div class="mentor-details">
+                            <h3>{mentor.name}</h3>
+                            <p class="role">{mentor.role}</p>
+                            <span class="company">{mentor.company}</span>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .mentors-section {
+        padding: 5rem 2rem;
+        background-color: #000;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .glow-orb {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+
+    .label {
+        color: rgba(167, 139, 250, 0.6);
+        font-size: 0.8rem;
+        letter-spacing: 0.4em;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 1.5rem;
+    }
+
+    .title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: white;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+    }
+
+    .description {
+        color: #94a3b8;
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .mentors-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+    }
+
+    .mentor-card {
+        position: relative;
+        padding: 2.5rem;
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .mentor-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(167, 139, 250, 0.3);
+    }
+
+    .card-glass {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(20px);
+        z-index: 0;
+    }
+
+    .card-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mentor-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        border: 3px solid rgba(167, 139, 250, 0.2);
+    }
+
+    .mentor-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+    }
+
+    .mentor-details h3 {
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .role {
+        color: #a78bfa;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .company {
+        color: #64748b;
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 1024px) {
+        .mentors-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .mentors-section {
+            padding: 4rem 1.5rem;
+        }
+        
+        .mentors-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .title {
+            font-size: 2.2rem;
+        }
+    }
+</style>

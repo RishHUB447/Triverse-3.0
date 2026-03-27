@@ -9,59 +9,62 @@ const events = [
   {
     id: 1,
     image: logoCff,
-    cardTitle: "BREAKIT",
-    tagline: "Deconstruct. Stress Test. Redesign.",
+    cardTitle: "BET FOR TECH",
+    tagline: "Bluff. Solve. Survive.",
     objective:
-      "Participants analyze and rethink real-world tech products, exposing system flaws and proposing grounded fixes — no code required.",
-    color: "#a855f7",
-    glowColor: "rgba(168,85,247,1)",
+      "A strategy event built on bluffing and logic where teams solve tech problems while opponents bet on their success, followed by a social-deduction stage showdown.",
+    color: "#a07830",
+    glowColor: "rgba(160, 120, 48, 1)",
     day: "Day 1",
-    tag: "Competition",
+    tag: "Strategy",
     details: [
-      "Identify critical vulnerabilities in existing tech systems",
-      "Propose innovative solutions without writing code",
-      "Present redesigned architecture to judges",
+      "Battle at tables using fake currency to bet on coding and logic solutions",
+      "Strategically under-perform or bluff to mislead opponents and win the pot",
+      "Participate in a final social-deduction round to split or steal the prize",
     ],
-    participants: "Teams of 3-4",
-    duration: "8 hours",
+    participants: "Teams of 2-3",
+    duration: "3 hours total",
+    seq: "01",
   },
   {
     id: 2,
+    image: frame87, // Retained current image as requested
+    cardTitle: "TYPOTHON",
+    tagline: "Speed. Accuracy. The Ultimate Keystroke.",
+    objective:
+      "A two-phase typing competition featuring a 4-day pre-fest open stall and a live, high-pressure stage final on Day 1.",
+    color: "#2676a8",
+    glowColor: "rgba(38, 118, 168, 1)",
+    day: "Day 1",
+    tag: "Mass Participation",
+    details: [
+      "Open stall runs for 4 days as a pre-fest outreach initiative",
+      "Top performers are invited to compete in live stage rounds",
+      "Scoring uses Words Per Minute (WPM) strictly adjusted for accuracy",
+    ],
+    participants: "Individual (Walk-in)",
+    duration: "4 Days (Stall) + 55 Min (Finals)",
+    seq: "02",
+  },
+  {
+    id: 3,
     image: theDropt,
     cardTitle: "THE DROP",
     tagline: "Launch the Future. Even If It's Fake.",
     objective:
-      "Teams invent fictional future-tech products and launch them like real startups — blending storytelling, design, and satire.",
-    color: "#d946ef",
-    glowColor: "rgba(217,70,239,1)",
+      "Teams invent and pitch a completely fictional product from the year 2050, rewarding creativity, storytelling, and the ability to sell a vision.",
+    color: "#7040b0",
+    glowColor: "rgba(112, 64, 176, 1)",
     day: "Day 2",
-    tag: "Creative",
+    tag: "Creative · Stage",
     details: [
-      "Create a fictional future-tech product concept",
-      "Develop complete branding and marketing strategy",
-      "Build a compelling product launch presentation",
+      "Define a futuristic product concept within a 1-hour ideation sprint",
+      "Create a product concept poster featuring a brand name and mockup",
+      "Deliver a 3-minute live pitch followed by a 2-minute Q&A with judges",
     ],
-    participants: "Teams of 2-5",
-    duration: "10 hours",
-  },
-  {
-    id: 3,
-    image: frame87,
-    cardTitle: "BET FOR TECH 3.0",
-    tagline: "Code. Bet. Conquer.",
-    objective:
-      "Tests participants' coding skills, strategic thinking, and risk-taking ability by combining problem-solving with betting and psychological decision-making in a high-stakes competitive format.",
-    color: "#ec4899",
-    glowColor: "rgba(236,72,153,1)",
-    day: "Day 3",
-    tag: "Hackathon",
-    details: [
-      "Solve complex coding challenges under pressure",
-      "Make strategic bets on your solutions",
-      "Compete in real-time against other teams",
-    ],
-    participants: "Individual or Pairs",
-    duration: "6 hours",
+    participants: "Teams of 2-4",
+    duration: "4 hours total",
+    seq: "03",
   },
 ];
 ---
@@ -82,7 +85,7 @@ const events = [
           <span class="letter">E</span><span class="letter">V</span><span class="letter">E</span><span class="letter">N</span><span class="letter">T</span><span class="letter">S</span>
         </span>
       </h1>
-      <p class="chronicle-subtitle" id="subtitleText">Three days of innovation, competition & creativity</p>
+      <p class="chronicle-subtitle" id="subtitleText">Two days of innovation, competition & creativity</p>
     </header>
 
     <!-- Timeline Content -->
@@ -94,7 +97,7 @@ const events = [
             <!-- Day Number - Large Text -->
             <div class="event-day-col">
               <span class="day-large-text" style={`--hover-color: ${event.color}20;`}>
-                {event.day.replace("Day ", "0")}
+                {event.seq}
               </span>
               <span class="day-label" style={`color: ${event.color};`}>
                 {event.day.toUpperCase()}
@@ -171,7 +174,7 @@ const events = [
     background-color: transparent;
     color: #ffffff;
     margin: 0;
-    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sf-pro), system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
 </style>
@@ -225,7 +228,7 @@ const events = [
     z-index: 10;
   }
   .chronicle-title {
-    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-family: var(--font-sf-pro), system-ui, sans-serif;
     font-size: clamp(4rem, 10vw, 9rem);
     font-weight: 800;
     letter-spacing: -0.04em;
@@ -306,7 +309,7 @@ const events = [
   }
 
   .day-large-text {
-    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-family: var(--font-sf-pro), system-ui, sans-serif;
     font-weight: 100;
     font-size: clamp(5rem, 12vw, 10rem);
     line-height: 1;
@@ -478,7 +481,7 @@ const events = [
   }
 
   .event-title {
-    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-family: var(--font-sf-pro), system-ui, sans-serif;
     font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 700;
     letter-spacing: -0.02em;

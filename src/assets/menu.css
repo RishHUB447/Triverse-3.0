@@ -92,7 +92,7 @@
 .menu-link {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  font-family: var(--font-sf-pro), var(--font-space-grotesk), sans-serif;
+  font-family: var(--font-sf-pro), sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.5px;

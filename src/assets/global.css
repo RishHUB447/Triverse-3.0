@@ -48,7 +48,7 @@ body::-webkit-scrollbar {
 }
 
 body {
-	font-family: var(--font-sf-pro), var(--font-space-grotesk), sans-serif;
+	font-family: var(--font-sf-pro), sans-serif;
 	background: #010418;
 	color: #FFFFFF;
 }

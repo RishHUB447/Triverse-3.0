@@ -64,7 +64,6 @@
     }
 
     .title-group h1 {
-        font-size: clamp(3.5rem, 12vw, 10rem);
         line-height: 0.85;
         margin: 0;
         font-weight: 900;
@@ -73,14 +72,18 @@
     }
 
     .title-architects {
+        font-size: clamp(3.5rem, 12vw, 10rem);
         color: white;
     }
 
     .title-triverse {
         color: white;
+        font-size: clamp(2.5rem, 8.5vw, 7.5rem); /* Smaller base size for Centauri */
+        margin-top: -0.5rem;
     }
 
     .gradient-text {
+        font-family: var(--font-centauri);
         background: linear-gradient(
             180deg,
             #ffffff 0%,
@@ -91,6 +94,9 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         display: inline-block;
+        /* Ensure it doesn't scale wider than the container */
+        max-width: 100%;
+        overflow-wrap: break-word;
     }
 
     .hero-description {
@@ -118,14 +124,22 @@
             margin-top: 2rem;
         }
 
-        .title-group h1 {
+        .title-architects {
             font-size: 15vw;
+        }
+
+        .title-triverse {
+            font-size: 11vw; /* Visually balanced with Architects on tablet */
         }
     }
 
     @media (max-width: 768px) {
         .hero-section {
             padding-top: 8rem;
+        }
+
+        .title-triverse {
+            font-size: 10vw; /* Further reduction for mobile safety */
         }
     }
 </style>

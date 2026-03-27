@@ -33,69 +33,8 @@ const { name, handle, role, roleColor, image } = Astro.props;
 </div>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,700&family=JetBrains+Mono:wght@500;800&display=swap');
-
-  /* The row acts as a grid nested inside the section's wrapper or as a subgrid */
-  .content-row {
-    display: grid;
-    /* Explicitly define the 3 columns, with column 1 widened to fit the 140px image */
-    grid-template-columns: 180px 1fr 1fr;
-    align-items: center;
-    gap: 2rem;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: background-color 0.3s ease;
-  }
-
-  .content-row:hover {
-    background-color: rgba(255, 255, 255, 0.02);
-  }
-
-  /* --- Column 1: Profile --- */
-  .col-profile {
-    display: flex;
-    justify-content: flex-start;
-  }
-
-  .image-wrapper {
-    width: 140px;
-    height: 140px;
-    background-color: #111;
-    overflow: hidden;
-  }
-
-  .profile-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%) contrast(1.2);
-    transition: filter 0.4s ease, transform 0.4s ease;
-  }
-
-  .content-row:hover .profile-img {
-    filter: grayscale(0%) contrast(1.1);
-    transform: scale(1.05);
-  }
-
-  /* --- Column 2: Identity --- */
-  .col-identity {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .name {
-    font-family: var(--font-sf-pro), sans-serif;
-    font-weight: 800;
-    font-size: 1.25rem;
-    color: #fff;
-    margin: 0;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-  }
-
   .handle {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-sf-pro), sans-serif;
     font-style: italic;
     font-weight: 500;
     font-size: 0.85rem;
@@ -110,7 +49,7 @@ const { name, handle, role, roleColor, image } = Astro.props;
   }
 
   .role-badge {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-sf-pro), sans-serif;
     font-size: 0.75rem;
     font-weight: 800;
     letter-spacing: 0.05em;

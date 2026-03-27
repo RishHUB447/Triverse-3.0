@@ -54,40 +54,8 @@ const svgContent = icons[iconType] || icons.dollar;
 </div>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=JetBrains+Mono:wght@700&display=swap');
-
-    .sponsorship-card {
-        background: linear-gradient(135deg, rgba(20,20,20,0.8) 0%, rgba(10,10,10,0.95) 100%);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 8px;
-        aspect-ratio: 1 / 1;
-        display: flex;
-        position: relative;
-        transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        overflow: hidden;
-    }
-
-    .sponsorship-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
-        pointer-events: none;
-    }
-
-    .sponsorship-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(255, 255, 255, 0.15);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-    }
-
-    .card-header {
-        display: flex;
-        justify-content: flex-end;
-    }
-
     .meta-data {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: var(--font-sf-pro), sans-serif;
         font-size: 0.6rem;
         color: rgba(255, 255, 255, 0.3);
         letter-spacing: 0.05em;
@@ -172,7 +140,7 @@ const svgContent = icons[iconType] || icons.dollar;
     }
 
     .name {
-        font-family: 'Playfair Display', serif;
+        font-family: var(--font-sf-pro), sans-serif;
         font-style: italic;
         font-weight: 600;
         font-size: 1.5rem;
@@ -182,7 +150,7 @@ const svgContent = icons[iconType] || icons.dollar;
     }
 
     .role {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: var(--font-sf-pro), sans-serif;
         font-size: 0.55rem;
         color: rgba(255, 255, 255, 0.5);
         margin: 0;
