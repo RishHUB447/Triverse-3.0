@@ -2,6 +2,7 @@
 import "../assets/fonts.css";
 import Footer from "../components/Footer.astro";
 import Menu from "../components/Menu.astro";
+import Branding from "../components/Branding.astro";
 
 interface Props {
   title?: string;
@@ -159,6 +160,54 @@ const { title = "Triverse-3.0", description = "" } = Astro.props;
         -webkit-clip-path: inset(0% 0% 0% 0%);
       }
     </style>
+
+    <!-- Branding must be global (Branding.astro is a child component) -->
+    <style is:global>
+      /* ===== GLOBAL TOP-LEFT BRANDING ===== */
+      .site-branding {
+        position: absolute;
+        top: 24px;
+        left: 20px;
+        z-index: 10000; /* above grain overlay */
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        pointer-events: none; /* never blocks UI (menu etc.) */
+        user-select: none;
+      }
+
+      .site-branding__text {
+        color: #ffffff;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        font-size: 1rem;
+      }
+
+      .site-branding__badge {
+        display: none;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #dcb8ff;
+        border: 1px solid rgba(168, 85, 247, 0.55);
+        background: rgba(138, 43, 226, 0.12);
+        border-radius: 9999px;
+      }
+
+      @media (min-width: 640px) {
+        .site-branding {
+          top: 36px;
+          left: 40px;
+        }
+        .site-branding__text {
+          font-size: 1.125rem;
+        }
+        .site-branding__badge {
+          display: inline-block;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -171,6 +220,7 @@ const { title = "Triverse-3.0", description = "" } = Astro.props;
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <div class="content-wrapper">
+          <Branding />
           <slot />
         </div>
         <Footer />

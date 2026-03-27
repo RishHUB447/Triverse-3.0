@@ -7,17 +7,6 @@ import triLogo from "../images/Tri.png";
 <div
     class="hero-container relative overflow-hidden bg-[#050505] flex flex-col items-center justify-between"
 >
-    <!-- Top Left Branding -->
-    <div class="hero-brand absolute z-50 flex items-center opacity-0">
-        <span class="text-white font-bold tracking-wide font-sf-pro brand-text"
-            >IEEE Bennett</span
-        >
-        <span
-            class="border border-purple-500/50 bg-[#8a2be2]/10 text-[#dcb8ff] rounded-full uppercase tracking-widest font-sf-pro brand-badge"
-            >TRIVERSE 3.0</span
-        >
-    </div>
-
     <!-- Background Stars & Glows -->
     <div class="stars absolute inset-0 z-0"></div>
     <div class="hero-glow absolute rounded-full pointer-events-none z-0"></div>
@@ -271,35 +260,6 @@ import triLogo from "../images/Tri.png";
         height: 100vh;
     }
 
-    /* Branding CSS */
-    .hero-brand {
-        top: 24px;
-        left: 20px;
-        gap: 0.75rem;
-    }
-    .brand-text {
-        font-size: 1rem;
-    }
-    .brand-badge {
-        display: none;
-        padding: 0.25rem 0.5rem;
-        font-size: 0.6rem;
-    }
-    @media (min-width: 640px) {
-        .hero-brand {
-            top: 36px;
-            left: 40px;
-        }
-        .brand-text {
-            font-size: 1.125rem;
-        }
-        .brand-badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            font-size: 0.65rem;
-        }
-    }
-
     /* Glows & Environment */
     .hero-glow {
         top: 50%;
@@ -316,16 +276,16 @@ import triLogo from "../images/Tri.png";
 
     /* Top Content Block */
     .hero-top-block {
-        padding: 100px 16px 30px;
+        padding: 60px 16px 20px;
     }
     @media (min-width: 640px) {
         .hero-top-block {
-            padding: 140px 24px 40px;
+            padding: 100px 24px 28px;
         }
     }
     @media (min-width: 768px) {
         .hero-top-block {
-            padding: 160px 24px 40px;
+            padding: 108px 24px 28px;
         }
     }
 
@@ -443,13 +403,13 @@ import triLogo from "../images/Tri.png";
 
     /* Bottom Stack */
     .hero-bottom-stack {
-        padding-top: 1rem;
-        padding-bottom: 2rem;
+        padding-top: 0.5rem;
+        padding-bottom: 1.5rem;
     }
     @media (min-width: 768px) {
         .hero-bottom-stack {
-            padding-top: 1.5rem;
-            padding-bottom: 3.5rem;
+            padding-top: 1rem;
+            padding-bottom: 2.75rem;
         }
     }
 
