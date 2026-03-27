@@ -1,52 +1,52 @@
 [
   {
     "id": "01",
-    "name": "ARIA",
-    "role": "LEAD DESIGNER",
+    "name": "AMOGH SHARMA",
+    "role": "TEAM LEAD",
     "iconType": "sparkles",
     "accentColor": "#00f5d4",
     "offsetColor": "#00f5d4",
-    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600&h=800",
-    "hasImage": true
+    "image": "/team/Placeholder.png",
+    "hasImage": false
   },
   {
     "id": "02",
-    "name": "ZION",
-    "role": "LEAD MOTIONIST",
+    "name": "APOORV VERMA",
+    "role": "CO-LEAD",
     "iconType": "nodes",
     "accentColor": "#a15eff",
     "offsetColor": "#a15eff",
-    "image": "",
-    "hasImage": false
-  },
-  {
-    "id": "03",
-    "name": "LOLA",
-    "role": "ART DIRECTOR",
-    "iconType": "grid",
-    "accentColor": "#ffffff",
-    "offsetColor": "#ffffff",
-    "image": "",
-    "hasImage": false
-  },
-  {
-    "id": "04",
-    "name": "KAI",
-    "role": "3D SPECIALIST",
-    "iconType": "cube",
-    "accentColor": "#ff007f",
-    "offsetColor": "#ff007f",
-    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=600&h=800",
+    "image": "/team/Design/Apoorv_Verma.png",
     "hasImage": true
   },
   {
+    "id": "03",
+    "name": "NANDANI KHANDELWAL",
+    "role": "CORE MEMBER",
+    "iconType": "grid",
+    "accentColor": "#ffffff",
+    "offsetColor": "#ffffff",
+    "image": "/team/Design/nandani_khandelwal.png",
+    "hasImage": true
+  },
+  {
+    "id": "04",
+    "name": "ASTITVA AGARWAL",
+    "role": "CORE MEMBER",
+    "iconType": "cube",
+    "accentColor": "#ff007f",
+    "offsetColor": "#ff007f",
+    "image": "/team/Placeholder.png",
+    "hasImage": false
+  },
+  {
     "id": "05",
-    "name": "RENOrENOrENO",
-    "role": "UI/UX LEAD",
+    "name": "ILLYAS",
+    "role": "CORE MEMBER",
     "iconType": "layout",
     "accentColor": "#f5e600",
     "offsetColor": "#f5e600",
-    "image": "",
+    "image": "/team/Placeholder.png",
     "hasImage": false
   }
 ]

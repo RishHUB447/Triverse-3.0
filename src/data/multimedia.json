@@ -1,26 +1,26 @@
 [
     {
-        "name": "IRIS VALE",
-        "role": "GROWTH STRATEGIST",
-        "image": "/team/multimeida/1.png",
+        "name": "ATHRAV",
+        "role": "TEAM LEAD",
+        "image": "/team/Media/athrav.png",
         "glowColor": "#a855f7"
     },
     {
-        "name": "TOBY FINCH",
-        "role": "CONTENT LEAD",
-        "image": "/team/multimeida/2.png",
+        "name": "GAURIKA",
+        "role": "CO-LEAD",
+        "image": "/team/Media/gaurika.PNG",
         "glowColor": "#00f5d4"
     },
     {
-        "name": "SARA KANE",
-        "role": "VISUAL DESIGNER",
-        "image": "/team/multimeida/1.png",
+        "name": "ASHRITH JANGAM",
+        "role": "CORE MEMBER",
+        "image": "/team/Media/Ashrith_Jangam.png",
         "glowColor": "#f472b6"
     },
     {
-        "name": "LEO MARX",
-        "role": "SOCIAL MANAGER",
-        "image": "/team/multimeida/2.png",
+        "name": "SAGAR YADAV",
+        "role": "CORE MEMBER",
+        "image": "/team/Media/Sagar_yadav.png",
         "glowColor": "#fbbf24"
     }
 ]

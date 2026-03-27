@@ -1,38 +1,38 @@
 [
     {
         "id": 1,
-        "name": "ELIAS VAUGHN",
-        "role": "CEO / FOUNDER",
-        "image": "/team/Leads/1.png"
+        "name": "DEVANSH KUMAR",
+        "role": "CHAIRMAN",
+        "image": "/team/office-bearer/Devansh_Kumar.png"
     },
     {
         "id": 2,
-        "name": "SARAH KOX",
-        "role": "CHIEF DESIGN OFFICER",
-        "image": "/team/Leads/2.png"
+        "name": "MANYA CHAUBEY",
+        "role": "SECRETARY",
+        "image": "/team/office-bearer/manya.png"
     },
     {
         "id": 3,
-        "name": "MARCUS REED",
-        "role": "CTO",
-        "image": "/team/Leads/3.png"
+        "name": "SATVIK",
+        "role": "TREASURER",
+        "image": "/team/office-bearer/Satvik.png"
     },
     {
         "id": 4,
-        "name": "LENA STERLING",
-        "role": "HEAD OF GROWTH",
-        "image": "/team/Leads/4.png"
+        "name": "RISHABH VERMA",
+        "role": "WEB MASTER",
+        "image": "/team/office-bearer/Rishabh_Verma.png"
     },
     {
         "id": 5,
-        "name": "JULIAN DRAKE",
-        "role": "COO",
-        "image": "/team/Leads/5.png"
+        "name": "SAHARSH JAISHWAL",
+        "role": "LOGISTICS LEAD",
+        "image": "/team/Management/Saharsh_jaishwal.png"
     },
     {
         "id": 6,
-        "name": "ALEX CHEN",
-        "role": "CREATIVE DIRECTOR",
-        "image": "/team/Leads/6.png"
+        "name": "VANSH SINGHAL",
+        "role": "MEDIA LEAD",
+        "image": "/team/Media/vansh.png"
     }
 ]

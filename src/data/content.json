@@ -1,26 +1,34 @@
 [
   {
     "id": "content-1",
-    "name": "ROMAN KANE",
-    "handle": "r.kane@kinetic.noir",
-    "role": "NARRATIVE ARCHITECT",
+    "name": "DHRUV GUPTA",
+    "handle": "d.gupta@triverse.io",
+    "role": "TEAM LEAD",
     "roleColor": "#00f5d4",
-    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200"
+    "image": "/team/Research/Dhruv_Gupta.png"
   },
   {
     "id": "content-2",
-    "name": "ELARA VANCE",
-    "handle": "e.vance@kinetic.noir",
-    "role": "SCRIPT LEAD",
+    "name": "AISHA",
+    "handle": "aisha@triverse.io",
+    "role": "CO-LEAD",
     "roleColor": "#c4a1ff",
-    "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200&h=200"
+    "image": "/team/Placeholder.png"
   },
   {
     "id": "content-3",
-    "name": "HUGO BLAKE",
-    "handle": "h.blake@kinetic.noir",
-    "role": "CONCEPTUALIST",
+    "name": "ADITYA GUPTA",
+    "handle": "a.gupta@triverse.io",
+    "role": "CORE MEMBER",
     "roleColor": "#00f5d4",
-    "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200&h=200"
+    "image": "/team/Content/Aditya_Gupta.png"
+  },
+  {
+    "id": "content-4",
+    "name": "AGRIM VERMA",
+    "handle": "a.verma@triverse.io",
+    "role": "CORE MEMBER",
+    "roleColor": "#c4a1ff",
+    "image": "/team/Content/Agrim_Verma.png"
   }
 ]

@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import logoCff from "../images/event/LOGO_cff.png";
-import theDropt from "../images/event/TheDropt.png";
-import frame87 from "../images/event/Frame 87 (1).png";
+import logoCff from "../images/event/1.png";
+import theDropt from "../images/event/3.png";
+import frame87 from "../images/event/2.png";
 
 const events = [
   {
@@ -145,8 +145,8 @@ const events = [
                     src={event.image}
                     alt={event.cardTitle}
                     class="event-image"
-                    width={320}
-                    height={320}
+                    width={1920}
+                    height={1080}
                   />
                 </div>
               </div>
@@ -374,8 +374,9 @@ const events = [
   }
 
   .event-image-container {
-    width: 240px;
-    height: 240px;
+    width: 420px;
+    height: auto;
+    aspect-ratio: 16 / 9;
     flex-shrink: 0;
     position: relative;
     opacity: 0;
@@ -610,8 +611,8 @@ const events = [
       gap: 24px;
     }
     .event-image-container {
-      width: 180px;
-      height: 180px;
+      width: 100%;
+      max-width: 400px;
     }
     .text-right-align {
       text-align: left;
@@ -683,8 +684,8 @@ const events = [
       gap: 24px;
     }
     .event-image-container {
-      width: 160px;
-      height: 160px;
+      width: 100%;
+      max-width: 320px;
     }
   }
 

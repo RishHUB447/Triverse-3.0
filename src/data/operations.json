@@ -1,82 +1,82 @@
 [
   {
     "id": "001",
-    "name": "ALAN GRANT",
-    "role": "FINANCE DIRECTOR",
+    "name": "ATHARV KRISHNA",
+    "role": "TEAM LEAD",
     "iconType": "bank",
     "color": "#00f5d4",
-    "image": "/team/multimeida/1.png"
+    "image": "/team/Management/Atharv_Krishna.png"
   },
   {
     "id": "002",
-    "name": "SOPHIE CHEN",
-    "role": "HUMAN CAPITAL",
+    "name": "ADITI GANGWAR",
+    "role": "CORE MEMBER",
     "iconType": "shield",
     "color": "#c4a1ff",
-    "image": "/team/multimeida/2.png"
+    "image": "/team/Management/Aditi_Gangwar.png"
   },
   {
     "id": "003",
-    "name": "DAVID WOLF",
-    "role": "SCHEDULING LEAD",
+    "name": "AMAN",
+    "role": "CORE MEMBER",
     "iconType": "clock",
     "color": "#00f5d4",
-    "image": "/team/multimeida/1.png"
+    "image": "/team/Management/Aman.png"
   },
   {
     "id": "004",
-    "name": "RUBY JADE",
-    "role": "RESOURCE ALLOC.",
+    "name": "ASHWIN SHARMA",
+    "role": "CORE MEMBER",
     "iconType": "box",
     "color": "#c4a1ff",
-    "image": "/team/multimeida/2.png"
+    "image": "/team/Management/Ashwin_Sharma.png"
   },
   {
     "id": "005",
-    "name": "VICTOR HU",
-    "role": "LEGAL COUNSEL",
+    "name": "BHUMIKA",
+    "role": "CORE MEMBER",
     "iconType": "copyright",
     "color": "#00f5d4",
-    "image": "/team/multimeida/1.png"
+    "image": "/team/Management/Bhumika-removebg.png"
   },
   {
     "id": "006",
-    "name": "ZANE RIVERS",
-    "role": "LOGISTICS COORDINATOR",
+    "name": "KHUSHI MITTAL",
+    "role": "CORE MEMBER",
     "iconType": "truck",
     "color": "#c4a1ff",
-    "image": "/team/multimeida/2.png"
+    "image": "/team/Management/khushi_mittal.png"
   },
   {
     "id": "007",
-    "name": "NINA VOX",
-    "role": "COMMUNICATIONS LEAD",
+    "name": "SHREEJEET GUPTA",
+    "role": "CORE MEMBER",
     "iconType": "radio",
     "color": "#00f5d4",
-    "image": "/team/multimeida/1.png"
+    "image": "/team/Management/Shreejeet_Gupta.png"
   },
   {
     "id": "008",
-    "name": "LEO DRAKE",
-    "role": "FIELD OPERATIONS",
+    "name": "MANASHVINI DAVE",
+    "role": "CORE MEMBER",
     "iconType": "map",
     "color": "#c4a1ff",
-    "image": "/team/multimeida/2.png"
+    "image": "/team/Management/Manashvini_Dave.png"
   },
   {
     "id": "009",
-    "name": "SARAH BLISS",
-    "role": "PROCUREMENT OFFICER",
+    "name": "SHIVIKA YADAV",
+    "role": "CORE MEMBER",
     "iconType": "shopping-cart",
     "color": "#00f5d4",
-    "image": "/team/multimeida/1.png"
+    "image": "/team/Management/shivikaYadav.png"
   },
   {
     "id": "010",
-    "name": "OSCAR WILD",
-    "role": "STRATEGY ANALYST",
+    "name": "MEGHA SINGHAL",
+    "role": "CORE MEMBER",
     "iconType": "target",
     "color": "#c4a1ff",
-    "image": "/team/multimeida/2.png"
+    "image": "/team/Management/megha_singhal.png"
   }
 ]

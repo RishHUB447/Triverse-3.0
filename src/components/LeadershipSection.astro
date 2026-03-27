@@ -9,7 +9,7 @@ const mentors = [
     {
         name: "Dean, SCSET",
         role: "STRATEGIC ADVISOR",
-        image: "/dean.png",
+        image: "/dean.jpg",
         color: "#a78bfa",
     },
     {
@@ -43,9 +43,7 @@ const mentors = [
                         <div
                             class={`mentor-card mentor-offset-${index} leadership-fade`}
                         >
-                            <div
-                                class="hex-frame leadership-fade"
-                            >
+                            <div class="hex-frame leadership-fade">
                                 <svg viewBox="0 0 300 346" class="hex-svg">
                                     <defs>
                                         <clipPath id={`hexClip-${index}`}>
@@ -71,9 +69,7 @@ const mentors = [
                                 </svg>
                             </div>
                             <h3 class="mentor-name">{mentor.name}</h3>
-                            <p class="mentor-role">
-                                {mentor.role}
-                            </p>
+                            <p class="mentor-role">{mentor.role}</p>
                         </div>
                     ))
                 }

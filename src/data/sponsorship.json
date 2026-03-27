@@ -1,65 +1,65 @@
 [
     {
         "id": "01",
-        "code": "L. STRAT",
-        "name": "Adrianne Sterling",
-        "role": "PRINCIPAL LEAD / FINANCIAL ARCHITECT",
+        "code": "TEAM LEAD",
+        "name": "SHREYASI DOSHI",
+        "role": "TEAM LEAD",
         "iconType": "dollar",
         "color": "#d8b4e2",
-        "image": "/team/multimeida/1.png"
+        "image": "/team/PRandOutreach/Shreyasi Doshi.png"
     },
     {
         "id": "02",
-        "code": "P. DEV",
-        "name": "Julian Voss",
-        "role": "GLOBAL PARTNERSHIPS",
+        "code": "CO-LEAD",
+        "name": "ARPITA ARORA",
+        "role": "CO-LEAD",
         "iconType": "handshake",
         "color": "#00f5d4",
-        "image": "/team/multimeida/2.png"
+        "image": "/team/PRandOutreach/Arpita_Arora.png"
     },
     {
         "id": "03",
-        "code": "B. CUR",
-        "name": "Elena Moretti",
-        "role": "BRAND IDENTITY CURATOR",
+        "code": "CORE.",
+        "name": "ADITYA KUSHWAHA",
+        "role": "CORE MEMBER",
         "iconType": "hex",
         "color": "#c4a1ff",
-        "image": "/team/multimeida/1.png"
+        "image": "/team/PRandOutreach/Aditya Kushwaha .png"
     },
     {
         "id": "04",
-        "code": "M. INTEL",
-        "name": "David Chen",
-        "role": "MARKET INTELLIGENCE",
+        "code": "CORE.",
+        "name": "DIVYANSH SHARMA",
+        "role": "CORE MEMBER",
         "iconType": "graph",
         "color": "#a1a1aa",
-        "image": "/team/multimeida/2.png"
+        "image": "/team/PRandOutreach/Divyansh_Sharma.png"
     },
     {
         "id": "05",
-        "code": "C. FUSE",
-        "name": "Silas Thorne",
-        "role": "CREATIVE INTEGRATION LEAD",
+        "code": "CORE.",
+        "name": "MANNAT BANSAL",
+        "role": "CORE MEMBER",
         "iconType": "squares",
         "color": "#d8b4e2",
-        "image": "/team/multimeida/1.png"
+        "image": "/team/PRandOutreach/Mannat_Bansal.png"
     },
     {
         "id": "06",
-        "code": "REL.",
-        "name": "Maya Patel",
-        "role": "RELATIONSHIP DIRECTOR",
+        "code": "CORE.",
+        "name": "PRABHAVI GUPTA",
+        "role": "CORE MEMBER",
         "iconType": "network",
         "color": "#00f5d4",
-        "image": "/team/multimeida/2.png"
+        "image": "/team/PRandOutreach/Prabhavi_Gupta.png"
     },
     {
         "id": "07",
-        "code": "OP. SYS",
-        "name": "Kieran Frost",
-        "role": "SYSTEMS OPERATIONS",
+        "code": "CORE.",
+        "name": "SAMAR KUMAR",
+        "role": "CORE MEMBER",
         "iconType": "terminal",
         "color": "#c4a1ff",
-        "image": "/team/multimeida/1.png"
+        "image": "/team/PRandOutreach/Samar_Kumar.png"
     }
 ]

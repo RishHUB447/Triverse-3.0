@@ -9,42 +9,42 @@
     },
     {
         "id": 2,
-        "name": "MIA THORNE",
-        "role": "LEAD FRONTEND",
-        "image": "/team/tech/2.png",
-        "tickerText": "LOW // SHADER_STUDIO // WEBGL_EXPERT // NPM/GL-GLOW // SHADER_STUDIO",
+        "name": "SAMRIDHI AGRAWAL",
+        "role": "CO-LEAD",
+        "image": "/team/tech/samridhi-agrawal.png",
+        "tickerText": "CORE_DEV // DATA_PIPELINE // SYSTEMS_ARCH // SAMRIDHI/AGRAWAL",
         "type": "co-lead"
     },
     {
         "id": 3,
-        "name": "KAI ROSS",
-        "role": "PIPELINE TD",
-        "image": "/team/tech/3.png",
-        "tickerText": "SCRIPTING // BLENDER_API // PIPELINE_DEV // PYTHON_SCRIPTING // BLENDER_API",
+        "name": "SAKSHAM YADAV",
+        "role": "CORE MEMBER",
+        "image": "/team/tech/saksham_yadav.png",
+        "tickerText": "FULLSTACK // DATABASE_DEV // SAKSHAM/YADAV",
         "type": "junior"
     },
     {
         "id": 4,
-        "name": "SARAH WEST",
-        "role": "JUNIOR DEVELOPER",
-        "image": "/team/tech/1.png",
-        "tickerText": "HUB/VORTEX-DEV // NEURAL_SIM_V2 // REFACTORING_ENGINE",
+        "name": "SHRUTI",
+        "role": "CORE MEMBER",
+        "image": "/team/tech/shruti.png",
+        "tickerText": "AI_DEV // DATA_MINING // SHRUTI/TECH",
         "type": "junior"
     },
     {
         "id": 5,
-        "name": "LIAM JAMES",
-        "role": "JUNIOR DEVELOPER",
-        "image": "/team/tech/2.png",
-        "tickerText": "LOW // SHADER_STUDIO // WEBGL_EXPERT // NPM/GL-GLOW",
+        "name": "LAKSHYA DIXIT",
+        "role": "CORE MEMBER",
+        "image": "/team/tech/Lakshya.png",
+        "tickerText": "FRONTEND // UI_DEV // LAKSHYA/DIXIT",
         "type": "junior"
     },
     {
         "id": 6,
-        "name": "ELENA VANCE",
-        "role": "JUNIOR DEVELOPER",
-        "image": "/team/tech/3.png",
-        "tickerText": "SCRIPTING // BLENDER_API // PIPELINE_DEV // PYTHON_SCRIPTING",
+        "name": "AYUSH TIWARI",
+        "role": "CORE MEMBER",
+        "image": "/team/tech/Ayush_Tiwari.png",
+        "tickerText": "BACKEND // SEC_DEV // AYUSH/TIWARI",
         "type": "junior"
     }
 ]

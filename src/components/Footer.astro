@@ -9,13 +9,6 @@ import arcBg from "../images/arc.png";
 const isEventsPage = Astro.url.pathname === "/events";
 const footerClass = `footer${isEventsPage ? " footer-animate" : ""}`;
 import benuniLogo from "../images/benuni.png";
-import rishabhImg from "../images/team/office-bearer/Rishabh_Verma.png";
-import gyanendraImg from "../images/team/tech/gyanendra.png";
-import samridhiImg from "../images/team/tech/samridhi-agrawal.png";
-import lakshyaImg from "../images/team/tech/Lakshya.png";
-import shrutiImg from "../images/team/tech/shruti.png";
-import AyushImg from "../images/team/tech/Ayush_Tiwari.png";
-import SakshamImg from "../images/team/tech/saksham_yadav.png";
 ---
 
 <footer class={footerClass} id="footer">
@@ -125,45 +118,45 @@ import SakshamImg from "../images/team/tech/saksham_yadav.png";
           <!-- Add team member avatars here -->
           <div class="team-member">
             <div class="team-avatar">
-              <Image src={rishabhImg} alt="Rishabh Verma" />
+              <img src="/team/office-bearer/Rishabh_Verma.png" alt="Rishabh Verma" />
             </div>
-            <p class = "team-member-name">Rishabh</p>
+            <p class="team-member-name">Rishabh</p>
           </div>
           <div class="team-member">
             <div class="team-avatar">
-              <Image src={gyanendraImg} alt="Gyanendra" />
+              <img src="/team/tech/gyanendra.png" alt="Gyanendra" />
             </div>
-            <p class = "team-member-name">Gyanendra</p>
+            <p class="team-member-name">Gyanendra</p>
           </div>
           <div class="team-member">
             <div class="team-avatar">
-              <Image src={samridhiImg} alt="Samridhi" />
+              <img src="/team/tech/samridhi-agrawal.png" alt="Samridhi" />
             </div>
-            <p class = "team-member-name">Samriddhi</p>
+            <p class="team-member-name">Samriddhi</p>
           </div>
           <div class="team-member">
             <div class="team-avatar">
-              <Image src={lakshyaImg} alt="Lakshya" />
+              <img src="/team/tech/Lakshya.png" alt="Lakshya" />
             </div>
-            <p class = "team-member-name">Lakshya</p>
+            <p class="team-member-name">Lakshya</p>
           </div>
           <div class="team-member">
             <div class="team-avatar">
-              <Image src={shrutiImg} alt="Shruti" />
+              <img src="/team/tech/shruti.png" alt="Shruti" />
             </div>
-            <p class = "team-member-name">Shruti</p>
+            <p class="team-member-name">Shruti</p>
           </div>
           <div class="team-member">
             <div class="team-avatar">
-              <Image src={AyushImg} alt="Ayush" />
+              <img src="/team/tech/Ayush_Tiwari.png" alt="Ayush" />
             </div>
-            <p class = "team-member-name">Ayush</p>
+            <p class="team-member-name">Ayush</p>
           </div>
           <div class="team-member">
             <div class="team-avatar">
-              <Image src={SakshamImg} alt="Saksham" />
+              <img src="/team/tech/saksham_yadav.png" alt="Saksham" />
             </div>
-            <p class = "team-member-name">Saksham</p>
+            <p class="team-member-name">Saksham</p>
           </div>
           <!-- Add more team members as needed -->
         </div>
