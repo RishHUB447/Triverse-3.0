@@ -9,14 +9,14 @@
     },
     {
       "name": "Unstop",
-      "logo": "/public/unstop.png",
+      "logo": "/unstop.png",
       "description": "",
       "website": "https://unstop.com/",
       "tier": "large"
     },
     {
       "name": "BuildIt",
-      "logo": "/public/builditlogo.png",
+      "logo": "/builditlogo.png",
       "description": "Be unstoppable",
       "website": "",
       "tier": "small"
