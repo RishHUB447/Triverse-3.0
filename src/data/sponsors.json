@@ -9,10 +9,17 @@
     },
     {
       "name": "Unstop",
-      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4OasCt8V1ILpWp8Q4Cgr7w486JJyvBVBTuA&s",
-      "description": "Be unstoppable",
+      "logo": "/public/unstop.png",
+      "description": "",
       "website": "https://unstop.com/",
       "tier": "large"
+    },
+    {
+      "name": "BuildIt",
+      "logo": "/public/builditlogo.png",
+      "description": "Be unstoppable",
+      "website": "",
+      "tier": "small"
     },
     {
       "name": "Bennett University",
