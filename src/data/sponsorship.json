@@ -52,14 +52,5 @@
         "iconType": "network",
         "color": "#00f5d4",
         "image": "/team/PRandOutreach/Prabhavi_Gupta.png"
-    },
-    {
-        "id": "07",
-        "code": "CORE.",
-        "name": "SAMAR KUMAR",
-        "role": "CORE MEMBER",
-        "iconType": "terminal",
-        "color": "#c4a1ff",
-        "image": "/team/PRandOutreach/Samar_Kumar.png"
     }
 ]

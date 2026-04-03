@@ -78,5 +78,13 @@
     "iconType": "target",
     "color": "#c4a1ff",
     "image": "/team/Management/megha_singhal.png"
+  },
+  {
+    "id": "011",
+    "name": "Khushi",
+    "role": "CORE MEMBER",
+    "iconType": "target",
+    "color": "#c4a1ff",
+    "image": "/team/Management/Khushi.png"
   }
 ]

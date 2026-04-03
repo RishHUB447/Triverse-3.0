@@ -3,50 +3,22 @@
     {
       "name": "Coding Block",
       "logo": "https://cb3img.s3.ap-south-1.amazonaws.com/img/cblogo.webp",
-      "description": "GitHub is where the world builds software.",
-      "website": "https://github.com",
-      "tier": "small"
+      "description": "Code your way to success",
+      "website": "https://www.codingblocks.com/",
+      "tier": "large"
+    },
+    {
+      "name": "Unstop",
+      "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4OasCt8V1ILpWp8Q4Cgr7w486JJyvBVBTuA&s",
+      "description": "Be unstoppable",
+      "website": "https://unstop.com/",
+      "tier": "large"
     },
     {
       "name": "Bennett University",
       "logo": "https://www.facultyplus.com/wp-content/uploads/2024/02/Bennett-University-Logo-FP.webp",
-      "description": "Stripe builds economic infrastructure for the internet.",
-      "website": "https://stripe.com",
-      "tier": "large"
-    },
-    {
-      "name": "Notion",
-      "logo": "https://unavatar.io/figma.com",
-      "description": "Notion is the connected workspace for your wiki, docs & projects.",
-      "website": "https://notion.so",
-      "tier": "large"
-    },
-    {
-      "name": "Google",
-      "logo": "https://unavatar.io/figma.com",
-      "description": "Vercel is the platform for frontend developers.",
-      "website": "https://vercel.com",
-      "tier": "small"
-    },
-    {
-      "name": "Figma",
-      "logo": "https://unavatar.io/figma.com",
-      "description": "Figma is the leading collaborative design platform.",
-      "website": "https://figma.com",
-      "tier": "small"
-    },
-    {
-      "name": "Linear",
-      "logo": "https://unavatar.io/linear.app",
-      "description": "Linear is the issue tracking tool for high-performance teams.",
-      "website": "https://linear.app",
-      "tier": "small"
-    },
-    {
-      "name": "Supabase",
-      "logo": "https://unavatar.io/supabase.com",
-      "description": "Supabase is the open-source Firebase alternative.",
-      "website": "https://supabase.com",
+      "description": "Move with the times, move with Bennett",
+      "website": "https://www.bennett.edu.in/",
       "tier": "small"
     }
   ]
