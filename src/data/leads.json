@@ -2,13 +2,13 @@
     {
         "id": 1,
         "name": "DEVANSH KUMAR",
-        "role": "CHAIRMAN",
+        "role": "CHAIRPERSON",
         "image": "/team/office-bearer/Devansh_Kumar.png"
     },
     {
         "id": 2,
         "name": "MANYA CHAUBEY",
-        "role": "SECRETARY",
+        "role": "VICE CHAIRPERSON",
         "image": "/team/office-bearer/manya.png"
     },
     {
