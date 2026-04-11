@@ -1,34 +1,50 @@
 [
   {
     "id": "content-1",
-    "name": "DHRUV GUPTA",
-    "handle": "d.gupta@triverse.io",
+    "name": "Krishna Gaur",
+    "handle": "",
     "role": "TEAM LEAD",
     "roleColor": "#00f5d4",
-    "image": "/team/Research/Dhruv_Gupta.png"
+    "image": "/team/Content/krishna_Gaur.png"
   },
   {
     "id": "content-2",
-    "name": "AISHA",
-    "handle": "aisha@triverse.io",
+    "name": "Venugopal Chepuri",
+    "handle": "",
     "role": "CO-LEAD",
-    "roleColor": "#c4a1ff",
-    "image": "/team/Placeholder.png"
+    "roleColor": "#00f5d4",
+    "image": "/team/Content/venugopal_Chepuri.png"
   },
   {
     "id": "content-3",
-    "name": "ADITYA GUPTA",
-    "handle": "a.gupta@triverse.io",
-    "role": "CORE MEMBER",
-    "roleColor": "#00f5d4",
-    "image": "/team/Content/Aditya_Gupta.png"
-  },
-  {
-    "id": "content-4",
     "name": "AGRIM VERMA",
     "handle": "a.verma@triverse.io",
     "role": "CORE MEMBER",
     "roleColor": "#c4a1ff",
     "image": "/team/Content/Agrim_Verma.png"
+  },
+  {
+    "id": "content-3",
+    "name": "Poornima Sharma",
+    "handle": "",
+    "role": "CORE MEMBER",
+    "roleColor": "#c4a1ff",
+    "image": "/team/Content/Poornima_Sharma.png"
+  },
+  {
+    "id": "content-4",
+    "name": "Archi Khandelwal",
+    "handle": "",
+    "role": "CORE MEMBER",
+    "roleColor": "#c4a1ff",
+    "image": "/team/Placeholder.png"
+  },
+  {
+    "id": "content-5",
+    "name": "Kaveri Joshi",
+    "handle": "",
+    "role": "CORE MEMBER",
+    "roleColor": "#c4a1ff",
+    "image": "/team/Placeholder.png"
   }
 ]

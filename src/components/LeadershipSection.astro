@@ -124,8 +124,8 @@ const mentors = [
     }
 
     .description {
-        font-size: 1.2rem;
-        line-height: 1.6;
+        font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+        line-height: 1.65;
         color: #94a3b8;
         max-width: 600px;
         margin-bottom: 2.5rem;
@@ -248,15 +248,34 @@ const mentors = [
 
     @media (max-width: 768px) {
         .leadership-section {
-            padding: 6rem 1.5rem;
+            padding: 5rem 1.25rem;
         }
 
         .title {
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 9vw, 2.8rem);
+        }
+
+        .description {
+            font-size: 0.95rem;
+            line-height: 1.65;
         }
 
         .mentor-card {
-            width: 200px;
+            width: 160px;
+        }
+
+        .mentor-name {
+            font-size: 1.05rem;
+        }
+
+        .mentor-role {
+            font-size: 0.65rem;
         }
     }
-</style>
+
+    @media (max-width: 480px) {
+        .leadership-section { padding: 4rem 1rem; }
+        .label { font-size: 0.72rem; letter-spacing: 0.2rem; }
+        .mentors-side { gap: 1.5rem; }
+        .mentor-card { width: 140px; }
+    }</style>

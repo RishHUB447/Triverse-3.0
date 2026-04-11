@@ -1,0 +1,741 @@
+---
+import { Image } from "astro:assets";
+import logoCff from "../images/event/1.png";
+import theDropt from "../images/event/3.png";
+import frame87 from "../images/event/Typix.png";
+
+const events = [
+  {
+    id: 1,
+    image: logoCff,
+    cardTitle: "BET FOR TECH",
+    tagline: "Bluff. Solve. Survive.",
+    objective:
+      "A strategy event built on bluffing and logic where teams solve tech problems while opponents bet on their success, followed by a social-deduction stage showdown.",
+    color: "#a07830",
+    glowColor: "rgba(160, 120, 48, 1)",
+    day: "Day 1",
+    tag: "Strategy",
+    details: [
+      "Battle at tables using fake currency to bet on coding and logic solutions",
+      "Strategically under-perform or bluff to mislead opponents and win the pot",
+      "Participate in a final social-deduction round to split or steal the prize",
+    ],
+    participants: "Teams of 2-3",
+    duration: "3 hours total",
+    seq: "01",
+    registerLink: "https://unstop.com/hackathons/bet-for-tech-ieee-bennett-university-branch-1666302",
+  },
+  {
+    id: 2,
+    image: frame87,
+    cardTitle: "TYPOTHON",
+    tagline: "Speed. Accuracy. The Ultimate Keystroke.",
+    objective:
+      "A two-phase typing competition featuring a 4-day pre-fest open stall and a live, high-pressure stage final on Day 1.",
+    color: "#2676a8",
+    glowColor: "rgba(38, 118, 168, 1)",
+    day: "Day 1",
+    tag: "Mass Participation",
+    details: [
+      "Open stall runs for 4 days as a pre-fest outreach initiative",
+      "Top performers are invited to compete in live stage rounds",
+      "Scoring uses Words Per Minute (WPM) strictly adjusted for accuracy",
+    ],
+    participants: "Individual (Walk-in)",
+    duration: "4 Days (Stall) + 55 Min (Finals)",
+    seq: "02",
+    registerLink: "https://unstop.com/hackathons/typix-a-typothon-bennett-university-bu-greater-noida-1666593",
+  },
+  {
+    id: 3,
+    image: theDropt,
+    cardTitle: "THE DROP",
+    tagline: "Launch the Future. Even If It's Fake.",
+    objective:
+      "Teams invent and pitch a completely fictional product from the year 2050, rewarding creativity, storytelling, and the ability to sell a vision.",
+    color: "#7040b0",
+    glowColor: "rgba(112, 64, 176, 1)",
+    day: "Day 2",
+    tag: "Creative · Stage",
+    details: [
+      "Define a futuristic product concept within a 1-hour ideation sprint",
+      "Create a product concept poster featuring a brand name and mockup",
+      "Deliver a 3-minute live pitch followed by a 2-minute Q&A with judges",
+    ],
+    participants: "Teams of 2-4",
+    duration: "4 hours total",
+    seq: "03",
+    registerLink: "https://unstop.com/hackathons/the-drop-bennett-university-bu-greater-noida-1666638",
+  },
+];
+---
+
+<section class="events-section" id="events">
+  <!-- Vertical Timeline Line -->
+  <div class="timeline-vertical"></div>
+
+  <!-- Section Header -->
+  <header class="chronicle-header">
+    <h2 class="chronicle-title">
+      <span class="title-line" id="evTitleLine1">
+        <span class="ev-letter">T</span><span class="ev-letter">H</span><span class="ev-letter">E</span>
+      </span>
+      <br/>
+      <span class="title-line" id="evTitleLine2">
+        <span class="ev-letter">E</span><span class="ev-letter">V</span><span class="ev-letter">E</span><span class="ev-letter">N</span><span class="ev-letter">T</span><span class="ev-letter">S</span>
+      </span>
+    </h2>
+    <p class="chronicle-subtitle" id="evSubtitleText">Two days of innovation, competition &amp; creativity</p>
+  </header>
+
+  <!-- Timeline Content -->
+  <div class="chronicle-content">
+    {events.map((event, index) => {
+      const isReversed = index % 2 !== 0;
+      return (
+        <div class="chronicle-event ev-group" data-event-id={event.id}>
+          <!-- Day Number - Large Text -->
+          <div class="event-day-col">
+            <span class="day-large-text" style={`--hover-color: ${event.color}20;`}>
+              {event.seq}
+            </span>
+            <span class="day-label" style={`color: ${event.color};`}>
+              {event.day.toUpperCase()}
+            </span>
+          </div>
+
+          <!-- Timeline Dot -->
+          <div class="timeline-dot-anchor">
+            <div class="timeline-dot" style={`background-color: ${event.color}; box-shadow: 0 0 20px ${event.glowColor};`}></div>
+          </div>
+
+          <!-- Content + Image -->
+          <div class={`event-content-col ${isReversed ? "content-reversed" : ""}`}>
+            <div class={`event-inner ${isReversed ? "inner-reversed" : ""}`}>
+              <!-- Text Content -->
+              <div class={`event-text ${isReversed ? "text-right-align" : ""}`}>
+                <div class="event-tag" style={`color: ${event.color};`}>
+                  {event.tag}
+                </div>
+                <h3 class="event-title">{event.cardTitle}</h3>
+                <p class="event-tagline">{event.tagline}</p>
+                <p class="event-objective">{event.objective}</p>
+
+                <!-- Meta -->
+                <div class={`event-meta ${isReversed ? "meta-right" : ""}`}>
+                  <div class="meta-chip">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style={`color: ${event.color};`}>
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>{event.participants}</span>
+                  </div>
+                  <div class="meta-chip">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style={`color: ${event.color};`}>
+                      <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>{event.duration}</span>
+                  </div>
+                </div>
+
+                <!-- Register Link -->
+                <div class={`event-register ${isReversed ? "register-right" : ""}`}>
+                  <a href={event.registerLink || "https://unstop.com"} target="_blank" rel="noopener noreferrer" class="register-btn" style={`--btn-color: ${event.color}; --btn-glow: ${event.glowColor};`}>
+                    Register on Unstop
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Image -->
+              <div class="event-image-container">
+                <div class="event-image-glow" style={`background: ${event.color}08;`}></div>
+                <Image
+                  src={event.image}
+                  alt={event.cardTitle}
+                  class="event-image"
+                  width={1920}
+                  height={1080}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Decorative Floating Blurs -->
+  <div class="ev-deco-blur ev-deco-blur-1"></div>
+  <div class="ev-deco-blur ev-deco-blur-2"></div>
+</section>
+
+<style>
+  /* ==================== SECTION ==================== */
+  .events-section {
+    position: relative;
+    background-color: #000;
+    color: #fff;
+    font-family: var(--font-sf-pro), system-ui, -apple-system, sans-serif;
+    padding-top: 80px;
+    padding-bottom: 120px;
+    overflow: hidden;
+    z-index: 5;
+  }
+
+  .events-section::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(120px);
+  }
+
+  /* ==================== VERTICAL TIMELINE ==================== */
+  .timeline-vertical {
+    position: absolute;
+    left: 25%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(180,139,255,0.3), transparent);
+    box-shadow: 0 0 15px rgba(180,139,255,0.2);
+    pointer-events: none;
+  }
+
+  /* ==================== HEADER ==================== */
+  .chronicle-header {
+    max-width: 1280px;
+    margin: 0 auto 160px;
+    padding: 0 48px;
+    position: relative;
+    z-index: 10;
+  }
+  .chronicle-title {
+    font-family: var(--font-sf-pro), system-ui, sans-serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: #fff;
+    opacity: 0.9;
+    margin: 0 0 16px;
+  }
+  .title-line {
+    display: inline-block;
+    overflow: hidden;
+  }
+  .ev-letter {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.4s ease;
+  }
+  .ev-letter.pop {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .chronicle-subtitle {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.45);
+    max-width: 320px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .chronicle-subtitle.pop {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ==================== TIMELINE CONTENT ==================== */
+  .chronicle-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* ==================== CHRONICLE EVENT ==================== */
+  .chronicle-event {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 200px;
+  }
+  .chronicle-event:last-child {
+    margin-bottom: 80px;
+  }
+
+  /* ==================== DAY COLUMN ==================== */
+  .event-day-col {
+    width: 25%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-day-col {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.1s;
+  }
+
+  .day-large-text {
+    font-family: var(--font-sf-pro), system-ui, sans-serif;
+    font-weight: 100;
+    font-size: clamp(5rem, 12vw, 10rem);
+    line-height: 1;
+    color: rgba(255,255,255,0.06);
+    transition: color 0.7s ease;
+    user-select: none;
+  }
+  .chronicle-event:hover .day-large-text {
+    color: var(--hover-color, rgba(180,139,255,0.15));
+  }
+  .day-label {
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transform: rotate(90deg);
+    transform-origin: right center;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .day-label {
+    opacity: 1;
+    transition-delay: 0.4s;
+  }
+
+  /* ==================== TIMELINE DOT ==================== */
+  .timeline-dot-anchor {
+    width: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+    flex-shrink: 0;
+  }
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    z-index: 20;
+    flex-shrink: 0;
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .timeline-dot {
+    transform: scale(1);
+    transition-delay: 0.25s;
+  }
+
+  /* ==================== CONTENT ANIMATIONS ==================== */
+  .event-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .event-image-container {
+    width: 420px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+    position: relative;
+    opacity: 0;
+    transform: translateY(40px) scale(0.85);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-image-container {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition-delay: 0.65s;
+    animation: imageBreath 3s ease-in-out 1.5s infinite;
+  }
+  @keyframes imageBreath {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-4px) scale(1.06); }
+  }
+
+  .event-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    width: fit-content;
+    opacity: 0;
+    transform: translateY(12px) translateX(-15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-tag {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+    transition-delay: 0.3s;
+  }
+
+  .event-meta {
+    display: flex;
+    gap: 16px;
+    padding-top: 8px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-meta {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.75s;
+  }
+  .meta-chip {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .meta-chip:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
+  }
+  .chronicle-event.revealed .meta-chip:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.9s;
+  }
+
+  /* ==================== CONTENT COLUMN ==================== */
+  .event-content-col {
+    flex: 1;
+    padding-left: 80px;
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-content-col {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.2s;
+  }
+  .event-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+  }
+  .event-inner.inner-reversed {
+    flex-direction: row-reverse;
+  }
+
+  /* ==================== EVENT TEXT ==================== */
+  .event-text.text-right-align {
+    text-align: right;
+  }
+  .text-right-align .event-tag {
+    margin-left: auto;
+  }
+
+  .event-title {
+    font-family: var(--font-sf-pro), system-ui, sans-serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0;
+    line-height: 1.1;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+  }
+
+  .event-tagline {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-tagline {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+
+  .event-objective {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 380px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-objective {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+  }
+  .text-right-align .event-objective {
+    margin-left: auto;
+  }
+
+  /* ==================== META ==================== */
+  .event-meta.meta-right {
+    justify-content: flex-end;
+  }
+  .meta-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ==================== REGISTER BUTTON ==================== */
+  .event-register {
+    margin-top: 24px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0s;
+  }
+  .chronicle-event.revealed .event-register {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
+  }
+  .event-register.register-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .register-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: transparent;
+    border: 1px solid var(--btn-color);
+    border-radius: 4px;
+    text-decoration: none;
+    box-shadow: 0 0 15px var(--btn-glow);
+    transition: all 0.3s ease;
+  }
+  .register-btn:hover {
+    background: var(--btn-color);
+    color: #000;
+    box-shadow: 0 0 25px var(--btn-glow);
+    transform: translateY(-2px);
+  }
+
+  /* ==================== EVENT IMAGE ==================== */
+  .event-image-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    filter: blur(50px);
+  }
+  .event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 10;
+    transition: transform 0.5s ease;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+  }
+  .chronicle-event:hover .event-image {
+    transform: scale(1.1);
+  }
+
+  /* ==================== DECORATIVE BLURS ==================== */
+  .ev-deco-blur {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(120px);
+  }
+  .ev-deco-blur-1 {
+    top: 20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(168,85,247,0.04);
+  }
+  .ev-deco-blur-2 {
+    bottom: 20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: rgba(217,70,239,0.04);
+  }
+
+  /* ==================== RESPONSIVE ==================== */
+  @media (max-width: 1024px) {
+    .event-day-col { padding-right: 48px; }
+    .event-content-col { padding-left: 48px; }
+    .event-inner { flex-direction: column !important; gap: 24px; }
+    .event-image-container { width: 100%; max-width: 400px; }
+    .text-right-align { text-align: left; }
+    .text-right-align .event-tag,
+    .text-right-align .event-objective { margin-left: 0; }
+    .event-meta.meta-right { justify-content: flex-start; }
+  }
+
+  @media (max-width: 768px) {
+    .events-section { padding-top: 60px; padding-bottom: 80px; }
+    .timeline-vertical { display: none; }
+    .chronicle-header { padding: 0 20px; margin-bottom: 56px; }
+    .chronicle-title { font-size: clamp(2.8rem, 13vw, 5rem); }
+    .chronicle-subtitle { font-size: 0.65rem; }
+    .chronicle-content { padding: 0 20px; }
+    .chronicle-event { flex-direction: column; gap: 12px; margin-bottom: 72px; }
+    .event-day-col { width: 100%; justify-content: flex-start; padding-right: 0; display: flex; align-items: center; }
+    .day-large-text { font-size: 3.5rem; }
+    .day-label { position: static; transform: none; margin-left: 10px; font-size: 0.6rem; }
+    .timeline-dot-anchor { display: none; }
+    .event-content-col { padding-left: 0; }
+    .event-inner { flex-direction: column !important; gap: 20px; }
+    .event-image-container { width: 100%; max-width: 100%; aspect-ratio: 16/9; }
+    .event-text.text-right-align { text-align: left; }
+    .text-right-align .event-tag { margin-left: 0; }
+    .text-right-align .event-objective { margin-left: 0; }
+    .event-meta.meta-right { justify-content: flex-start; }
+    .event-register.register-right { justify-content: flex-start; }
+  }
+
+  @media (max-width: 480px) {
+    .chronicle-header { padding: 0 16px; }
+    .chronicle-content { padding: 0 16px; }
+    .chronicle-title { font-size: clamp(2.4rem, 12vw, 3.5rem); }
+    .day-large-text { font-size: 2.8rem; }
+    .event-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+    .event-tagline { font-size: 0.88rem; }
+    .event-objective { font-size: 0.85rem; }
+    .register-btn { padding: 10px 18px; font-size: 0.75rem; }
+  }
+</style>
+
+<script>
+  // === Header letter-by-letter pop-up animation (IntersectionObserver-triggered) ===
+  const evHeader = document.querySelector('.chronicle-header');
+  if (evHeader) {
+    const headerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const line1Letters = document.querySelectorAll("#evTitleLine1 .ev-letter");
+          const line2Letters = document.querySelectorAll("#evTitleLine2 .ev-letter");
+          const subtitle = document.getElementById("evSubtitleText");
+          const letterDelay = 80;
+
+          line1Letters.forEach((letter, i) => {
+            setTimeout(() => letter.classList.add("pop"), 100 + i * letterDelay);
+          });
+
+          const line2Start = 100 + line1Letters.length * letterDelay + 120;
+          line2Letters.forEach((letter, i) => {
+            setTimeout(() => letter.classList.add("pop"), line2Start + i * letterDelay);
+          });
+
+          const subtitleStart = line2Start + line2Letters.length * letterDelay + 150;
+          setTimeout(() => subtitle?.classList.add("pop"), subtitleStart);
+
+          headerObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    headerObserver.observe(evHeader);
+  }
+
+  // === Intersection Observer for event cards ===
+  const eventItems = document.querySelectorAll(".chronicle-event");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("revealed");
+        } else {
+          e.target.classList.remove("revealed");
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  let observerStarted = false;
+  function startObserving() {
+    if (observerStarted) return;
+    observerStarted = true;
+    eventItems.forEach((item) => observer.observe(item));
+    window.removeEventListener("scroll", startObserving);
+  }
+
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    setTimeout(startObserving, 800);
+  }
+  window.addEventListener("scroll", startObserving, { passive: true });
+</script>

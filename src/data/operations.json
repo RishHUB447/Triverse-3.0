@@ -40,14 +40,6 @@
     "image": "/team/Management/Bhumika-removebg.png"
   },
   {
-    "id": "006",
-    "name": "KHUSHI MITTAL",
-    "role": "CORE MEMBER",
-    "iconType": "truck",
-    "color": "#c4a1ff",
-    "image": "/team/Management/khushi_mittal.png"
-  },
-  {
     "id": "007",
     "name": "SHREEJEET GUPTA",
     "role": "CORE MEMBER",
@@ -81,7 +73,7 @@
   },
   {
     "id": "011",
-    "name": "Khushi",
+    "name": "Khushi Mittal",
     "role": "CORE MEMBER",
     "iconType": "target",
     "color": "#c4a1ff",

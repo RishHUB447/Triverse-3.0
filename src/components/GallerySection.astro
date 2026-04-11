@@ -1,0 +1,300 @@
+---
+import { Image } from "astro:assets";
+
+import img1  from "../images/old_triverse/20250327_123625744_iOS.jpg";
+import img2  from "../images/old_triverse/20250327_124240916_iOS.jpg";
+import img3  from "../images/old_triverse/20250327_155615620_iOS.jpg";
+import img4  from "../images/old_triverse/20250328_125829338_iOS.jpg";
+import img5  from "../images/old_triverse/20250328_131135135_iOS.jpg";
+import img6  from "../images/old_triverse/20250328_134127947_iOS.jpg";
+import img7  from "../images/old_triverse/20250328_144434217_iOS.jpg";
+import img8  from "../images/old_triverse/20250328_144449361_iOS.jpg";
+import img9  from "../images/old_triverse/IMG-20250417-WA0012.jpg";
+import img10 from "../images/old_triverse/IMG-20250417-WA0014.jpg";
+import img11 from "../images/old_triverse/IMG-20250417-WA0015.jpg";
+import img12 from "../images/old_triverse/IMG-20250417-WA0017.jpg";
+import img13 from "../images/old_triverse/IMG-20250418-WA0037.jpg";
+import img14 from "../images/old_triverse/IMG_0460.jpeg";
+import img15 from "../images/old_triverse/IMG_6610.jpg";
+import img16 from "../images/old_triverse/IMG_6842.jpg";
+
+const photos = [
+  { src: img1,  alt: "Triverse — The energy on Day 1" },
+  { src: img2,  alt: "Triverse — Competitors in focus" },
+  { src: img3,  alt: "Triverse — The crowd gathers" },
+  { src: img4,  alt: "Triverse — Day 2 intensity" },
+  { src: img5,  alt: "Triverse — Finals in session" },
+  { src: img6,  alt: "Triverse — Strategy at work" },
+  { src: img7,  alt: "Triverse — Moments between rounds" },
+  { src: img8,  alt: "Triverse — Candid capture" },
+  { src: img9,  alt: "Triverse — The team" },
+  { src: img10, alt: "Triverse — Stage moments" },
+  { src: img11, alt: "Triverse — Behind the scenes" },
+  { src: img12, alt: "Triverse — The atmosphere" },
+  { src: img13, alt: "Triverse — Prize ceremony" },
+  { src: img14, alt: "Triverse — Captured brilliance" },
+  { src: img15, alt: "Triverse — Legacy moments" },
+  { src: img16, alt: "Triverse — Until next time" },
+];
+---
+
+<section class="gallery-section" id="gallery">
+  <!-- Header -->
+  <div class="gallery-header">
+    <div class="gallery-label-row">
+      <span class="gallery-pill">TRIVERSE 2025</span>
+      <span class="gallery-rule"></span>
+    </div>
+    <h2 class="gallery-title">
+      A GLIMPSE OF<br/><span class="gallery-title-accent">WHAT WAS</span>
+    </h2>
+    <p class="gallery-sub">A living reel of past moments — always in motion.</p>
+  </div>
+
+  <!-- ── ROW 1 — scrolls LEFT ── -->
+  <div class="marquee-wrapper">
+    <div class="fade-left"></div>
+    <div class="fade-right"></div>
+    <div class="marquee-track marquee-left" id="row1">
+      {/* Original set */}
+      {photos.slice(0, 8).map((p, i) => (
+        <div class={`gcard h-${i % 3 === 0 ? 'tall' : i % 3 === 1 ? 'mid' : 'short'}`}>
+          <Image src={p.src} alt={p.alt} width={900} height={700} class="gimg" loading="lazy" />
+          <div class="gcard-shine"></div>
+        </div>
+      ))}
+      {/* Duplicate for seamless loop */}
+      {photos.slice(0, 8).map((p, i) => (
+        <div class={`gcard h-${i % 3 === 0 ? 'tall' : i % 3 === 1 ? 'mid' : 'short'}`} aria-hidden="true">
+          <Image src={p.src} alt="" width={900} height={700} class="gimg" loading="lazy" />
+          <div class="gcard-shine"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- ── ROW 2 — scrolls RIGHT ── -->
+  <div class="marquee-wrapper" style="margin-top: 14px;">
+    <div class="fade-left"></div>
+    <div class="fade-right"></div>
+    <div class="marquee-track marquee-right" id="row2">
+      {/* Original set */}
+      {photos.slice(8, 16).map((p, i) => (
+        <div class={`gcard h-${i % 3 === 1 ? 'tall' : i % 3 === 2 ? 'mid' : 'short'}`}>
+          <Image src={p.src} alt={p.alt} width={900} height={700} class="gimg" loading="lazy" />
+          <div class="gcard-shine"></div>
+        </div>
+      ))}
+      {/* Duplicate */}
+      {photos.slice(8, 16).map((p, i) => (
+        <div class={`gcard h-${i % 3 === 1 ? 'tall' : i % 3 === 2 ? 'mid' : 'short'}`} aria-hidden="true">
+          <Image src={p.src} alt="" width={900} height={700} class="gimg" loading="lazy" />
+          <div class="gcard-shine"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Section ── */
+  .gallery-section {
+    background: #050505;
+    padding: 100px 0 100px;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+  }
+
+  /* ── Header ── */
+  .gallery-header {
+    max-width: 1280px;
+    margin: 0 auto 56px;
+    padding: 0 48px;
+  }
+
+  .gallery-label-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+
+  .gallery-pill {
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #ec4899;
+    border: 1px solid rgba(236, 72, 153, 0.4);
+    padding: 4px 14px;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+
+  .gallery-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(236,72,153,0.3), transparent);
+  }
+
+  .gallery-title {
+    font-size: clamp(2.8rem, 9vw, 7rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 0.92;
+    color: #fff;
+    margin: 0 0 1.2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: galFadeUp 0.8s ease forwards 0.1s;
+  }
+
+  .gallery-title-accent {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.22);
+  }
+
+  .gallery-sub {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+    margin: 0;
+    opacity: 0;
+    animation: galFadeUp 0.7s ease forwards 0.32s;
+  }
+
+  /* ── Marquee wrapper ── */
+  .marquee-wrapper {
+    position: relative;
+    width: 100%;
+    /* Clip so cards don't overflow the page */
+    overflow: hidden;
+  }
+
+  /* Edge fades */
+  .fade-left,
+  .fade-right {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 140px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .fade-left  { left: 0;  background: linear-gradient(to right,  #050505, transparent); }
+  .fade-right { right: 0; background: linear-gradient(to left,   #050505, transparent); }
+
+  /* ── Scrolling track ── */
+  .marquee-track {
+    display: flex;
+    gap: 14px;
+    /* wide enough to hold doubled content */
+    width: max-content;
+    will-change: transform;
+  }
+
+  /* Row 1 → scroll left; animation defined in @keyframes */
+  .marquee-left  { animation: scrollLeft  38s linear infinite; }
+  /* Row 2 → scroll right (reversed) */
+  .marquee-right { animation: scrollRight 42s linear infinite; }
+
+  /* Pause on hover (desktop) and touch (mobile via :active) */
+  .marquee-wrapper:hover .marquee-track,
+  .marquee-wrapper:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* ── Cards ── */
+  .gcard {
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: #111;
+    /* Width is auto — driven by img aspect ratio & height */
+    transition: border-color 0.35s ease, transform 0.35s ease;
+  }
+
+  /* Height variants */
+  .gcard.h-tall  { height: 300px; }
+  .gcard.h-mid   { height: 240px; }
+  .gcard.h-short { height: 190px; }
+
+  .gcard:hover {
+    border-color: rgba(236, 72, 153, 0.4);
+    transform: scale(1.03);
+    z-index: 5;
+  }
+
+  .gimg {
+    display: block;
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    filter: saturate(0.65) brightness(0.82);
+    transition: filter 0.45s ease, transform 0.5s ease;
+  }
+
+  .gcard:hover .gimg {
+    filter: saturate(1.1) brightness(0.96);
+    transform: scale(1.05);
+  }
+
+  /* Subtle top-shine on cards */
+  .gcard-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ── Animations ── */
+  @keyframes scrollLeft {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes scrollRight {
+    0%   { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  @keyframes galFadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .gallery-section  { padding: 72px 0 72px; }
+    .gallery-header   { padding: 0 24px; margin-bottom: 36px; }
+    .gallery-title    { font-size: clamp(2.2rem, 11vw, 4rem); }
+    .fade-left, .fade-right { width: 60px; }
+
+    .gcard.h-tall  { height: 200px; }
+    .gcard.h-mid   { height: 165px; }
+    .gcard.h-short { height: 135px; }
+
+    /* Slightly faster on mobile — smaller viewport sees less content */
+    .marquee-left  { animation-duration: 28s; }
+    .marquee-right { animation-duration: 32s; }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-header { padding: 0 20px; }
+    .fade-left, .fade-right { width: 36px; }
+
+    .gcard.h-tall  { height: 170px; }
+    .gcard.h-mid   { height: 140px; }
+    .gcard.h-short { height: 115px; }
+
+    .marquee-left  { animation-duration: 22s; }
+    .marquee-right { animation-duration: 26s; }
+  }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-left,
+    .marquee-right { animation: none; }
+  }
+</style>

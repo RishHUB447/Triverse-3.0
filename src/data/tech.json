@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Gyanendra Prakash",
-        "role": "SYSTEMS ARCHITECT",
+        "role": "LEAD",
         "image": "/team/tech/gyanendra.png",
         "tickerText": "HUB/VORTEX-DEV // NEURAL_SIM_V2 // REFACTORING_ENGINE // GITHUB/VORTEX-DEV",
         "type": "lead"
@@ -18,7 +18,7 @@
     {
         "id": 3,
         "name": "SAKSHAM YADAV",
-        "role": "CORE MEMBER",
+        "role": "CO-LEAD",
         "image": "/team/tech/saksham_yadav.png",
         "tickerText": "FULLSTACK // DATABASE_DEV // SAKSHAM/YADAV",
         "type": "junior"

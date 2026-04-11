@@ -2,37 +2,31 @@
     {
         "id": 1,
         "name": "DEVANSH KUMAR",
-        "role": "CHAIRPERSON",
+        "role": "",
         "image": "/team/office-bearer/Devansh_Kumar.png"
-    },
-    {
-        "id": 2,
-        "name": "MANYA CHAUBEY",
-        "role": "VICE CHAIRPERSON",
-        "image": "/team/office-bearer/manya.png"
     },
     {
         "id": 3,
         "name": "SATVIK",
-        "role": "TREASURER",
+        "role": "",
         "image": "/team/office-bearer/Satvik.png"
     },
     {
         "id": 4,
         "name": "RISHABH VERMA",
-        "role": "WEB MASTER",
+        "role": "",
         "image": "/team/office-bearer/Rishabh_Verma.png"
     },
     {
         "id": 5,
         "name": "SAHARSH JAISHWAL",
-        "role": "LOGISTICS LEAD",
+        "role": "",
         "image": "/team/Management/Saharsh_jaishwal.png"
     },
     {
         "id": 6,
-        "name": "VANSH SINGHAL",
-        "role": "MEDIA LEAD",
-        "image": "/team/Media/vansh.png"
+        "name": "GAURIKA KAUSHIK",
+        "role": "",
+        "image": "/team/Media/gaurika.PNG"
     }
 ]

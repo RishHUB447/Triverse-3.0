@@ -6,15 +6,15 @@
         "glowColor": "#a855f7"
     },
     {
-        "name": "GAURIKA",
+        "name": "ASHRITH JANGAM",
         "role": "CO-LEAD",
-        "image": "/team/Media/gaurika.PNG",
-        "glowColor": "#00f5d4"
+        "image": "/team/Media/Ashrith_Jangam.png",
+        "glowColor": "#f472b6"
     },
     {
-        "name": "ASHRITH JANGAM",
-        "role": "CORE MEMBER",
-        "image": "/team/Media/Ashrith_Jangam.png",
+        "name": "Dev",
+        "role": "CO-LEAD",
+        "image": "/team/Placeholder.png",
         "glowColor": "#f472b6"
     },
     {

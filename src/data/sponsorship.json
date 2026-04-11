@@ -52,5 +52,14 @@
         "iconType": "network",
         "color": "#00f5d4",
         "image": "/team/PRandOutreach/Prabhavi_Gupta.png"
+    },
+    {
+        "id": "07",
+        "code": "CORE.",
+        "name": "DAKSESH",
+        "role": "CORE MEMBER",
+        "iconType": "network",
+        "color": "#00f5d4",
+        "image": "/team/Placeholder.png"
     }
 ]

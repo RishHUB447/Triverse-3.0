@@ -11,6 +11,16 @@
   },
   {
     "id": "02",
+    "name": "HARSH",
+    "role": "CO-LEAD",
+    "iconType": "nodes",
+    "accentColor": "#a15eff",
+    "offsetColor": "#a15eff",
+    "image": "/team/Placeholder.png",
+    "hasImage": true
+  },
+  {
+    "id": "03",
     "name": "APOORV VERMA",
     "role": "CO-LEAD",
     "iconType": "nodes",
@@ -20,7 +30,7 @@
     "hasImage": true
   },
   {
-    "id": "03",
+    "id": "04",
     "name": "NANDANI KHANDELWAL",
     "role": "CORE MEMBER",
     "iconType": "grid",
@@ -30,7 +40,7 @@
     "hasImage": true
   },
   {
-    "id": "04",
+    "id": "05",
     "name": "ASTITVA AGARWAL",
     "role": "CORE MEMBER",
     "iconType": "cube",
@@ -40,7 +50,7 @@
     "hasImage": false
   },
   {
-    "id": "05",
+    "id": "06",
     "name": "ILLYAS",
     "role": "CORE MEMBER",
     "iconType": "layout",

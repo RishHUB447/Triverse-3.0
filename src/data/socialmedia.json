@@ -1,0 +1,20 @@
+[
+    {
+        "name": "VANSH SINGHAL",
+        "role": "LEAD",
+        "image": "/team/Media/vansh.png",
+        "glowColor": "#a855f7"
+    },
+    {
+        "name": "SANSKRITI CHAUDHARY",
+        "role": "CO-LEAD",
+        "image": "/team/Media/Sanskriti Chaudhary.png",
+        "glowColor": "#ec4899"
+    },
+    {
+        "name": "ARYA",
+        "role": "CORE MEMBER",
+        "image": "/team/Placeholder.png",
+        "glowColor": "#00f5d4"
+    }
+]
