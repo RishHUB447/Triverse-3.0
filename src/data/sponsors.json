@@ -3,28 +3,49 @@
     {
       "name": "Coding Block",
       "logo": "https://cb3img.s3.ap-south-1.amazonaws.com/img/cblogo.webp",
-      "description": "Code your way to success",
+      "description": "Learning partner",
       "website": "https://www.codingblocks.com/",
       "tier": "large"
     },
     {
       "name": "Unstop",
       "logo": "/unstop.png",
-      "description": "",
+      "description": "Powered by",
       "website": "https://unstop.com/",
       "tier": "large"
     },
     {
       "name": "BuildIt",
       "logo": "/builditlogo.png",
-      "description": "Be unstoppable",
+      "description": "sponsor",
       "website": "",
       "tier": "small"
     },
     {
+      "name": "Kwikpic",
+      "logo": "/kwikpic.png",
+      "description": "Media partner",
+      "website": "https://kwikpic.in/",
+      "tier": "large"
+    },
+    {
+      "name": "Zerodha",
+      "logo": "/zerodha.png",
+      "description": "Goodies partner",
+      "website": "https://zerodha.com/",
+      "tier": "small"
+    },
+    {
+      "name": "IEEE UP Section",
+      "logo": "/ieee-up-section.png",
+      "description": "Funded by",
+      "website": "http://www.ieeeup.org/",
+      "tier": "large"
+    },
+    {
       "name": "Bennett University",
       "logo": "https://www.facultyplus.com/wp-content/uploads/2024/02/Bennett-University-Logo-FP.webp",
-      "description": "Move with the times, move with Bennett",
+      "description": "Academic partner",
       "website": "https://www.bennett.edu.in/",
       "tier": "small"
     }

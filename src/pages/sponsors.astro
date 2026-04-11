@@ -36,18 +36,35 @@ const smalls  = allSponsors.filter(s => s.tier === "small");
 type Card = { sponsor: typeof allSponsors[0]; cls: string };
 const cards: Card[] = [];
 
-// Row 1
-if (smalls[0]) cards.push({ sponsor: smalls[0], cls: "diag-small-r1" });
-if (larges[0]) cards.push({ sponsor: larges[0], cls: "diag-large-r1" });
+let smallIdx = 0;
+let largeIdx = 0;
+let row = 0;
 
-// Row 2
-if (larges[1]) cards.push({ sponsor: larges[1], cls: "diag-large-r2" });
-if (smalls[1]) cards.push({ sponsor: smalls[1], cls: "diag-small-r2" });
+// Build diagonal rows while we still have larges
+while (largeIdx < larges.length) {
+  const isEvenRow = row % 2 === 0;
 
-// Remaining smalls — flow naturally
-const usedSmalls = smalls.slice(0, 2);
-const remainingSmalls = smalls.filter(s => !usedSmalls.includes(s));
-remainingSmalls.forEach(s => cards.push({ sponsor: s, cls: "flow-small" }));
+  if (isEvenRow) {
+    // Row: small | LARGE
+    if (smalls[smallIdx]) {
+      cards.push({ sponsor: smalls[smallIdx++], cls: "diag-small-r1" });
+    }
+    cards.push({ sponsor: larges[largeIdx++], cls: "diag-large-r1" });
+  } else {
+    // Row: LARGE | small
+    cards.push({ sponsor: larges[largeIdx++], cls: "diag-large-r2" });
+    if (smalls[smallIdx]) {
+      cards.push({ sponsor: smalls[smallIdx++], cls: "diag-small-r2" });
+    }
+  }
+
+  row++;
+}
+
+// Push remaining smalls normally
+while (smallIdx < smalls.length) {
+  cards.push({ sponsor: smalls[smallIdx++], cls: "flow-small" });
+}
 ---
 
 <Layout title="Sponsors | Triverse">
@@ -99,13 +116,13 @@ remainingSmalls.forEach(s => cards.push({ sponsor: s, cls: "flow-small" }));
               <span aria-hidden="true">{sponsor.name.toUpperCase()}</span>
             </div>
             <div class="card-content">
+             <p class="card-desc">{sponsor.description}</p>
               <img
                 src={sponsor.logo}
                 alt={sponsor.name}
                 class="partner-logo"
                 loading="lazy"
               />
-              <p class="card-desc">{sponsor.description}</p>
             </div>
           </a>
         );
@@ -156,6 +173,7 @@ remainingSmalls.forEach(s => cards.push({ sponsor: s, cls: "flow-small" }));
     line-height: 0.88;
     margin: 0 0 18px;
     word-break: keep-all; /* Keeps words together */
+    font-size: 7rem;
   }
 
   .page-header p {
@@ -270,7 +288,7 @@ remainingSmalls.forEach(s => cards.push({ sponsor: s, cls: "flow-small" }));
 
   .card-desc {
     color: rgba(255, 255, 255, 0.55);
-    font-size: 0.75rem;
+    font-size: 1rem;
     line-height: 1.5;
     max-width: 320px;
     margin: 0;
@@ -305,7 +323,6 @@ remainingSmalls.forEach(s => cards.push({ sponsor: s, cls: "flow-small" }));
     width: 50%;
     max-height: 110px;
     object-fit: contain;
-    filter: grayscale(100%) brightness(0.85);
     opacity: 0.78;
     transition: all 0.55s cubic-bezier(0.23, 1, 0.32, 1);
   }
