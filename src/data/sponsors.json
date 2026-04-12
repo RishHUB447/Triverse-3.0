@@ -1,13 +1,6 @@
 {
   "sponsors": [
     {
-      "name": "Coding Block",
-      "logo": "https://cb3img.s3.ap-south-1.amazonaws.com/img/cblogo.webp",
-      "description": "Learning partner",
-      "website": "https://www.codingblocks.com/",
-      "tier": "large"
-    },
-    {
       "name": "Unstop",
       "logo": "/unstop.png",
       "description": "Powered by",
@@ -15,10 +8,17 @@
       "tier": "large"
     },
     {
-      "name": "BuildIt",
-      "logo": "/builditlogo.png",
-      "description": "sponsor",
-      "website": "",
+      "name": "IEEE UP Section",
+      "logo": "/ieee-up-section.png",
+      "description": "Funded by",
+      "website": "http://www.ieeeup.org/",
+      "tier": "large"
+    },
+    {
+      "name": "Coding Block",
+      "logo": "https://cb3img.s3.ap-south-1.amazonaws.com/img/cblogo.webp",
+      "description": "Learning partner",
+      "website": "https://www.codingblocks.com/",
       "tier": "small"
     },
     {
@@ -28,19 +28,19 @@
       "website": "https://kwikpic.in/",
       "tier": "large"
     },
+        {
+      "name": "BuildIt",
+      "logo": "/builditlogo.png",
+      "description": "sponsor",
+      "website": "",
+      "tier": "small"
+    },
     {
       "name": "Zerodha",
       "logo": "/zerodha.png",
       "description": "Goodies partner",
       "website": "https://zerodha.com/",
       "tier": "small"
-    },
-    {
-      "name": "IEEE UP Section",
-      "logo": "/ieee-up-section.png",
-      "description": "Funded by",
-      "website": "http://www.ieeeup.org/",
-      "tier": "large"
     },
     {
       "name": "Bennett University",
