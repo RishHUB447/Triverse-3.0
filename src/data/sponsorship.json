@@ -1,39 +1,21 @@
 [
     {
-        "id": "01",
-        "code": "TEAM LEAD",
-        "name": "SHREYASI DOSHI",
-        "role": "TEAM LEAD",
-        "iconType": "dollar",
-        "color": "#d8b4e2",
-        "image": "/team/PRandOutreach/Shreyasi Doshi.png"
-    },
-    {
-        "id": "02",
-        "code": "CO-LEAD",
-        "name": "ARPITA ARORA",
-        "role": "CO-LEAD",
-        "iconType": "handshake",
-        "color": "#00f5d4",
-        "image": "/team/PRandOutreach/Arpita_Arora.png"
-    },
-    {
-        "id": "03",
+        "id": "04",
         "code": "CORE.",
-        "name": "ADITYA KUSHWAHA",
-        "role": "CORE MEMBER",
-        "iconType": "hex",
-        "color": "#c4a1ff",
-        "image": "/team/PRandOutreach/Aditya Kushwaha .png"
+        "name": "DIVYANSH SHARMA",
+        "role": "LEAD",
+        "iconType": "graph",
+        "color": "#a1a1aa",
+        "image": "/team/PRandOutreach/Divyansh_Sharma.png"
     },
     {
         "id": "04",
         "code": "CORE.",
         "name": "DIVYANSH SHARMA",
-        "role": "CORE MEMBER",
+        "role": "CO-LEAD",
         "iconType": "graph",
         "color": "#a1a1aa",
-        "image": "/team/PRandOutreach/Divyansh_Sharma.png"
+        "image": "/team/Management/vaishnavi.PNG"
     },
     {
         "id": "05",

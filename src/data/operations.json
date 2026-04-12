@@ -1,11 +1,27 @@
 [
   {
     "id": "001",
-    "name": "ATHARV KRISHNA",
-    "role": "TEAM LEAD",
-    "iconType": "bank",
+    "name": "SHREEJEET GUPTA",
+    "role": "Lead",
+    "iconType": "radio",
     "color": "#00f5d4",
-    "image": "/team/Management/Atharv_Krishna.png"
+    "image": "/team/Management/Shreejeet_Gupta.png"
+  },
+  {
+    "id": "010",
+    "name": "MEGHA SINGHAL",
+    "role": "CO-LEAD",
+    "iconType": "target",
+    "color": "#c4a1ff",
+    "image": "/team/Management/megha_singhal.png"
+  },
+  {
+    "id": "010",
+    "name": "MAHIMA",
+    "role": "CO-LEAD",
+    "iconType": "target",
+    "color": "#c4a1ff",
+    "image": "/team/Placeholder.png"
   },
   {
     "id": "002",
@@ -14,14 +30,6 @@
     "iconType": "shield",
     "color": "#c4a1ff",
     "image": "/team/Management/Aditi_Gangwar.png"
-  },
-  {
-    "id": "003",
-    "name": "AMAN",
-    "role": "CORE MEMBER",
-    "iconType": "clock",
-    "color": "#00f5d4",
-    "image": "/team/Management/Aman.png"
   },
   {
     "id": "004",
@@ -40,14 +48,6 @@
     "image": "/team/Management/Bhumika-removebg.png"
   },
   {
-    "id": "007",
-    "name": "SHREEJEET GUPTA",
-    "role": "CORE MEMBER",
-    "iconType": "radio",
-    "color": "#00f5d4",
-    "image": "/team/Management/Shreejeet_Gupta.png"
-  },
-  {
     "id": "008",
     "name": "MANASHVINI DAVE",
     "role": "CORE MEMBER",
@@ -62,14 +62,6 @@
     "iconType": "shopping-cart",
     "color": "#00f5d4",
     "image": "/team/Management/shivikaYadav.png"
-  },
-  {
-    "id": "010",
-    "name": "MEGHA SINGHAL",
-    "role": "CORE MEMBER",
-    "iconType": "target",
-    "color": "#c4a1ff",
-    "image": "/team/Management/megha_singhal.png"
   },
   {
     "id": "011",

@@ -1,0 +1,302 @@
+---
+import sponsorsData from '../data/sponsors.json';
+const sponsors = sponsorsData.sponsors;
+---
+
+<section class="sponsors-section" id="sponsors">
+  <!-- Section Header -->
+  <header class="sponsors-header">
+    <h2 class="sponsors-title">
+      <span class="title-line" id="spTitleLine1">
+        <span class="sp-letter">O</span><span class="sp-letter">U</span><span class="sp-letter">R</span>
+      </span>
+      <br/>
+      <span class="title-line" id="spTitleLine2">
+        <span class="sp-letter">S</span><span class="sp-letter">P</span><span class="sp-letter">O</span><span class="sp-letter">N</span><span class="sp-letter">S</span><span class="sp-letter">O</span><span class="sp-letter">R</span><span class="sp-letter">S</span>
+      </span>
+    </h2>
+    <p class="sponsors-subtitle" id="spSubtitleText">Supported by the best</p>
+  </header>
+
+  <!-- Marquee Container -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        {
+          sponsors.map((sponsor) => (
+            <a href={sponsor.website || "#"} target="_blank" rel="noopener noreferrer" class="sponsor-card">
+              <div class="sponsor-inner">
+                {sponsor.description ? <p class="sponsor-role">{sponsor.description}</p> : null}
+                {sponsor.logo ? (
+                  <img src={sponsor.logo} alt={sponsor.name} class={`sponsor-logo ${!sponsor.logo.startsWith('/') && !sponsor.logo.startsWith('http') ? 'hidden' : ''}`} loading="lazy" />
+                ) : null}
+                {!sponsor.logo || sponsor.logo === "" ? (
+                  <h3 class="sponsor-name">{sponsor.name}</h3>
+                ) : null}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+      <div class="marquee-content">
+        {
+          sponsors.map((sponsor) => (
+            <a href={sponsor.website || "#"} target="_blank" rel="noopener noreferrer" class="sponsor-card">
+              <div class="sponsor-inner">
+                {sponsor.description ? <p class="sponsor-role">{sponsor.description}</p> : null}
+                {sponsor.logo ? (
+                  <img src={sponsor.logo} alt={sponsor.name} class={`sponsor-logo ${!sponsor.logo.startsWith('/') && !sponsor.logo.startsWith('http') ? 'hidden' : ''}`} loading="lazy" />
+                ) : null}
+                {!sponsor.logo || sponsor.logo === "" ? (
+                  <h3 class="sponsor-name">{sponsor.name}</h3>
+                ) : null}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative Floating Blurs -->
+  <div class="sp-deco-blur sp-deco-blur-1"></div>
+  <div class="sp-deco-blur sp-deco-blur-2"></div>
+</section>
+
+<style>
+  /* Base Section */
+  .sponsors-section {
+    position: relative;
+    background-color: #000;
+    color: #fff;
+    font-family: var(--font-sf-pro), system-ui, -apple-system, sans-serif;
+    padding-top: 80px;
+    padding-bottom: 120px;
+    overflow: hidden;
+    z-index: 5;
+  }
+
+  .sponsors-section::before {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 50vh;
+    background: radial-gradient(ellipse at bottom, rgba(74, 222, 128, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(100px);
+  }
+
+  /* Header */
+  .sponsors-header {
+    max-width: 1280px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+  }
+  .sponsors-title {
+    font-family: var(--font-sf-pro), system-ui, sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    color: #fff;
+    opacity: 0.9;
+    margin: 0 0 16px;
+  }
+  .title-line {
+    display: inline-block;
+    overflow: hidden;
+  }
+  .sp-letter {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.4s ease;
+  }
+  .sp-letter.pop {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .sponsors-subtitle {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.45);
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .sponsors-subtitle.pop {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Marquee */
+  .marquee-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+    z-index: 10;
+    display: flex;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  
+  .marquee-track {
+    display: flex;
+    gap: 32px;
+    width: max-content;
+    animation: scrollMarquee 40s linear infinite;
+  }
+  
+  .marquee-content {
+    display: flex;
+    gap: 32px;
+  }
+  
+  .marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 16px)); }
+  }
+
+  /* Sponsor Card */
+  .sponsor-card {
+    position: relative;
+    text-decoration: none;
+    width: 320px;
+    height: 220px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+  }
+
+  .sponsor-card:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  .sponsor-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 16px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+
+  .sponsor-logo {
+    max-width: 240px;
+    max-height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    transition: transform 0.4s ease;
+  }
+  
+  .sponsor-card:hover .sponsor-logo {
+    transform: scale(1.08);
+  }
+
+  .sponsor-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+    letter-spacing: 0.02em;
+  }
+  .sponsor-role {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* Decorative Blurs */
+  .sp-deco-blur {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(120px);
+  }
+  .sp-deco-blur-1 {
+    top: 50%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(56, 189, 248, 0.06);
+  }
+  .sp-deco-blur-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(244, 114, 182, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    .sponsors-section { padding-top: 60px; padding-bottom: 80px; }
+    .sponsors-header { padding: 0 20px; margin-bottom: 40px; }
+    .sponsors-title { font-size: clamp(2.8rem, 10vw, 4rem); }
+    .sponsors-subtitle { font-size: 0.7rem; }
+    .sponsor-card { width: 280px; height: 180px; }
+    .sponsor-logo { max-width: 180px; max-height: 80px; }
+    .sponsor-role { font-size: 0.75rem; }
+  }
+</style>
+
+<script>
+  // Intersection Observer for header animation
+  const spHeader = document.querySelector('.sponsors-header');
+  if (spHeader) {
+    const spObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const line1Letters = document.querySelectorAll("#spTitleLine1 .sp-letter");
+          const line2Letters = document.querySelectorAll("#spTitleLine2 .sp-letter");
+          const subtitle = document.getElementById("spSubtitleText");
+          const letterDelay = 80;
+
+          line1Letters.forEach((letter, i) => {
+            setTimeout(() => letter.classList.add("pop"), 100 + i * letterDelay);
+          });
+
+          const line2Start = 100 + line1Letters.length * letterDelay + 120;
+          line2Letters.forEach((letter, i) => {
+            setTimeout(() => letter.classList.add("pop"), line2Start + i * letterDelay);
+          });
+
+          const subtitleStart = line2Start + line2Letters.length * letterDelay + 150;
+          setTimeout(() => subtitle?.classList.add("pop"), subtitleStart);
+
+          spObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    spObserver.observe(spHeader);
+  }
+</script>

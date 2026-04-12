@@ -63,9 +63,10 @@ import leadsData from "../../data/leads.json";
 
     .leads-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr); /* All 6 on one line for desktop */
-        gap: 0.75rem; /* Even tighter for 6-column layout */
-        align-items: start;
+        grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+        gap: 1.5rem;
+
+        justify-content: center;
     }
 
     @media (max-width: 1280px) {
