@@ -1,132 +1,217 @@
 ---
-import DesignCard from "./DesignCard.astro";
-import designData from "../../data/design.json";
+import SponsorshipCard from "./SponsorshipCard.astro";
+import data from "../../data/design.json";
+
+const dynamicAnimations = [
+  "zoom-in-up",
+  "flip-left",
+  "fade-up-right",
+  "flip-right",
+  "fade-up-left"
+];
 ---
 
 <section class="design-section">
-  <div class="header-container">
-    <h2 class="section-title">
-      <span class="visual" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">DESIGN</span>
-      <span class="synthesis" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">TEAM</span>
-    </h2>
-  </div>
-
-  <div class="carousel-container">
-    <div class="carousel-track">
-      {designData.map((member, index) => (
-        <div data-aos="flip-up" data-aos-delay={(index * 100) + 400} data-aos-duration="700" style="flex: 0 0 auto;">
-          <DesignCard 
-            name={member.name}
-            role={member.role}
-            iconType={member.iconType}
-            accentColor={member.accentColor}
-            offsetColor={member.offsetColor}
-            image={member.image}
-            hasImage={member.hasImage}
-            index={index}
-          />
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-area">
+            <h2 class="title" data-scroll data-scroll-speed="0.1">
+                <span class="white-sans" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">DESIGN</span>
+                <span class="purple-serif block" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">TEAM</span>
+            </h2>
+            <div class="subheader-wrap" data-aos="fade-right" data-aos-delay="550" data-aos-duration="600">
+                <p class="subheader">IEEE TRIVERSE 3.0 // 2024 DIRECTORY</p>
+                <div class="cyan-line"></div>
+            </div>
         </div>
-      ))}
+
+        <!-- Staggered Gallery Grid -->
+        <div class="overflow-container">
+            <div class="gallery-grid">
+                {data.map((member, index) => (
+                    <div class={`grid-item item-${index}`} data-aos={dynamicAnimations[index % dynamicAnimations.length]} data-aos-delay={(index * 100) + 400} data-aos-duration="800">
+                        <SponsorshipCard 
+                            id={member.id ? String(member.id).padStart(2, '0') : String(index + 1).padStart(2, '0')}
+                            code={member.code || "CORE."}
+                            name={member.name}
+                            role={member.role || "CORE MEMBER"}
+                            iconType={member.iconType || "hex"}
+                            color={member.color || "#00f5d4"}
+                            image={member.image}
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <style>
 
-  .design-section {
-    padding: 10rem 0; /* No horizontal padding here so the carousel bleeds to edges */
-    /* Removed background-color to inherit from global Teams page */
-    overflow: hidden; /* Hide anything outside section */
-  }
-
-  .header-container {
-    max-width: 1400px;
-    margin: 0 auto 5rem;
-    padding: 0 4rem;
-  }
-
-  .section-title {
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    line-height: 1;
-  }
-
-  .visual {
-    font-family: var(--font-sf-pro), sans-serif;
-    font-weight: 900;
-    font-size: clamp(3rem, 6vw, 5rem);
-    color: #fff;
-    letter-spacing: -0.02em;
-  }
-
-  .synthesis {
-    font-family: var(--font-sf-pro), sans-serif;
-    font-style: italic;
-    font-weight: 800;
-    font-size: clamp(3.2rem, 6.2vw, 5.2rem);
-    color: #a15eff; /* Purple accent matching the mockup */
-    letter-spacing: -0.01em;
-  }
-
-  .carousel-container {
-    width: 100%;
-    /* No overflow-x: auto here, we'll add it in mobile query */
-  }
-  
-  .carousel-container::-webkit-scrollbar {
-    display: none;
-  }
-
-  .carousel-track {
-    display: flex;
-    flex-wrap: nowrap; /* Force single row */
-    justify-content: center;
-    gap: 1.5rem; /* Slightly tighter gap to help them fit */
-    padding: 2rem 2rem 4rem; 
-    width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
-  }
-
-  /* Desktop single-line behavior - ensured via carousel-track default flex */
-  @media (min-width: 1024px) {
-    .carousel-container {
-      overflow: visible; /* Ensure no scrollbars on desktop */
-    }
-  }
-
-  @media (max-width: 768px) {
-    .header-container {
-      padding: 0 1.5rem;
-      margin-bottom: 3rem;
+    .design-section {
+        padding: 8rem 2rem 12rem;
+        /* Removed background-color to inherit from global Teams page */
+        position: relative;
+        /* No overflow: hidden so the horizontal carousel can work on mobile */
     }
 
-    .carousel-container {
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      scroll-snap-type: x mandatory;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .carousel-container::-webkit-scrollbar {
-      display: none;
-    }
-    
-    .carousel-track {
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      gap: 1rem;
-      padding: 1.5rem 1.5rem 3.5rem; /* Space for overlapping text */
-      width: max-content;
-      margin: 0;
+    /* ===== HEADER ===== */
+    .header-area {
+        margin-bottom: 6rem;
     }
 
-    /* Target the cards slightly differently to add scroll snap alignment */
-    .carousel-track > :global(*) {
-      scroll-snap-align: center;
+    .title {
+        margin: 0;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
     }
-  }
+
+    .white-sans {
+        font-family: var(--font-sf-pro), sans-serif;
+        font-weight: 900;
+        color: #fff;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+    }
+
+    .purple-serif {
+        font-family: var(--font-sf-pro), sans-serif;
+        font-style: italic;
+        font-weight: 500;
+        color: #c4a1ff;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        text-transform: none; /* Keep original casing or force lower/upper based on mockup? The mockup shows UPPERCASE italic */
+        letter-spacing: 0.02em;
+        margin-left: 0.5rem;
+    }
+
+    .block {
+        display: block;
+        margin-top: -0.2rem;
+    }
+
+    .subheader-wrap {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .subheader {
+        font-family: var(--font-sf-pro), sans-serif;
+        color: #00f5d4;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        margin: 0;
+    }
+
+    .cyan-line {
+        width: 60px;
+        height: 2px;
+        background-color: #00f5d4;
+        opacity: 0.5;
+    }
+
+    /* ===== GALLERY GRID (DESKTOP/TABLET) ===== */
+    .overflow-container {
+        width: 100%;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 2rem 1.5rem;
+        position: relative;
+        z-index: 5;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .grid-item {
+        grid-column: span 2;
+    }
+
+    /* 4-3 Layout & Alternating Wave Stagger */
+    @media (min-width: 769px) {
+        /* Subtle alternating row offset for the dynamic gallery feel */
+        .item-0, .item-2, .item-4, .item-6 { transform: translateY(0); }
+        .item-1, .item-3, .item-5 { transform: translateY(40px); }
+
+        /* Push the 5th item (index 4) one column right to perfectly center the bottom 3 */
+        .item-4 {
+            grid-column: 2 / span 2;
+        }
+    }
+
+    /* ===== HORIZONTAL SCROLL (PHONE) ===== */
+    @media (max-width: 768px) {
+        .design-section {
+            padding: 6rem 0;
+        }
+
+        /* Ensure .container doesn't restrict the carousel width */
+        .container {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .header-area {
+            margin-bottom: 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .title {
+            line-height: 1;
+        }
+
+        .white-sans, .purple-serif {
+            font-size: clamp(2.5rem, 10vw, 4rem);
+        }
+
+        .purple-serif {
+            display: block;
+            margin-left: 0;
+            margin-top: 0.5rem;
+        }
+
+        /* Scrolling container */
+        .overflow-container {
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .overflow-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Flex row of cards */
+        .gallery-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            padding: 0 1.5rem 3rem 1.5rem;
+            width: max-content;
+            margin: 0;
+        }
+
+        .grid-item {
+            flex-shrink: 0;
+            width: 75vw; /* ~3/4 screen width each card */
+            max-width: 320px;
+            scroll-snap-align: start;
+            transform: none !important;
+            margin: 0 !important;
+        }
+    }
 </style>

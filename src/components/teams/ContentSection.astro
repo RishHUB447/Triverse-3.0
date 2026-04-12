@@ -1,168 +1,217 @@
 ---
-import ContentRow from "./ContentRow.astro";
-import contentData from "../../data/content.json";
+import SponsorshipCard from "./SponsorshipCard.astro";
+import data from "../../data/content.json";
+
+const dynamicAnimations = [
+  "zoom-in-up",
+  "flip-left",
+  "fade-up-right",
+  "flip-right",
+  "fade-up-left"
+];
 ---
 
 <section class="content-section">
-  <div class="container">
-    <!-- Header -->
-    <div class="header-area">
-      <h2 class="title">
-        <span class="white-sans" data-aos="fade-down" data-aos-duration="600" data-aos-delay="200">EDITORIAL</span>
-        <span class="purple-serif" data-aos="fade-down" data-aos-delay="400" data-aos-duration="800">HUB</span>
-      </h2>
-      <div class="purple-line" data-aos="fade-right" data-aos-delay="550" data-aos-duration="600"></div>
-    </div>
-
-    <!-- Table Container (Scrollable on Mobile) -->
-    <div class="table-scroll-container">
-      <div class="minimalist-table">
-        <!-- Table Header Row -->
-        <div class="table-header">
-          <div class="col-head">PROFILE</div>
-          <div class="col-head">IDENTITY</div>
-          <div class="col-head">POSITION</div>
-        </div>
-
-        <!-- Table Body Rows -->
-        <div class="table-body">
-          {contentData.map((member, index) => (
-            <div data-aos="fade-left" data-aos-delay={(index * 100) + 400} data-aos-duration="600">
-              <ContentRow 
-                name={member.name}
-                handle={member.handle}
-                role={member.role}
-                roleColor={member.roleColor}
-                image={member.image}
-              />
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-area">
+            <h2 class="title" data-scroll data-scroll-speed="0.1">
+                <span class="white-sans" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">CONTENT</span>
+                <span class="purple-serif block" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">TEAM</span>
+            </h2>
+            <div class="subheader-wrap" data-aos="fade-right" data-aos-delay="550" data-aos-duration="600">
+                <p class="subheader">IEEE TRIVERSE 3.0 // 2024 DIRECTORY</p>
+                <div class="cyan-line"></div>
             </div>
-          ))}
         </div>
-      </div>
+
+        <!-- Staggered Gallery Grid -->
+        <div class="overflow-container">
+            <div class="gallery-grid">
+                {data.map((member, index) => (
+                    <div class={`grid-item item-${index}`} data-aos={dynamicAnimations[index % dynamicAnimations.length]} data-aos-delay={(index * 100) + 400} data-aos-duration="800">
+                        <SponsorshipCard 
+                            id={member.id ? String(member.id).padStart(2, '0') : String(index + 1).padStart(2, '0')}
+                            code={member.code || "CORE."}
+                            name={member.name}
+                            role={member.role || "CORE MEMBER"}
+                            iconType={member.iconType || "hex"}
+                            color={member.color || "#00f5d4"}
+                            image={member.image}
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <style>
-  .content-section {
-    padding: 8rem 2rem 12rem;
-    /* Unifying background back to black as requested */
-    background-color: #000; 
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-  }
 
-  .container {
-    max-width: 1000px; /* Keep the table narrow and focused */
-    margin: 0 auto;
-  }
-
-  /* ===== HEADER ===== */
-  .header-area {
-    margin-bottom: 4rem;
-  }
-
-  .title {
-    margin: 0;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-  }
-
-  .white-sans {
-    font-family: var(--font-sf-pro), sans-serif;
-    font-weight: 900;
-    color: #fff;
-    font-size: clamp(2.5rem, 6vw, 4rem);
-  }
-
-  .purple-serif {
-    font-family: var(--font-sf-pro), sans-serif;
-    font-style: italic;
-    font-weight: 500;
-    color: #c4a1ff;
-    font-size: clamp(2.8rem, 6.2vw, 4.2rem);
-    letter-spacing: 0.02em;
-  }
-
-  .purple-line {
-    width: 80px;
-    height: 3px;
-    background-color: #c4a1ff;
-    margin-top: 1.5rem;
-  }
-
-  /* ===== TABLE LAYOUT ===== */
-  .table-scroll-container {
-    width: 100%;
-    /* Horizontal scroll setup for mobile */
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.2) transparent;
-  }
-
-  /* Custom nicer scrollbar for webkit */
-  .table-scroll-container::-webkit-scrollbar {
-    height: 6px;
-  }
-  .table-scroll-container::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .table-scroll-container::-webkit-scrollbar-thumb {
-    background-color: rgba(255,255,255,0.2);
-    border-radius: 10px;
-  }
-
-  .minimalist-table {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    /* On mobile, force a minimum width so columns don't compress */
-    min-width: 700px;
-  }
-
-  /* Table Header */
-  .table-header {
-    display: grid;
-    /* Matches the grid logic in ContentRow */
-    grid-template-columns: 180px 1fr 1fr;
-    gap: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .col-head {
-    font-family: var(--font-sf-pro), sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #999;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .table-body {
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media (max-width: 768px) {
     .content-section {
-      padding: 6rem 0; /* Bleed scroll container to edges */
+        padding: 8rem 2rem 12rem;
+        /* Removed background-color to inherit from global Teams page */
+        position: relative;
+        /* No overflow: hidden so the horizontal carousel can work on mobile */
     }
 
     .container {
-      padding: 0;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
+    /* ===== HEADER ===== */
     .header-area {
-      padding: 0 1.5rem;
+        margin-bottom: 6rem;
     }
 
-    .minimalist-table {
-      /* Padding inside the scroll area to prevent clipping */
-      padding: 0 1.5rem;
+    .title {
+        margin: 0;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
     }
-  }
+
+    .white-sans {
+        font-family: var(--font-sf-pro), sans-serif;
+        font-weight: 900;
+        color: #fff;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+    }
+
+    .purple-serif {
+        font-family: var(--font-sf-pro), sans-serif;
+        font-style: italic;
+        font-weight: 500;
+        color: #c4a1ff;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        text-transform: none; /* Keep original casing or force lower/upper based on mockup? The mockup shows UPPERCASE italic */
+        letter-spacing: 0.02em;
+        margin-left: 0.5rem;
+    }
+
+    .block {
+        display: block;
+        margin-top: -0.2rem;
+    }
+
+    .subheader-wrap {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .subheader {
+        font-family: var(--font-sf-pro), sans-serif;
+        color: #00f5d4;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        margin: 0;
+    }
+
+    .cyan-line {
+        width: 60px;
+        height: 2px;
+        background-color: #00f5d4;
+        opacity: 0.5;
+    }
+
+    /* ===== GALLERY GRID (DESKTOP/TABLET) ===== */
+    .overflow-container {
+        width: 100%;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 2rem 1.5rem;
+        position: relative;
+        z-index: 5;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .grid-item {
+        grid-column: span 2;
+    }
+
+    /* 4-3 Layout & Alternating Wave Stagger */
+    @media (min-width: 769px) {
+        /* Subtle alternating row offset for the dynamic gallery feel */
+        .item-0, .item-2, .item-4, .item-6 { transform: translateY(0); }
+        .item-1, .item-3, .item-5 { transform: translateY(40px); }
+
+        /* Push the 5th item (index 4) one column right to perfectly center the bottom 3 */
+        .item-4 {
+            grid-column: 2 / span 2;
+        }
+    }
+
+    /* ===== HORIZONTAL SCROLL (PHONE) ===== */
+    @media (max-width: 768px) {
+        .content-section {
+            padding: 6rem 0;
+        }
+
+        /* Ensure .container doesn't restrict the carousel width */
+        .container {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .header-area {
+            margin-bottom: 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .title {
+            line-height: 1;
+        }
+
+        .white-sans, .purple-serif {
+            font-size: clamp(2.5rem, 10vw, 4rem);
+        }
+
+        .purple-serif {
+            display: block;
+            margin-left: 0;
+            margin-top: 0.5rem;
+        }
+
+        /* Scrolling container */
+        .overflow-container {
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .overflow-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Flex row of cards */
+        .gallery-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            padding: 0 1.5rem 3rem 1.5rem;
+            width: max-content;
+            margin: 0;
+        }
+
+        .grid-item {
+            flex-shrink: 0;
+            width: 75vw; /* ~3/4 screen width each card */
+            max-width: 320px;
+            scroll-snap-align: start;
+            transform: none !important;
+            margin: 0 !important;
+        }
+    }
 </style>

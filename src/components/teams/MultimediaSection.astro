@@ -1,188 +1,217 @@
 ---
-import MultimediaCard from "./MultimediaCard.astro";
-import multimediaData from "../../data/multimedia.json";
+import SponsorshipCard from "./SponsorshipCard.astro";
+import data from "../../data/multimedia.json";
+
+const dynamicAnimations = [
+  "zoom-in-up",
+  "flip-left",
+  "fade-up-right",
+  "flip-right",
+  "fade-up-left"
+];
 ---
 
 <section class="multimedia-section">
     <div class="container">
-        <div class="section-layout">
-            <!-- Left Branding -->
-            <div class="branding">
-                <h2 class="title">
-                    <span class="white" data-aos="fade-down" data-aos-duration="600" data-aos-delay="200">TEAM</span>
-                    <span class="cyan" data-aos="fade-down" data-aos-delay="400" data-aos-duration="800">MULTIMEDIA</span>
-                </h2>
-                <p class="description" data-aos="fade-right" data-aos-delay="550" data-aos-duration="600">
-                    Connecting the pulse of the kinetic suite to the global digital atmosphere.
-                </p>
+        <!-- Header Section -->
+        <div class="header-area">
+            <h2 class="title" data-scroll data-scroll-speed="0.1">
+                <span class="white-sans" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">MULTIMEDIA</span>
+                <span class="purple-serif block" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">TEAM</span>
+            </h2>
+            <div class="subheader-wrap" data-aos="fade-right" data-aos-delay="550" data-aos-duration="600">
+                <p class="subheader">IEEE TRIVERSE 3.0 // 2024 DIRECTORY</p>
+                <div class="cyan-line"></div>
             </div>
+        </div>
 
-            <!-- Member Grid with Path -->
-            <div class="members-area">
-                <!-- Desktop Curved Connecting Path (SVG) -->
-                <svg class="connecting-path desktop-path" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path 
-                        d="M0,100 Q200,50 400,100 T800,100" 
-                        stroke="rgba(0, 245, 212, 0.3)" 
-                        stroke-width="3" 
-                        stroke-dasharray="12 8"
-                    />
-                </svg>
-
-                <!-- Mobile Zig-Zag Connecting Path (SVG) -->
-                <svg class="connecting-path mobile-path" viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path 
-                        d="M60,100 L140,250 L60,400 L140,550" 
-                        stroke="rgba(0, 245, 212, 0.4)" 
-                        stroke-width="2" 
-                    />
-                </svg>
-
-                <div class="members-grid">
-                    {multimediaData.map((member, index) => (
-                        <div class={`grid-item item-${index}`} data-aos="zoom-in" data-aos-delay={(index * 150) + 400} data-aos-duration="600">
-                            <MultimediaCard 
-                                name={member.name}
-                                role={member.role}
-                                image={member.image}
-                                glowColor={member.glowColor}
-                                index={index}
-                            />
-                        </div>
-                    ))}
-                </div>
+        <!-- Staggered Gallery Grid -->
+        <div class="overflow-container">
+            <div class="gallery-grid">
+                {data.map((member, index) => (
+                    <div class={`grid-item item-${index}`} data-aos={dynamicAnimations[index % dynamicAnimations.length]} data-aos-delay={(index * 100) + 400} data-aos-duration="800">
+                        <SponsorshipCard 
+                            id={member.id ? String(member.id).padStart(2, '0') : String(index + 1).padStart(2, '0')}
+                            code={member.code || "CORE."}
+                            name={member.name}
+                            role={member.role || "CORE MEMBER"}
+                            iconType={member.iconType || "hex"}
+                            color={member.color || "#00f5d4"}
+                            image={member.image}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     </div>
 </section>
 
 <style>
+
     .multimedia-section {
-        padding: 10rem 2rem;
-        background-color: #000;
+        padding: 8rem 2rem 12rem;
+        /* Removed background-color to inherit from global Teams page */
         position: relative;
-        overflow: hidden;
+        /* No overflow: hidden so the horizontal carousel can work on mobile */
     }
 
     .container {
-        max-width: 1400px;
+        max-width: 1200px;
         margin: 0 auto;
     }
 
-    .section-layout {
-        display: grid;
-        grid-template-columns: 350px 1fr;
-        gap: 4rem;
-        align-items: center;
-    }
-
-    .branding {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
+    /* ===== HEADER ===== */
+    .header-area {
+        margin-bottom: 6rem;
     }
 
     .title {
-        display: flex;
-        flex-direction: column;
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 900;
-        line-height: 0.9;
-        letter-spacing: -0.05em;
+        margin: 0;
+        line-height: 0.95;
+        letter-spacing: -0.02em;
         text-transform: uppercase;
     }
 
-    .title .white { color: white; }
-    .title .cyan { color: #00f5d4; }
+    .white-sans {
+        font-family: var(--font-sf-pro), sans-serif;
+        font-weight: 900;
+        color: #fff;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+    }
 
-    .description {
-        font-size: 0.95rem;
-        color: rgba(255, 255, 255, 0.6);
-        max-width: 300px;
-        line-height: 1.6;
+    .purple-serif {
+        font-family: var(--font-sf-pro), sans-serif;
+        font-style: italic;
         font-weight: 500;
+        color: #c4a1ff;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        text-transform: none; /* Keep original casing or force lower/upper based on mockup? The mockup shows UPPERCASE italic */
+        letter-spacing: 0.02em;
+        margin-left: 0.5rem;
     }
 
-    .members-area {
-        position: relative;
-        padding: 2rem 0;
+    .block {
+        display: block;
+        margin-top: -0.2rem;
     }
 
-    .connecting-path {
-        position: absolute;
-        pointer-events: none;
-        z-index: 1;
+    .subheader-wrap {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 
-    .desktop-path {
-        top: 50%;
-        left: 0;
+    .subheader {
+        font-family: var(--font-sf-pro), sans-serif;
+        color: #00f5d4;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        margin: 0;
+    }
+
+    .cyan-line {
+        width: 60px;
+        height: 2px;
+        background-color: #00f5d4;
+        opacity: 0.5;
+    }
+
+    /* ===== GALLERY GRID (DESKTOP/TABLET) ===== */
+    .overflow-container {
         width: 100%;
-        height: auto;
-        transform: translateY(-50%);
     }
 
-    .mobile-path {
-        display: none;
-    }
-
-    .members-grid {
+    .gallery-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 2rem 1.5rem;
         position: relative;
         z-index: 5;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    @media (max-width: 1200px) {
-        .section-layout {
-            grid-template-columns: 1fr;
-            text-align: center;
-        }
-        .branding {
-            align-items: center;
-            margin-bottom: 4rem;
-        }
-        .description {
-            max-width: 500px;
+    .grid-item {
+        grid-column: span 2;
+    }
+
+    /* 4-3 Layout & Alternating Wave Stagger */
+    @media (min-width: 769px) {
+        /* Subtle alternating row offset for the dynamic gallery feel */
+        .item-0, .item-2, .item-4, .item-6 { transform: translateY(0); }
+        .item-1, .item-3, .item-5 { transform: translateY(40px); }
+
+        /* Push the 5th item (index 4) one column right to perfectly center the bottom 3 */
+        .item-4 {
+            grid-column: 2 / span 2;
         }
     }
 
+    /* ===== HORIZONTAL SCROLL (PHONE) ===== */
     @media (max-width: 768px) {
-        .desktop-path {
+        .multimedia-section {
+            padding: 6rem 0;
+        }
+
+        /* Ensure .container doesn't restrict the carousel width */
+        .container {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .header-area {
+            margin-bottom: 4rem;
+            padding: 0 1.5rem;
+        }
+
+        .title {
+            line-height: 1;
+        }
+
+        .white-sans, .purple-serif {
+            font-size: clamp(2.5rem, 10vw, 4rem);
+        }
+
+        .purple-serif {
+            display: block;
+            margin-left: 0;
+            margin-top: 0.5rem;
+        }
+
+        /* Scrolling container */
+        .overflow-container {
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .overflow-container::-webkit-scrollbar {
             display: none;
         }
-        .mobile-path {
-            display: block;
-            top: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: calc(100% - 100px);
-            opacity: 0.5;
-        }
 
-        .members-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Zig-Zag Staggering for Mobile */
-        .item-0, .item-2 { grid-column: 1; margin-top: 0; }
-        .item-1, .item-3 { grid-column: 2; margin-top: 5rem; }
-        
-        .grid-item {
+        /* Flex row of cards */
+        .gallery-grid {
             display: flex;
-            justify-content: center;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            padding: 0 1.5rem 3rem 1.5rem;
+            width: max-content;
+            margin: 0;
         }
-    }
 
-    @media (max-width: 480px) {
-        .members-grid {
-            gap: 2rem 1rem;
+        .grid-item {
+            flex-shrink: 0;
+            width: 75vw; /* ~3/4 screen width each card */
+            max-width: 320px;
+            scroll-snap-align: start;
+            transform: none !important;
+            margin: 0 !important;
         }
-        .item-1, .item-3 { margin-top: 3rem; }
     }
 </style>
