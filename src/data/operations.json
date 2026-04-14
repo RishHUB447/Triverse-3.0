@@ -21,7 +21,15 @@
     "role": "CO-LEAD",
     "iconType": "target",
     "color": "#c4a1ff",
-    "image": "/team/Placeholder.png"
+    "image": "/team/Management/Mahima.png"
+  },
+  {
+    "id": "011",
+    "name": "SIVANT RAJ",
+    "role": "CORE MEMBER",
+    "iconType": "target",
+    "color": "#c4a1ff",
+    "image": "/team/Management/Sivant_Raj.png"
   },
   {
     "id": "002",

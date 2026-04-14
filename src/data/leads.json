@@ -28,5 +28,11 @@
         "name": "GAURIKA KAUSHIK",
         "role": "",
         "image": "/team/Media/gaurika.PNG"
+    },
+    {
+        "id": 7,
+        "name": "AYUSH ANAND",
+        "role": "",
+        "image": "/team/office-bearer/Ayush.png"
     }
 ]
