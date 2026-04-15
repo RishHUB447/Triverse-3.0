@@ -38,25 +38,5 @@
     "offsetColor": "#ffffff",
     "image": "/team/Design/nandani_khandelwal.png",
     "hasImage": true
-  },
-  {
-    "id": "05",
-    "name": "ASTITVA AGARWAL",
-    "role": "CORE MEMBER",
-    "iconType": "cube",
-    "accentColor": "#ff007f",
-    "offsetColor": "#ff007f",
-    "image": "/team/Placeholder.png",
-    "hasImage": false
-  },
-  {
-    "id": "06",
-    "name": "ILLYAS",
-    "role": "CORE MEMBER",
-    "iconType": "layout",
-    "accentColor": "#f5e600",
-    "offsetColor": "#f5e600",
-    "image": "/team/Placeholder.png",
-    "hasImage": false
   }
 ]

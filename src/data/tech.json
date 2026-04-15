@@ -30,13 +30,5 @@
         "image": "/team/tech/shruti.png",
         "tickerText": "AI_DEV // DATA_MINING // SHRUTI/TECH",
         "type": "junior"
-    },
-    {
-        "id": 6,
-        "name": "AYUSH TIWARI",
-        "role": "CORE MEMBER",
-        "image": "/team/tech/Ayush_Tiwari.png",
-        "tickerText": "BACKEND // SEC_DEV // AYUSH/TIWARI",
-        "type": "junior"
     }
 ]
