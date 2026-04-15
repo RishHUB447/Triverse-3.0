@@ -1,5 +1,9 @@
+---
+import { Image } from "astro:assets";
+import clubLogo from "../images/club.png";
+import benuniLogo from "../images/benuni.png";
+---
 <div class="site-branding" aria-label="Site branding">
-  <span class="site-branding__text">IEEE Bennett</span>
-  <span class="site-branding__badge">TRIVERSE 3.0</span>
+  <Image src={clubLogo} alt="IEEE" width={120} format="png" class="branding-logo" />
+  <Image src={benuniLogo} alt="BU" width={120} format="png" class="branding-logo" />
 </div>
-
