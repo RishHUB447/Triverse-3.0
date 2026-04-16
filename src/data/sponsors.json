@@ -43,6 +43,13 @@
       "tier": "small"
     },
     {
+      "name": "TruScholar",
+      "logo": "/TruScholar.png",
+      "description": "Learning partner",
+      "website": "https://www.truscholar.io/",
+      "tier": "small"
+    },
+    {
       "name": "Bennett University",
       "logo": "https://www.facultyplus.com/wp-content/uploads/2024/02/Bennett-University-Logo-FP.webp",
       "description": "Academic partner",
